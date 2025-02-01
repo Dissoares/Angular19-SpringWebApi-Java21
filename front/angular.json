@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "watch": true,
             "outputPath": "dist/formulario-contato",
             "index": "src/index.html",
             "browser": "src/main.ts",

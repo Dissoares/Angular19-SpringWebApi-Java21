@@ -1,9 +1,13 @@
-CREATE TABLE dados_pessoais (
-                                id BIGINT AUTO_INCREMENT PRIMARY KEY,
-                                nome VARCHAR(255) NOT NULL,
-                                cpf VARCHAR(14) NOT NULL,
-                                data_nascimento DATE,
-                                sexo CHAR(1),
-                                email VARCHAR(255),
-                                telefone VARCHAR(20)
+IF NOT EXISTS (SELECT * FROM information_schema.tables WHERE table_schema = 'CONTATO_SOLICITACAO' AND table_name = 'DADOS_PESSOAIS') THEN
+CREATE TABLE CONTATO_SOLICITACAO.DADOS_PESSOAIS
+(
+     ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+     NOME VARCHAR(255) NOT NULL,
+     CPF VARCHAR(14) NOT NULL,
+     DATA_NASCIMENTO DATE,
+     SEXO INT(1),
+     EMAIL VARCHAR(255),
+     TELEFONE VARCHAR(20),
+     STATUS_SOLICITACAO INT(1),
 );
+END IF;

@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.util.Date;
+
 @Entity
 public class DadosPessoais {
     @Id
@@ -12,10 +14,11 @@ public class DadosPessoais {
     private Long id;
     private String nome;
     private String cpf;
-    private String dataNascimento;
-    private String sexo;
+    private Date dataNascimento;
+    private Integer sexo;
     private String email;
     private String telefone;
+    private Integer statusSolicitacao;
 
     public Long getId() {
         return id;
@@ -41,19 +44,19 @@ public class DadosPessoais {
         this.cpf = cpf;
     }
 
-    public String getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getSexo() {
+    public Integer getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(Integer sexo) {
         this.sexo = sexo;
     }
 
@@ -71,5 +74,13 @@ public class DadosPessoais {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public Integer getStatusSolicitacao() {
+        return statusSolicitacao;
+    }
+
+    public void setStatusSolicitacao(Integer statusSolicitacao) {
+        this.statusSolicitacao = statusSolicitacao;
     }
 }

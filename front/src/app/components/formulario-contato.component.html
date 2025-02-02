@@ -73,9 +73,9 @@
 
             <mat-form-field>
               <mat-label>Multi Seleção de item</mat-label>
-              <mat-select formControlName="status" multiple>
-                @for (item of tipoSexoEnum; track item) {
-                <mat-option [value]="item">{{ item.descricao }}</mat-option>
+              <mat-select formControlName="statusSolicitacao" multiple>
+                @for (item of statusSolicitacaoEnum; track item) {
+                <mat-option [value]="item.id">{{ item.descricao }}</mat-option>
                 }
               </mat-select>
             </mat-form-field>

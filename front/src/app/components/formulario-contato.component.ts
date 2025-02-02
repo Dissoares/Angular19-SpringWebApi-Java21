@@ -19,15 +19,15 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { Component, inject } from '@angular/core';
 import localePt from '@angular/common/locales/pt';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { FooterComponent } from '../layout/footer/footer.component';
 import { HeaderComponent } from '../layout/header/header.component';
 import { SidebarComponent } from '../layout/sidebar/sidebar.component';
-
+import { StatusSolicitacaoEnum } from '../core/enums/status-solicitacao.enum';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -52,19 +52,21 @@ registerLocaleData(localePt, 'pt-BR');
     MatSidenavModule,
     FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],
   templateUrl: './formulario-contato.component.html',
   styleUrl: './formulario-contato.component.scss',
 })
 export class FormularioContatoComponent {
-
   public formulario!: FormGroup;
   public tipoSexoEnum = TipoSexoEnum.values();
-  private snackBarService = inject(MatSnackBar);
+  public statusSolicitacaoEnum = StatusSolicitacaoEnum.values();
+
   public divisor: string = 'item dividido';
   public sidebarAberta: boolean = true;
+
+  private snackBarService = inject(MatSnackBar);
 
   constructor(
     private formularioContatoService: FormularioContatoService,
@@ -78,13 +80,13 @@ export class FormularioContatoComponent {
   public iniciarFormulario(): void {
     this.formulario = this.fb.group({
       id: [null],
-      nome: [null, Validators.required],
-      cpf: [null, Validators.required],
+      nome: [null],
+      cpf: [null],
       dataNascimento: [null],
       sexo: [null],
       email: [null, [Validators.required, Validators.email]],
-      telefone: [null, Validators.pattern(/^\(\d{2}\) \d{5}-\d{4}$/)],
-      status: [null],
+      telefone: [null],
+      statusSolicitacao: [null],
     });
   }
 
@@ -94,6 +96,7 @@ export class FormularioContatoComponent {
       return;
     }
     const dados: DadosPessoais = this.formulario.value;
+
     this.formularioContatoService.salvarDadosPessoais(dados).subscribe(
       (response: any) => {
         console.log('Dados enviados com sucesso!', response);
@@ -111,8 +114,6 @@ export class FormularioContatoComponent {
     this.formulario.markAsPristine();
     this.formulario.markAsUntouched();
   }
-
- 
 
   public ativarSidebar() {
     this.sidebarAberta = !this.sidebarAberta;

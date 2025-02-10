@@ -4,8 +4,8 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./components/formulario-contato.component').then(
-        (m) => m.FormularioContatoComponent
+      import('./layout/home/home.component').then(
+        (m) => m.HomeComponent
       ),
   },
 ];

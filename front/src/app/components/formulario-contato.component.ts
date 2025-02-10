@@ -5,54 +5,50 @@ import {
   Validators,
 } from '@angular/forms';
 import { FormularioContatoService } from '../core/services/formulario-contato.service';
+import { StatusSolicitacaoEnum } from '../core/enums/status-solicitacao.enum';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { SidebarComponent } from '../layout/sidebar/sidebar.component';
+import { FooterComponent } from '../layout/footer/footer.component';
+import { HeaderComponent } from '../layout/header/header.component';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DadosPessoais } from '../core/models/dados-pessoais';
-import { TipoSexoEnum } from '../core/enums/tipo-sexo.enum';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { TipoSexoEnum } from '../core/enums/tipo-sexo.enum';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { Component, inject } from '@angular/core';
-import localePt from '@angular/common/locales/pt';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { FooterComponent } from '../layout/footer/footer.component';
-import { HeaderComponent } from '../layout/header/header.component';
-import { SidebarComponent } from '../layout/sidebar/sidebar.component';
-import { StatusSolicitacaoEnum } from '../core/enums/status-solicitacao.enum';
 
+import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt, 'pt-BR');
 
 @Component({
   selector: 'app-formulario-contato',
   standalone: true,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatFormFieldModule,
     MatSnackBarModule,
-    MatToolbarModule,
-    MatIconModule,
     MatDividerModule,
+   
+    MatButtonModule,
+    MatSelectModule,
+    MatInputModule,
     MatListModule,
-    MatSidenavModule,
-    FooterComponent,
-    HeaderComponent,
-    SidebarComponent,
+    MatIconModule,
+    MatCardModule,
+    CommonModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],
   templateUrl: './formulario-contato.component.html',
@@ -64,7 +60,7 @@ export class FormularioContatoComponent {
   public statusSolicitacaoEnum = StatusSolicitacaoEnum.values();
 
   public divisor: string = 'item dividido';
-  public sidebarAberta: boolean = true;
+
 
   private snackBarService = inject(MatSnackBar);
 
@@ -115,7 +111,5 @@ export class FormularioContatoComponent {
     this.formulario.markAsUntouched();
   }
 
-  public ativarSidebar() {
-    this.sidebarAberta = !this.sidebarAberta;
-  }
+
 }

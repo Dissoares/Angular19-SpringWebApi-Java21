@@ -1,97 +1,80 @@
-<mat-sidenav-container class="container">
+<form [formGroup]="formulario" (ngSubmit)="salvarDados()">
+  <mat-card-content>
 
-  <mat-sidenav #sidenav mode="side" [opened]="sidebarAberta">
-    <app-sidebar></app-sidebar>
-  </mat-sidenav>
-  <mat-sidenav-content class="main-content">
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" placeholder="Nome" />
+      <mat-error *ngIf="formulario.get('nome')?.hasError('required')">
+        Nome é obrigatório
+      </mat-error>
+    </mat-form-field>
 
-    <app-header (ativarSidebar)="ativarSidebar()"></app-header>
+    <mat-form-field>
+      <mat-label>CPF</mat-label>
+      <input matInput formControlName="cpf" placeholder="CPF" />
+      <mat-error *ngIf="formulario.get('cpf')?.hasError('required')">
+        CPF é obrigatório
+      </mat-error>
+    </mat-form-field>
 
-    <div class="content">
-      <mat-card class="formulario-contato">
-        <form [formGroup]="formulario" (ngSubmit)="salvarDados()">
-          <mat-card-content>
-            <div class="form-container">
-              <mat-form-field>
-                <mat-label>Nome</mat-label>
-                <input matInput formControlName="nome" placeholder="Nome" />
-                <mat-error *ngIf="formulario.get('nome')?.hasError('required')">
-                  Nome é obrigatório
-                </mat-error>
-              </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Email" />
+      <mat-error *ngIf="formulario.get('email')?.hasError('required')">
+        Email é obrigatório
+      </mat-error>
+      <mat-error *ngIf="formulario.get('email')?.hasError('email')">
+        Email inválido
+      </mat-error>
+    </mat-form-field>
 
-              <mat-form-field>
-                <mat-label>CPF</mat-label>
-                <input matInput formControlName="cpf" placeholder="CPF" />
-                <mat-error *ngIf="formulario.get('cpf')?.hasError('required')">
-                  CPF é obrigatório
-                </mat-error>
-              </mat-form-field>
+    <mat-form-field>
+      <mat-label>Selecione o sexo</mat-label>
+      <mat-select formControlName="sexo">
+        <mat-option *ngFor="let sexo of tipoSexoEnum" [value]="sexo.id">
+          {{ sexo.descricao }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="formulario.get('sexo')?.hasError('required')">
+        Sexo é obrigatório
+      </mat-error>
+    </mat-form-field>
 
-              <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email" placeholder="Email" />
-                <mat-error *ngIf="formulario.get('email')?.hasError('required')">
-                  Email é obrigatório
-                </mat-error>
-                <mat-error *ngIf="formulario.get('email')?.hasError('email')">
-                  Email inválido
-                </mat-error>
-              </mat-form-field>
-            </div>
+    <mat-form-field>
+      <mat-label>Data de Nascimento</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dataNascimento" placeholder="Selecione a data"
+        required />
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-error *ngIf="formulario.get('dataNascimento')?.hasError('required')">
+        Data de nascimento é obrigatória
+      </mat-error>
+    </mat-form-field>
 
-            <mat-form-field>
-              <mat-label>Selecione o sexo</mat-label>
-              <mat-select formControlName="sexo">
-                <mat-option *ngFor="let sexo of tipoSexoEnum" [value]="sexo.id">
-                  {{ sexo.descricao }}
-                </mat-option>
-              </mat-select>
-              <mat-error *ngIf="formulario.get('sexo')?.hasError('required')">
-                Sexo é obrigatório
-              </mat-error>
-            </mat-form-field>
+    <mat-form-field>
+      <mat-label>Telefone</mat-label>
+      <input matInput formControlName="telefone" placeholder="(XX) XXXXX-XXXX" required />
+      <mat-error *ngIf="formulario.get('telefone')?.hasError('required')">
+        Telefone é obrigatório
+      </mat-error>
+    </mat-form-field>
 
-            <mat-form-field>
-              <mat-label>Data de Nascimento</mat-label>
-              <input matInput [matDatepicker]="picker" formControlName="dataNascimento" placeholder="Selecione a data"
-                required />
-              <mat-datepicker #picker></mat-datepicker>
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-error *ngIf="formulario.get('dataNascimento')?.hasError('required')">
-                Data de nascimento é obrigatória
-              </mat-error>
-            </mat-form-field>
+    <mat-form-field>
+      <mat-label>Multi Seleção de item</mat-label>
+      <mat-select formControlName="statusSolicitacao" multiple>
+        @for (item of statusSolicitacaoEnum; track item) {
+        <mat-option [value]="item.id">{{ item.descricao }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
 
-            <mat-form-field>
-              <mat-label>Telefone</mat-label>
-              <input matInput formControlName="telefone" placeholder="(XX) XXXXX-XXXX" required />
-              <mat-error *ngIf="formulario.get('telefone')?.hasError('required')">
-                Telefone é obrigatório
-              </mat-error>
-            </mat-form-field>
+  </mat-card-content>
+  
+  <mat-card-actions>
+    <button class="salvar" mat-raised-button type="submit">Enviar</button>
+    <button class="cancelar" mat-raised-button (click)="limparFormulario()">
+      Limpar
+    </button>
+  </mat-card-actions>
 
-            <mat-form-field>
-              <mat-label>Multi Seleção de item</mat-label>
-              <mat-select formControlName="statusSolicitacao" multiple>
-                @for (item of statusSolicitacaoEnum; track item) {
-                <mat-option [value]="item.id">{{ item.descricao }}</mat-option>
-                }
-              </mat-select>
-            </mat-form-field>
-
-            <mat-card-actions>
-              <button mat-raised-button type="submit">Enviar</button>
-              <button mat-raised-button color="primary" (click)="limparFormulario()" disableRipple>
-                Limpar
-              </button>
-            </mat-card-actions>
-          </mat-card-content>
-        </form>
-      </mat-card>
-    </div>
-
-    <app-footer></app-footer>
-  </mat-sidenav-content>
-
-</mat-sidenav-container>
+</form>

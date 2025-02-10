@@ -1,13 +1,18 @@
 <app-header (ativarSidebar)="ativarSidebar()"></app-header>
 
 <mat-sidenav-container class="container">
-  <mat-sidenav #sidenav mode="side" [opened]="sidebarAberta">
-    <app-sidebar></app-sidebar>
-  </mat-sidenav>
+  @if (!ehDispositivoMobile) {
+    <mat-sidenav #sidenav mode="side" [opened]="sidebarAberta">
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+  } @else {
+    <mat-sidenav #sidenav mode="over" [opened]="!sidebarAberta">
+      <app-sidebar></app-sidebar>
+    </mat-sidenav>
+  }
 
   <mat-sidenav-content>
     <app-formulario-contato></app-formulario-contato>
-    <app-footer></app-footer>
+    <app-footer class="rodape"></app-footer>
   </mat-sidenav-content>
-  
 </mat-sidenav-container>

@@ -58,10 +58,7 @@ export class FormularioContatoComponent {
   public formulario!: FormGroup;
   public tipoSexoEnum = TipoSexoEnum.values();
   public statusSolicitacaoEnum = StatusSolicitacaoEnum.values();
-
   public divisor: string = 'item dividido';
-
-
   private snackBarService = inject(MatSnackBar);
 
   constructor(
@@ -88,7 +85,7 @@ export class FormularioContatoComponent {
 
   public salvarDados(): void {
     if (!this.formulario.valid) {
-      this.snackBarService.open('preencha o formulário corretamente', 'Erro');
+      this.snackBarService.open('Preencha os campos do formulário corretamente', 'Erro');
       return;
     }
     const dados: DadosPessoais = this.formulario.value;
@@ -107,9 +104,6 @@ export class FormularioContatoComponent {
 
   public limparFormulario(): void {
     this.formulario.reset();
-    this.formulario.markAsPristine();
     this.formulario.markAsUntouched();
   }
-
-
 }

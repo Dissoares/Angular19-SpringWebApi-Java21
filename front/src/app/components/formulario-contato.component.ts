@@ -56,10 +56,12 @@ registerLocaleData(localePt, 'pt-BR');
 })
 export class FormularioContatoComponent {
   public formulario!: FormGroup;
-  public tipoSexoEnum = TipoSexoEnum.values();
   public statusSolicitacaoEnum = StatusSolicitacaoEnum.values();
-  public divisor: string = 'item dividido';
   private snackBarService = inject(MatSnackBar);
+  
+  public tipoSexoEnum = TipoSexoEnum.values();
+
+  public divisor: string = 'item dividido';
 
   constructor(
     private formularioContatoService: FormularioContatoService,

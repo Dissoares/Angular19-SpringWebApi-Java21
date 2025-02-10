@@ -21,16 +21,17 @@ mat-card-actions {
 
 .salvar,
 .cancelar {
+  color: #fff !important;
+  border-radius: 9px;
   width: 250px;
   padding: 20px;
-  border-radius: 9px;
   margin: 10px;
-  color: #fff !important;
 }
 
 .salvar {
   background-color: rgb(3, 82, 7) !important;
 }
+
 .cancelar {
   background-color: rgb(82, 3, 3) !important;
 }

@@ -4,9 +4,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { FormularioContatoService } from '../../core/services/formulario-contato.service';
+import { ConfirmacaoDialogComponent } from './dialogs/confirmacao-dialog/confirmacao-dialog.component';
 import { StatusSolicitacaoEnum } from '../../core/enums/status-solicitacao.enum';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {
+  MatDialog,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -38,6 +43,7 @@ registerLocaleData(localePt, 'pt-BR');
     MatDividerModule,
     MatButtonModule,
     MatSelectModule,
+    MatDialogModule,
     MatInputModule,
     MatListModule,
     MatIconModule,
@@ -52,22 +58,21 @@ export class FormularioComponent {
   public formulario!: FormGroup;
   public statusSolicitacaoEnum = StatusSolicitacaoEnum.values();
   private snackBarService = inject(MatSnackBar);
-  
+
   public tipoSexoEnum = TipoSexoEnum.values();
 
   public divisor: string = 'item dividido';
 
-  constructor(
-    private formularioContatoService: FormularioContatoService,
-    private fb: FormBuilder
-  ) {}
+  readonly dialog = inject(MatDialog);
+
+  constructor(private form: FormBuilder) {}
 
   ngOnInit(): void {
     this.iniciarFormulario();
   }
 
   public iniciarFormulario(): void {
-    this.formulario = this.fb.group({
+    this.formulario = this.form.group({
       id: [null],
       nome: [null],
       cpf: [null],
@@ -79,23 +84,13 @@ export class FormularioComponent {
     });
   }
 
-  public salvarDados(): void {
-    if (!this.formulario.valid) {
-      this.snackBarService.open('Preencha os campos do formulário corretamente', 'Erro');
-      return;
-    }
-    const dados: DadosPessoais = this.formulario.value;
-
-    this.formularioContatoService.salvarDadosPessoais(dados).subscribe(
-      (response: any) => {
-        console.log('Dados enviados com sucesso!', response);
-        this.snackBarService.open('Dados enviados com sucesso!', 'Sucesso!');
-      },
-      (error: any) => {
-        console.error('Erro ao enviar os dados:', error);
-        this.snackBarService.open('Erro ao enviar os dados:', 'Erro');
-      }
-    );
+  public abrirDialogoSalvar(): void {
+    const dadosFormulario: DadosPessoais = this.formulario.value;
+    this.dialog.open(ConfirmacaoDialogComponent, {
+      width: '350px',
+      height: '350px',
+      data: { dados: dadosFormulario }
+    });
   }
 
   public limparFormulario(): void {

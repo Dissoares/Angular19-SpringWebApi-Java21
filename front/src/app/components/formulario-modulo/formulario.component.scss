@@ -8,9 +8,22 @@ mat-card-actions {
 }
 
 mat-form-field {
-  min-width: 300px;
+  width: 485px;
   gap: 10px;
   margin: 10px;
+}
+
+@media (max-width: 600px) {
+  mat-form-field {
+    width: 100%;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 960px) {
+  mat-form-field {
+    width: 95%;
+  }
 }
 
 mat-card-actions {

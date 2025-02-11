@@ -4,21 +4,16 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { FormularioContatoService } from '../core/services/formulario-contato.service';
-import { StatusSolicitacaoEnum } from '../core/enums/status-solicitacao.enum';
+import { FormularioContatoService } from '../../core/services/formulario-contato.service';
+import { StatusSolicitacaoEnum } from '../../core/enums/status-solicitacao.enum';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { SidebarComponent } from '../layout/sidebar/sidebar.component';
-import { FooterComponent } from '../layout/footer/footer.component';
-import { HeaderComponent } from '../layout/header/header.component';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { DadosPessoais } from '../core/models/dados-pessoais';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { DadosPessoais } from '../../core/models/dados-pessoais';
+import { TipoSexoEnum } from '../../core/enums/tipo-sexo.enum';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { TipoSexoEnum } from '../core/enums/tipo-sexo.enum';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -32,7 +27,7 @@ import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt, 'pt-BR');
 
 @Component({
-  selector: 'app-formulario-contato',
+  selector: 'app-formulario',
   standalone: true,
   imports: [
     ReactiveFormsModule,
@@ -41,7 +36,6 @@ registerLocaleData(localePt, 'pt-BR');
     MatFormFieldModule,
     MatSnackBarModule,
     MatDividerModule,
-   
     MatButtonModule,
     MatSelectModule,
     MatInputModule,
@@ -51,10 +45,10 @@ registerLocaleData(localePt, 'pt-BR');
     CommonModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],
-  templateUrl: './formulario-contato.component.html',
-  styleUrl: './formulario-contato.component.scss',
+  templateUrl: './formulario.component.html',
+  styleUrl: './formulario.component.scss',
 })
-export class FormularioContatoComponent {
+export class FormularioComponent {
   public formulario!: FormGroup;
   public statusSolicitacaoEnum = StatusSolicitacaoEnum.values();
   private snackBarService = inject(MatSnackBar);

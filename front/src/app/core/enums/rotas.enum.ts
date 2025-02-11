@@ -1,3 +1,4 @@
-export class RotasEnum {
-  inicial = 'tela-inicial';
+export enum RotasEnum {
+  FORMULARIO = '/formulario',
+  LISTAGEM = '/listagem'
 }

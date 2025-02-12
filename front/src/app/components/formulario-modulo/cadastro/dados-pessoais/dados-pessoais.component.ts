@@ -1,9 +1,9 @@
+import { EstadoCivilEnum, TipoSexoEnum, NacionalidadeEnum } from '../../../../core/enums';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { TipoSexoEnum } from '../../../../core/enums';  
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
@@ -27,7 +27,11 @@ import { CommonModule } from '@angular/common';
 })
 export class DadosPessoaisComponent implements OnInit {
   public formulario!: FormGroup;
-  public tipoSexoEnum = TipoSexoEnum.values();
+
+  public estadoCivilEnum = EstadoCivilEnum.getAllValues();
+  public tipoSexoEnum = TipoSexoEnum.getAllValues();
+  public nacionalidadeEnum = NacionalidadeEnum.getAllValues();
+
   constructor(private form: FormBuilder) {}
 
   ngOnInit() {
@@ -43,8 +47,7 @@ export class DadosPessoaisComponent implements OnInit {
       dataNascimento: [null],
       genero: [null],
       estadoCivil: [null],
-      nacionalidade: [null],
-      naturalidade: [null],
+      nacionalidade: [null]
     });
   }
 }

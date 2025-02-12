@@ -1,9 +1,11 @@
 <form [formGroup]="formulario">
   <mat-card-content>
+
     <mat-card-title>
       <mat-icon>format_list_bulleted</mat-icon>
       Dados pessoais
     </mat-card-title>
+
     <mat-form-field>
       <mat-label>Nome</mat-label>
       <input matInput formControlName="nome" placeholder="Nome" />
@@ -21,26 +23,43 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Selecione o sexo</mat-label>
+      <mat-label>RG</mat-label>
+      <input matInput formControlName="rg" placeholder="Rg" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Data de Nascimento</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dataNascimento" placeholder="Selecione a data" />
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Gênero</mat-label>
       <mat-select formControlName="genero">
         <mat-option *ngFor="let genero of tipoSexoEnum" [value]="genero.id">
           {{ genero.descricao }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="formulario.get('genero')?.hasError('required')">
-        Sexo é obrigatório
-      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Data de Nascimento</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="dataNascimento" placeholder="Selecione a data"
-        required />
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-error *ngIf="formulario.get('dataNascimento')?.hasError('required')">
-        Data de nascimento é obrigatória
-      </mat-error>
+      <mat-label>Estado civil</mat-label>
+      <mat-select formControlName="estadoCivil">
+        <mat-option *ngFor="let estadoCivil of estadoCivilEnum" [value]="estadoCivil.id">
+          {{ estadoCivil.descricao }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nacionalidade</mat-label>
+      <mat-select formControlName="nacionalidade">
+        <mat-option *ngFor="let nacionalidade of nacionalidadeEnum" [value]="nacionalidade.id">
+          {{ nacionalidade.descricao }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
   </mat-card-content>
 </form>

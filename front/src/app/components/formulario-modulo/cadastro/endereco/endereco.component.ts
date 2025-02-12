@@ -11,13 +11,13 @@ import { CommonModule } from '@angular/common';
   selector: 'app-endereco',
   standalone: true,
   imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatIconModule,
     MatCardModule,
     CommonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    ReactiveFormsModule
   ],
   templateUrl: './endereco.component.html',
   styleUrls: ['./endereco.component.scss'],

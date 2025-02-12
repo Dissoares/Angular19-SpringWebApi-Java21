@@ -27,7 +27,6 @@ mat-icon {
   margin-bottom: -4px;
 }
 
-
 mat-card-actions {
   display: flex;
   flex-direction: row;
@@ -53,4 +52,27 @@ mat-form-field {
   mat-form-field {
     width: 95%;
   }
+}
+
+.salvar,
+.cancelar {
+  color: #fff !important;
+  border-radius: 9px;
+  width: 250px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.salvar {
+  background-color: #61971b !important;
+}
+
+.cancelar {
+  background-color: rgb(82, 3, 3) !important;
+}
+
+mat-card {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+  box-shadow: none !important;
 }

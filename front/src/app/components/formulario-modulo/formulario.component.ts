@@ -4,14 +4,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ConfirmacaoDialogComponent } from './dialogs/confirmacao-dialog/confirmacao-dialog.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ConfirmarDialogComponent } from './dialogs/confirmar-dialog/confirmar-dialog.component';
 import { StatusSolicitacaoEnum } from '../../core/enums/status-solicitacao.enum';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import {
-  MatDialog,
-  MatDialogModule,
-  MatDialogRef,
-} from '@angular/material/dialog';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -86,10 +82,10 @@ export class FormularioComponent {
 
   public abrirDialogoSalvar(): void {
     const dadosFormulario: DadosPessoais = this.formulario.value;
-    this.dialog.open(ConfirmacaoDialogComponent, {
+    this.dialog.open(ConfirmarDialogComponent, {
       width: '350px',
       height: '350px',
-      data: { dados: dadosFormulario }
+      data: { dados: dadosFormulario },
     });
   }
 

@@ -15,14 +15,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-confirmacao-dialog',
+  selector: 'app-confirmar-dialog',
   standalone: true,
   imports: [MatDialogModule, MatButtonModule],
-  templateUrl: './confirmacao-dialog.component.html',
-  styleUrls: ['./confirmacao-dialog.component.scss'],
+  templateUrl: './confirmar-dialog.component.html',
+  styleUrls: ['./confirmar-dialog.component.scss'],
 })
-export class ConfirmacaoDialogComponent implements OnInit {
-  readonly dialogRef = inject(MatDialogRef<ConfirmacaoDialogComponent>);
+export class ConfirmarDialogComponent implements OnInit {
+  readonly dialogRef = inject(MatDialogRef<ConfirmarDialogComponent>);
   private snackBarService = inject(MatSnackBar);
 
   constructor(

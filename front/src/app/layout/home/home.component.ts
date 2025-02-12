@@ -14,8 +14,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-home',
   standalone: true,
   imports: [
-    FormularioComponent,
-    ListagemComponent,
     MatToolbarModule,
     MatSidenavModule,
     SidebarComponent,

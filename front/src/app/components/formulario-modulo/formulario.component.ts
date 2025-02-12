@@ -1,4 +1,7 @@
-import { ConfirmarDialogComponent } from './dialogs/confirmar-dialog/confirmar-dialog.component';
+import { ConfirmarDialogComponent } from '../../dialogs/confirmar-dialog/confirmar-dialog.component';
+import { DadosPessoaisComponent } from './cadastro/dados-pessoais/dados-pessoais.component';
+import { EnderecoComponent } from './cadastro/endereco/endereco.component';
+import { ContatoComponent } from './cadastro/contato/contato.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DadosPessoais } from '../../core/models/dados-pessoais';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,23 +11,18 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup } from '@angular/forms';
 
-import { DadosPessoaisComponent } from './cadastro/dados-pessoais/dados-pessoais.component';
-import { EnderecoComponent } from './cadastro/endereco/endereco.component';
-import { ContatoComponent } from './cadastro/contato/contato.component';
-
 @Component({
   selector: 'app-formulario',
   standalone: true,
   imports: [
+    DadosPessoaisComponent,
+    EnderecoComponent,
+    ContatoComponent,
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
     MatCardModule,
     CommonModule,
-
-    DadosPessoaisComponent,
-    EnderecoComponent,
-    ContatoComponent,
   ],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.scss',

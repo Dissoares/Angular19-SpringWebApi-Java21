@@ -1,18 +1,14 @@
-import {
-  Component,
-  inject,
-  OnInit,
-  Inject,
-} from '@angular/core';
+import { Component, inject, OnInit, Inject } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { FormularioContatoService } from '../../../../core/services/formulario-contato.service';
-import { DadosPessoais } from '../../../../core/models/dados-pessoais';
+
+import { FormularioContatoService } from '../../core/services/formulario-contato.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DadosPessoais } from '../../core/models';
 
 @Component({
   selector: 'app-confirmar-dialog',

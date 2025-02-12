@@ -1,27 +1,7 @@
-mat-card-actions {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
 
-mat-form-field {
-  width: 485px;
-  gap: 10px;
-  margin: 10px;
-}
 
-@media (max-width: 600px) {
-  mat-form-field {
-    width: 100%;
-    margin: 5px;
-  }
-}
 
-@media (max-width: 960px) {
-  mat-form-field {
-    width: 95%;
-  }
-}
+
 
 .salvar,
 .cancelar {
@@ -39,3 +19,4 @@ mat-form-field {
 .cancelar {
   background-color: rgb(82, 3, 3) !important;
 }
+

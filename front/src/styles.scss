@@ -4,10 +4,53 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 body {
-  overflow: hidden; 
+  overflow: hidden;
+}
+
+mat-card-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+  margin: 5px;
+}
+
+mat-icon {
+  margin-right: 5px;
+  margin-bottom: -4px;
+}
+
+
+mat-card-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-top: solid 1px #ccc;
+  margin-top: auto;
+}
+
+mat-form-field {
+  width: 30%;
+  gap: 10px;
+  margin: 10px;
+}
+
+@media (max-width: 600px) {
+  mat-form-field {
+    width: 100%;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 960px) {
+  mat-form-field {
+    width: 95%;
+  }
 }

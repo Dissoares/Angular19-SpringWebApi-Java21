@@ -1,6 +1,13 @@
+<app-dados-pessoais></app-dados-pessoais>
+<app-contato></app-contato>
+<app-endereco></app-endereco>
+
 <form [formGroup]="formulario">
   <mat-card-content>
-
+    <mat-card-title>
+      <mat-icon>format_list_bulleted</mat-icon>
+      Formulário de cadastro
+    </mat-card-title>
     <mat-form-field>
       <mat-label>Nome</mat-label>
       <input matInput formControlName="nome" placeholder="Nome" />
@@ -67,15 +74,14 @@
         }
       </mat-select>
     </mat-form-field>
-
   </mat-card-content>
-  
+
   <mat-card-actions>
     <button class="salvar" mat-raised-button (click)="abrirDialogoSalvar()">
-      <mat-icon>save</mat-icon>Enviar</button>
+      <mat-icon>save</mat-icon>Salvar
+    </button>
     <button class="cancelar" mat-raised-button (click)="limparFormulario()">
       <mat-icon>close</mat-icon>Limpar
     </button>
   </mat-card-actions>
-
 </form>

@@ -1,13 +1,13 @@
 import {
-  FormBuilder,
-  FormGroup,
   ReactiveFormsModule,
+  FormBuilder,
   Validators,
+  FormGroup,
 } from '@angular/forms';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ConfirmarDialogComponent } from './dialogs/confirmar-dialog/confirmar-dialog.component';
 import { StatusSolicitacaoEnum } from '../../core/enums/status-solicitacao.enum';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,7 +24,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { Component, inject } from '@angular/core';
 
+import { DadosPessoaisComponent } from './cadastro/dados-pessoais/dados-pessoais.component';
+import { EnderecoComponent } from './cadastro/endereco/endereco.component';
+import { ContatoComponent } from './cadastro/contato/contato.component';
 import localePt from '@angular/common/locales/pt';
+
+
 registerLocaleData(localePt, 'pt-BR');
 
 @Component({
@@ -45,6 +50,10 @@ registerLocaleData(localePt, 'pt-BR');
     MatIconModule,
     MatCardModule,
     CommonModule,
+
+    DadosPessoaisComponent,
+    EnderecoComponent,
+    ContatoComponent
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],
   templateUrl: './formulario.component.html',

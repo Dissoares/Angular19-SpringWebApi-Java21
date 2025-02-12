@@ -1,0 +1,27 @@
+<form [formGroup]="formulario">
+  <mat-card-content>
+    <mat-card-title>
+      <mat-icon>format_list_bulleted</mat-icon>
+      Dados de contato
+    </mat-card-title>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Email" />
+      <mat-error *ngIf="formulario.get('email')?.hasError('required')">
+        Email é obrigatório
+      </mat-error>
+      <mat-error *ngIf="formulario.get('email')?.hasError('email')">
+        Email inválido
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Telefone</mat-label>
+      <input matInput formControlName="telefone" placeholder="(XX) XXXXX-XXXX" required />
+      <mat-error *ngIf="formulario.get('telefone')?.hasError('required')">
+        Telefone é obrigatório
+      </mat-error>
+    </mat-form-field>
+  </mat-card-content>
+</form>

@@ -1,5 +1,4 @@
 const listaStatusSolicitacao: Array<StatusSolicitacaoEnum> = [];
-
 export class StatusSolicitacaoEnum {
   static ATIVO = new StatusSolicitacaoEnum(1, 'ATIVO');
   static INATIVO = new StatusSolicitacaoEnum(2, 'INATIVO');
@@ -8,17 +7,21 @@ export class StatusSolicitacaoEnum {
     listaStatusSolicitacao.push(this);
   }
 
-  public static values(): Array<StatusSolicitacaoEnum> {
+  public static getAllValues(): Array<StatusSolicitacaoEnum> {
     return listaStatusSolicitacao;
   }
 
   public static getById(id: number): StatusSolicitacaoEnum | undefined {
-    return listaStatusSolicitacao.find((tipo) => tipo.id === id);
+    return listaStatusSolicitacao.find(
+      (tipoSolicitacao) => tipoSolicitacao.id === id
+    );
   }
 
   public static getByDescricao(
     descricao: string
   ): StatusSolicitacaoEnum | undefined {
-    return listaStatusSolicitacao.find((tipo) => tipo.descricao === descricao);
+    return listaStatusSolicitacao.find(
+      (tipoSolicitacao) => tipoSolicitacao.descricao === descricao
+    );
   }
 }

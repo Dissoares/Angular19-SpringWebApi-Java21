@@ -12,11 +12,7 @@
   }
 
   <mat-sidenav-content>
-    @if(this.rotaAtualEhListagem){
-    <app-listagem></app-listagem>
-    } @else {
-    <app-formulario></app-formulario>
-    }
+    <router-outlet></router-outlet>
     <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

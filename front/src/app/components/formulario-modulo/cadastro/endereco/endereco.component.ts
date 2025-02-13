@@ -1,7 +1,11 @@
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { EnderecoService } from '../../../../core/services/endereco.service';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ufsDoBrasil } from '../../../../core/config/ufs-brasil-const';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { ViaCep } from '../../../../core/models/via-cep';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
@@ -11,6 +15,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-endereco',
   standalone: true,
   imports: [
+    MatAutocompleteModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
@@ -24,8 +29,12 @@ import { CommonModule } from '@angular/common';
 })
 export class EnderecoComponent implements OnInit {
   public formulario!: FormGroup;
+  public listaEnderecos: Array<ViaCep> = [];
 
-  constructor(private form: FormBuilder) {}
+  constructor(
+    private form: FormBuilder,
+    private enderecoService: EnderecoService
+  ) {}
 
   ngOnInit() {
     this.iniciarFormulario();
@@ -43,5 +52,30 @@ export class EnderecoComponent implements OnInit {
       estado: [null],
       pais: [null],
     });
+  }
+
+  public buscarEnderecoPorCep(cep: string): void {
+    this.listaEnderecos = [];
+    if (cep && cep.length) {
+      this.enderecoService.buscarEnderecoPorCep(cep).subscribe({
+        next: (resultado: ViaCep) => {
+          this.listaEnderecos = [resultado];
+          this.formulario.patchValue({
+            cep: resultado.cep,
+            rua: resultado.logradouro,
+            bairro: resultado.bairro,
+            cidade: resultado.localidade,
+            estado: resultado.uf,
+            complemento: resultado.complemento,
+          });
+
+          if (ufsDoBrasil.includes(resultado.uf)) {
+            this.formulario.patchValue({
+              pais: 'Brasil',
+            });
+          }
+        },
+      });
+    }
   }
 }

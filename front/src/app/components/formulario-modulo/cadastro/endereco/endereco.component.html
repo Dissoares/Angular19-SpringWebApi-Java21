@@ -69,12 +69,22 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Cep</mat-label>
-      <input matInput formControlName="cep" placeholder="Cep" />
+      <mat-label>CEP</mat-label>
+      <input type="text" matInput formControlName="cep" [matAutocomplete]="auto"
+        (input)="buscarEnderecoPorCep(formulario.get('cep')?.value)" maxlength="9" />
       <mat-icon matPrefix>pin_drop</mat-icon>
-      <mat-error *ngIf="formulario.get('cep')?.hasError('required')">
-        Cep é obrigatório
-      </mat-error>
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        @for (cep of listaEnderecos; track cep.cep) {
+        <mat-option [value]="cep.cep">
+          {{ cep.cep }}
+        </mat-option>
+        }
+        <mat-error *ngIf="formulario.get('cep')?.hasError('required')">
+          Cep é obrigatório
+        </mat-error>
+      </mat-autocomplete>
     </mat-form-field>
+
+
   </mat-card-content>
 </form>

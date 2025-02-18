@@ -1,13 +1,13 @@
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { EnderecoService } from '../../../../core/services/endereco.service';
+import { EnderecoService } from '../../../core/services/endereco.service';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { ufsDoBrasil } from '../../../../core/config/ufs-brasil-const';
+import { ufsDoBrasil } from '../../../core/config/ufs-brasil-const';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { ViaCep } from '../../../../core/models/via-cep';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { ViaCep } from '../../../core/models/via-cep';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 

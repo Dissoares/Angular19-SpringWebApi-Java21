@@ -1,4 +1,4 @@
-import { EstadoCivilEnum, TipoSexoEnum, NacionalidadeEnum } from '../../../../core/enums';
+import { EstadoCivilEnum, TipoSexoEnum, NacionalidadeEnum } from '../../../core/enums';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-dados-pessoais',
   standalone: true,

@@ -1,9 +1,9 @@
 import { ConfirmarDialogComponent } from '../../dialogs/confirmar-dialog/confirmar-dialog.component';
-import { DadosPessoaisComponent } from './cadastro/dados-pessoais/dados-pessoais.component';
-import { EnderecoComponent } from './cadastro/endereco/endereco.component';
-import { ContatoComponent } from './cadastro/contato/contato.component';
+import { DadosPessoaisComponent } from './dados-pessoais/dados-pessoais.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { EnderecoComponent } from './endereco/endereco.component';
 import { DadosPessoais } from '../../core/models/dados-pessoais';
+import { ContatoComponent } from './contato/contato.component';
 import { Component, inject, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';

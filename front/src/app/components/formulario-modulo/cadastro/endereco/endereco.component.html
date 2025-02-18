@@ -1,5 +1,28 @@
 <form [formGroup]="formulario">
   <mat-card-content>
+    <mat-form-field appearance="fill">
+      <mat-label>CEP</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="cep"
+        [matAutocomplete]="auto"
+        (input)="buscarEnderecoPorCep(formulario.get('cep')?.value)"
+        maxlength="9"
+      />
+      <mat-icon matPrefix>pin_drop</mat-icon>
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        @for (cep of listaEnderecos; track cep.cep) {
+        <mat-option [value]="cep.cep">
+          {{ cep.cep }}
+        </mat-option>
+        }
+        <mat-error *ngIf="formulario.get('cep')?.hasError('required')">
+          Cep é obrigatório
+        </mat-error>
+      </mat-autocomplete>
+    </mat-form-field>
+
     <mat-card-subtitle>
       <mat-icon class="icone-subtitulo">location_on</mat-icon>
       Dados de Endereço
@@ -67,24 +90,5 @@
         País é obrigatório
       </mat-error>
     </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>CEP</mat-label>
-      <input type="text" matInput formControlName="cep" [matAutocomplete]="auto"
-        (input)="buscarEnderecoPorCep(formulario.get('cep')?.value)" maxlength="9" />
-      <mat-icon matPrefix>pin_drop</mat-icon>
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        @for (cep of listaEnderecos; track cep.cep) {
-        <mat-option [value]="cep.cep">
-          {{ cep.cep }}
-        </mat-option>
-        }
-        <mat-error *ngIf="formulario.get('cep')?.hasError('required')">
-          Cep é obrigatório
-        </mat-error>
-      </mat-autocomplete>
-    </mat-form-field>
-
-
   </mat-card-content>
 </form>

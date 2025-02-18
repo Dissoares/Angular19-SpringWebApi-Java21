@@ -57,8 +57,9 @@ export class EnderecoComponent implements OnInit {
   public buscarEnderecoPorCep(cep: string): void {
     this.listaEnderecos = [];
     if (cep && cep.length) {
-      this.enderecoService.buscarEnderecoPorCep(cep).subscribe({
-        next: (resultado: ViaCep) => {
+      this.enderecoService
+        .buscarEnderecoPorCep(cep)
+        .subscribe((resultado: ViaCep) => {
           this.listaEnderecos = [resultado];
           this.formulario.patchValue({
             cep: resultado.cep,
@@ -74,8 +75,7 @@ export class EnderecoComponent implements OnInit {
               pais: 'Brasil',
             });
           }
-        },
-      });
+        });
     }
   }
 }

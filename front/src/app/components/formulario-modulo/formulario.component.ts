@@ -4,10 +4,10 @@ import { EnderecoComponent } from './cadastro/endereco/endereco.component';
 import { ContatoComponent } from './cadastro/contato/contato.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DadosPessoais } from '../../core/models/dados-pessoais';
+import { Component, inject, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormGroup } from '@angular/forms';
 
@@ -28,6 +28,10 @@ import { FormGroup } from '@angular/forms';
   styleUrl: './formulario.component.scss',
 })
 export class FormularioComponent {
+  @ViewChild(DadosPessoaisComponent) public dadosPessoaisComponent!: DadosPessoaisComponent;
+  @ViewChild(EnderecoComponent) public enderecoComponent!: EnderecoComponent;
+  @ViewChild(ContatoComponent) public contatoComponent!: ContatoComponent;
+
   public formulario!: FormGroup;
   readonly dialog = inject(MatDialog);
 
@@ -45,7 +49,9 @@ export class FormularioComponent {
   }
 
   public limparFormulario(): void {
-    this.formulario.reset();
+    this.dadosPessoaisComponent.formulario.reset();
+    this.enderecoComponent.formulario.reset();
+    this.contatoComponent.formulario.reset();
     this.formulario.markAsUntouched();
   }
 }

@@ -1,15 +1,13 @@
-import { Component, inject, OnInit, Inject } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
-
 import { FormularioContatoService } from '../../core/services/formulario-contato.service';
+import { SnackBarPersonalizadoService } from '../../core/services';
+import { Component, inject, OnInit, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { DadosFormularioDto } from '../../core/dtos';
-import { DadosPessoais } from '../../core/models';
 
 @Component({
   selector: 'app-confirmar-dialog',
@@ -20,7 +18,7 @@ import { DadosPessoais } from '../../core/models';
 })
 export class ConfirmarDialogComponent implements OnInit {
   readonly dialogRef = inject(MatDialogRef<ConfirmarDialogComponent>);
-  private snackBarService = inject(MatSnackBar);
+  private snackBarService = inject(SnackBarPersonalizadoService);
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
@@ -36,11 +34,14 @@ export class ConfirmarDialogComponent implements OnInit {
       .subscribe(
         (resposta: DadosFormularioDto) => {
           console.log(resposta);
-          this.snackBarService.open('Dados enviados com sucesso!', 'Sucesso!');
+          this.snackBarService.abrirSnackBar(
+            'Dados enviados com sucesso!',
+            'Sucesso'
+          );
           this.dialogRef.close();
         },
         (erro: any) => {
-          this.snackBarService.open(
+          this.snackBarService.abrirSnackBar(
             `Erro ao enviar os dados: ${erro.message || erro}`,
             'Erro'
           );

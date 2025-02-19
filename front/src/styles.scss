@@ -1,4 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@use "../node_modules/@angular/material/" as mat;
+
+:root {
+  @include mat.snack-bar-overrides(
+    (
+      container-color: #520303,
+      supporting-text-color: #ffffff,
+    )
+  );
+}
 
 html,
 body {

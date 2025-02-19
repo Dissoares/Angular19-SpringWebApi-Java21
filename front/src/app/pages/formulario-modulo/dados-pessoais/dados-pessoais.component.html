@@ -1,6 +1,5 @@
 <form [formGroup]="formulario">
   <mat-card-content>
-
     <mat-card-subtitle>
       <mat-icon class="icone-subtitulo">person_add</mat-icon>
       Dados Pessoais
@@ -17,11 +16,18 @@
 
     <mat-form-field appearance="fill">
       <mat-label>CPF</mat-label>
-      <input matInput formControlName="cpf" placeholder="CPF" />
+      <input type="text" matInput formControlName="cpf" placeholder="CPF" maxlength="14" mask="000.000.000-00"
+        unmask="true" />
       <mat-icon matPrefix>credit_card</mat-icon>
-      <mat-error *ngIf="formulario.get('cpf')?.hasError('required')">
-        CPF é obrigatório
-      </mat-error>
+      @if(formulario.get('cpf')?.hasError('required')){
+      <mat-error> CPF é obrigatório </mat-error>
+      }
+
+      @else if(formulario.get('cpf')?.hasError('cpfInvalid')){
+      <mat-error> CPF é inválido </mat-error>
+      } @else {
+      <mat-error> </mat-error>
+      }
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -63,6 +69,5 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-
   </mat-card-content>
 </form>

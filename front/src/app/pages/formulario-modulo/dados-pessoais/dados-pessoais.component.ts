@@ -1,8 +1,10 @@
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EstadoCivilEnum, TipoSexoEnum, NacionalidadeEnum } from '../../../core/enums';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { validarCpf } from '../../../validators/cpf.validator';
 import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -23,7 +25,10 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     MatIconModule,
     CommonModule,
+    ReactiveFormsModule, 
+    NgxMaskDirective
   ],
+  providers: [provideNgxMask()],
   templateUrl: './dados-pessoais.component.html',
   styleUrls: ['./dados-pessoais.component.css'],
 })
@@ -44,7 +49,7 @@ export class DadosPessoaisComponent implements OnInit {
     this.formulario = this.form.group({
       id: [null],
       nome: [null],
-      cpf: [null],
+      cpf: [null, [Validators.required, validarCpf()] ],
       rg: [null],
       dataNascimento: [null],
       genero: [null],

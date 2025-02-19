@@ -1,5 +1,12 @@
 <form [formGroup]="formulario">
   <mat-card-content>
+    
+
+    <mat-card-subtitle>
+      <mat-icon class="icone-subtitulo">location_on</mat-icon>
+      Dados de Endereço
+    </mat-card-subtitle>
+
     <mat-form-field appearance="fill">
       <mat-label>CEP</mat-label>
       <input
@@ -22,11 +29,6 @@
         </mat-error>
       </mat-autocomplete>
     </mat-form-field>
-
-    <mat-card-subtitle>
-      <mat-icon class="icone-subtitulo">location_on</mat-icon>
-      Dados de Endereço
-    </mat-card-subtitle>
 
     <mat-form-field appearance="fill">
       <mat-label>Rua</mat-label>

@@ -1,5 +1,4 @@
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { EstadoCivilEnum, TipoSexoEnum, NacionalidadeEnum } from '../../../core/enums';
+import { ErrosCamposFormularioComponent } from '../../../core/components/erros-campos-formulario/erros-campos-formulario.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { validarCpf } from '../../../validators/cpf.validator';
@@ -11,22 +10,33 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  Validators,
+  FormGroup,
+} from '@angular/forms';
+import {
+  NacionalidadeEnum,
+  EstadoCivilEnum,
+  TipoSexoEnum,
+} from '../../../core/enums';
 
 @Component({
   selector: 'app-dados-pessoais',
   standalone: true,
   imports: [
+    ErrosCamposFormularioComponent,
     MatDatepickerModule,
     ReactiveFormsModule,
     MatNativeDateModule,
     MatFormFieldModule,
+    NgxMaskDirective,
     MatSelectModule,
     MatInputModule,
     MatCardModule,
     MatIconModule,
     CommonModule,
-    ReactiveFormsModule, 
-    NgxMaskDirective
   ],
   providers: [provideNgxMask()],
   templateUrl: './dados-pessoais.component.html',
@@ -48,13 +58,13 @@ export class DadosPessoaisComponent implements OnInit {
   public iniciarFormulario(): void {
     this.formulario = this.form.group({
       id: [null],
-      nome: [null],
-      cpf: [null, [Validators.required, validarCpf()] ],
+      nome: [null, Validators.required],
+      cpf: [null, [Validators.required, validarCpf()]],
       rg: [null],
-      dataNascimento: [null],
-      genero: [null],
+      dataNascimento: [null, Validators.required],
+      genero: [null, Validators.required],
       estadoCivil: [null],
-      nacionalidade: [null]
+      nacionalidade: [null],
     });
   }
 }

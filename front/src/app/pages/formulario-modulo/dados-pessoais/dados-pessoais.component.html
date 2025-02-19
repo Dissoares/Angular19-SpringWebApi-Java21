@@ -1,5 +1,6 @@
 <form [formGroup]="formulario">
   <mat-card-content>
+
     <mat-card-subtitle>
       <mat-icon class="icone-subtitulo">person_add</mat-icon>
       Dados Pessoais
@@ -9,25 +10,14 @@
       <mat-label>Nome</mat-label>
       <input matInput formControlName="nome" placeholder="Nome" />
       <mat-icon matPrefix>person</mat-icon>
-      <mat-error *ngIf="formulario.get('nome')?.hasError('required')">
-        Nome é obrigatório
-      </mat-error>
+      <mat-error><exibir-erro [campo]="formulario.get('nome')"></exibir-erro></mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>CPF</mat-label>
       <input type="text" matInput formControlName="cpf" placeholder="CPF" maxlength="14" mask="000.000.000-00"
         unmask="true" />
-      <mat-icon matPrefix>credit_card</mat-icon>
-      @if(formulario.get('cpf')?.hasError('required')){
-      <mat-error> CPF é obrigatório </mat-error>
-      }
-
-      @else if(formulario.get('cpf')?.hasError('cpfInvalid')){
-      <mat-error> CPF é inválido </mat-error>
-      } @else {
-      <mat-error> </mat-error>
-      }
+      <mat-error><exibir-erro [campo]="formulario.get('cpf')"></exibir-erro></mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -41,6 +31,7 @@
       <input matInput [matDatepicker]="picker" formControlName="dataNascimento" placeholder="Selecione a data" />
       <mat-datepicker #picker></mat-datepicker>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-error><exibir-erro [campo]="formulario.get('dataNascimento')"></exibir-erro></mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -50,6 +41,7 @@
           {{ genero.descricao }}
         </mat-option>
       </mat-select>
+      <mat-error><exibir-erro [campo]="formulario.get('genero')"></exibir-erro></mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -69,5 +61,6 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+
   </mat-card-content>
 </form>

@@ -1,5 +1,6 @@
 import { DadosPessoais } from '../models/dados-pessoais';
 import { HttpClient } from '@angular/common/http';
+import { DadosFormularioDto } from '../dtos';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -15,8 +16,7 @@ export class FormularioContatoService {
     return this.http.get<DadosPessoais[]>(this.apiUrl);
   }
 
-  public salvarDadosPessoais(dados: any): Observable<DadosPessoais> {
-    dados.statusSolicitacao ? dados.statusSolicitacao[0] : null;
-    return this.http.post<DadosPessoais>(this.apiUrl, dados);
+  public salvarDadosPessoais(dados: DadosFormularioDto): Observable<DadosFormularioDto> {
+    return this.http.post<DadosFormularioDto>(this.apiUrl, dados);
   }
 }

@@ -1,18 +1,18 @@
 import { ConfirmarDialogComponent } from '../../dialogs/confirmar-dialog/confirmar-dialog.component';
 import { DadosPessoaisComponent } from './dados-pessoais/dados-pessoais.component';
+import { EnderecoComponent } from './dados-endereco/endereco.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ContatoComponent } from './dados-contato/contato.component';
+import { FormGroup } from '@angular/forms'; } from '@angular/forms';
 import { SnackBarPersonalizadoService } from '../../core/services';
-import { EnderecoComponent } from './endereco/endereco.component';
 import { DadosPessoais } from '../../core/models/dados-pessoais';
 import { DadosContato, DadosEndereco } from '../../core/models';
-import { ContatoComponent } from './contato/contato.component';
 import { Component, inject, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { DadosFormularioDto } from '../../core/dtos';
-import { CommonModule } from '@angular/common';
-import { FormGroup } from '@angular/forms';
+import { CommonModule } from '@angular/common'; } from '@angular/forms'; } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-pessoa',

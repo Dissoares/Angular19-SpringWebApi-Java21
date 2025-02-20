@@ -3,7 +3,6 @@ import { DadosPessoaisComponent } from './dados-pessoais/dados-pessoais.componen
 import { EnderecoComponent } from './dados-endereco/endereco.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ContatoComponent } from './dados-contato/contato.component';
-import { FormGroup } from '@angular/forms'; } from '@angular/forms';
 import { SnackBarPersonalizadoService } from '../../core/services';
 import { DadosPessoais } from '../../core/models/dados-pessoais';
 import { DadosContato, DadosEndereco } from '../../core/models';
@@ -12,7 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { DadosFormularioDto } from '../../core/dtos';
-import { CommonModule } from '@angular/common'; } from '@angular/forms'; } from '@angular/forms';
+import { CommonModule } from '@angular/common';  
+import { FormGroup } from '@angular/forms';  
 
 @Component({
   selector: 'app-formulario-pessoa',

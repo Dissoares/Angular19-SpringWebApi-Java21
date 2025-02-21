@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ErrosCamposFormularioComponent } from '../../../core/components/erros-campos-formulario/erros-campos-formulario.component';
 import { EnderecoService } from '../../../core/services/endereco.service';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ufsDoBrasil } from '../../../core/config/ufs-brasil-const';
@@ -10,11 +10,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { ViaCep } from '../../../core/models/via-cep';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  Validators,
+  FormGroup,
+} from '@angular/forms';
 @Component({
   selector: 'app-endereco',
   standalone: true,
   imports: [
+    ErrosCamposFormularioComponent,
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -44,13 +50,14 @@ export class DadosEnderecoComponent implements OnInit {
     this.formulario = this.form.group({
       id: [null],
       cep: [null, Validators.required],
-      rua: [null, Validators.required],
+      tipoLogradouro: [null, Validators.required],
+      logradouro: [null, Validators.required],
       numero: [null, Validators.required],
       complemento: [null, Validators.required],
       bairro: [null, Validators.required],
       cidade: [null, Validators.required],
       estado: [null, Validators.required],
-      pais: [{value:'Brasil', disabled: true}],
+      pais: [{ value: 'Brasil', disabled: true }],
     });
   }
 
@@ -63,7 +70,7 @@ export class DadosEnderecoComponent implements OnInit {
           this.listaEnderecos = [resultado];
           this.formulario.patchValue({
             cep: resultado.cep,
-            rua: resultado.logradouro,
+            logradouro: resultado.logradouro,
             bairro: resultado.bairro,
             cidade: resultado.localidade,
             estado: resultado.uf,

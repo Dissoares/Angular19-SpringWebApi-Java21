@@ -1,24 +1,26 @@
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  Validators,
-  FormGroup,
-} from '@angular/forms';
+import { ErrosCamposFormularioComponent } from '../../../core/components/erros-campos-formulario/erros-campos-formulario.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { CommonModule } from '@angular/common';'@angular/common';
+import { CommonModule } from '@angular/common';
+('@angular/common');
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { TipoTelefoneEnum } from '../../../core/enums';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
-
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  Validators,
+  FormGroup,
+} from '@angular/forms';
 @Component({
   selector: 'app-contato',
   standalone: true,
   imports: [
-    MatFormFieldModule,
+    ErrosCamposFormularioComponent,
     ReactiveFormsModule,
+    MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
     MatCardModule,
@@ -44,7 +46,7 @@ export class DadosContatoComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       confirmacaoEmail: [null, [Validators.required, Validators.email]],
       tipoTelefone: [null, Validators.required],
-      NumeroTelefone: [null, Validators.required],
+      numeroTelefone: [null, Validators.required],
     });
   }
 }

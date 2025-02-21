@@ -43,6 +43,7 @@ export class FormularioPessoaComponent {
   private snackBarService = inject(SnackBarPersonalizadoService);
   public formulario!: FormGroup;
   readonly dialog = inject(MatDialog);
+  public ativarBotao: boolean = false;
 
   constructor() {}
 
@@ -82,7 +83,8 @@ export class FormularioPessoaComponent {
       );
       return;
     }
-
+    
+    this.ativarBotao = true;
     const novosDados = new DadosFormularioDto();
     novosDados.dadosPessoais = dadosPessoais;
     novosDados.dadosEndereco = dadosEndereco;

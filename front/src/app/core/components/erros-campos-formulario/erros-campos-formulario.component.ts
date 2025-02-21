@@ -17,9 +17,9 @@ export class ErrosCamposFormularioComponent {
   public getMensagemDeErro(erro: ValidationErrors | null | undefined): string {
     if (!erro) return '';
     if (erro['required']) return 'Campo obrigatório';
-    if (erro['email']) return 'E-mail inválido';
     if (erro['cpfInvalid']) return 'CPF inválido';
+    if (erro['email']) return 'E-mail inválido';
+    if (erro['emailNaoCoincidem']) return 'E-mails não coincidem';
     return 'Erro desconhecido';
   }
-  
 }

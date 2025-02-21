@@ -1,13 +1,13 @@
 import { ErrosCamposFormularioComponent } from '../../../core/components/erros-campos-formulario/erros-campos-formulario.component';
+import { confirmacaoEmail } from '../../../validators/email-duplicado.validator';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { CommonModule } from '@angular/common';
-('@angular/common');
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { TipoTelefoneEnum } from '../../../core/enums';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   ReactiveFormsModule,
   FormBuilder,
@@ -44,7 +44,10 @@ export class DadosContatoComponent implements OnInit {
     this.formulario = this.form.group({
       id: [null],
       email: [null, [Validators.required, Validators.email]],
-      confirmacaoEmail: [null, [Validators.required, Validators.email]],
+      confirmacaoEmail: [
+        null,
+        [Validators.required, Validators.email, confirmacaoEmail()],
+      ],
       tipoTelefone: [null, Validators.required],
       numeroTelefone: [null, Validators.required],
     });

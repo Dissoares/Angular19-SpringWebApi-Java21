@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EnderecoService } from '../../../core/services/endereco.service';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ufsDoBrasil } from '../../../core/config/ufs-brasil-const';
@@ -24,10 +24,10 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     CommonModule,
   ],
-  templateUrl: './endereco.component.html',
-  styleUrls: ['./endereco.component.scss'],
+  templateUrl: './dados-endereco.component.html',
+  styleUrls: ['./dados-endereco.component.scss'],
 })
-export class EnderecoComponent implements OnInit {
+export class DadosEnderecoComponent implements OnInit {
   public formulario!: FormGroup;
   public listaEnderecos: Array<ViaCep> = [];
 
@@ -43,14 +43,14 @@ export class EnderecoComponent implements OnInit {
   public iniciarFormulario(): void {
     this.formulario = this.form.group({
       id: [null],
-      rua: [null],
-      numero: [null],
-      cep: [null],
-      complemento: [null],
-      bairro: [null],
-      cidade: [null],
-      estado: [null],
-      pais: [null],
+      cep: [null, Validators.required],
+      rua: [null, Validators.required],
+      numero: [null, Validators.required],
+      complemento: [null, Validators.required],
+      bairro: [null, Validators.required],
+      cidade: [null, Validators.required],
+      estado: [null, Validators.required],
+      pais: [{value:'Brasil', disabled: true}],
     });
   }
 

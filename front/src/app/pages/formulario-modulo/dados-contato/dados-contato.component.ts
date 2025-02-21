@@ -25,10 +25,10 @@ import { Component, OnInit } from '@angular/core';
     MatIconModule,
     CommonModule,
   ],
-  templateUrl: './contato.component.html',
-  styleUrls: ['./contato.component.scss'],
+  templateUrl: './dados-contato.component.html',
+  styleUrls: ['./dados-contato.component.scss'],
 })
-export class ContatoComponent implements OnInit {
+export class DadosContatoComponent implements OnInit {
   public formulario!: FormGroup;
   public tipoTelefoneEnum = TipoTelefoneEnum.getAllValues();
 
@@ -42,8 +42,9 @@ export class ContatoComponent implements OnInit {
     this.formulario = this.form.group({
       id: [null],
       email: [null, [Validators.required, Validators.email]],
-      telefone: [null],
-      tipoTelefone: [null],
+      confirmacaoEmail: [null, [Validators.required, Validators.email]],
+      tipoTelefone: [null, Validators.required],
+      NumeroTelefone: [null, Validators.required],
     });
   }
 }

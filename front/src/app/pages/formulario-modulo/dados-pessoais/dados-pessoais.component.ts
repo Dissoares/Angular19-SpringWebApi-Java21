@@ -59,12 +59,12 @@ export class DadosPessoaisComponent implements OnInit {
     this.formulario = this.form.group({
       id: [null],
       nome: [null, Validators.required],
+      sobreNome: [null, Validators.required],
       cpf: [null, [Validators.required, validarCpf()]],
-      rg: [null],
+      sexo: [null, Validators.required],
       dataNascimento: [null, Validators.required],
-      genero: [null, Validators.required],
       estadoCivil: [null],
-      nacionalidade: [null],
+      naturalidade: [null],
     });
   }
 }

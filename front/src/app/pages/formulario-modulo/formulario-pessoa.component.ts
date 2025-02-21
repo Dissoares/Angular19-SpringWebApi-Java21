@@ -1,8 +1,8 @@
 import { ConfirmarDialogComponent } from '../../dialogs/confirmar-dialog/confirmar-dialog.component';
 import { DadosPessoaisComponent } from './dados-pessoais/dados-pessoais.component';
-import { EnderecoComponent } from './dados-endereco/endereco.component';
+import { DadosEnderecoComponent } from './dados-endereco/dados-endereco.component';
+import { DadosContatoComponent } from './dados-contato/dados-contato.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { ContatoComponent } from './dados-contato/contato.component';
 import { SnackBarPersonalizadoService } from '../../core/services';
 import { DadosPessoais } from '../../core/models/dados-pessoais';
 import { DadosContato, DadosEndereco } from '../../core/models';
@@ -11,16 +11,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { DadosFormularioDto } from '../../core/dtos';
-import { CommonModule } from '@angular/common';  
-import { FormGroup } from '@angular/forms';  
+import { CommonModule } from '@angular/common';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-pessoa',
   standalone: true,
   imports: [
     DadosPessoaisComponent,
-    EnderecoComponent,
-    ContatoComponent,
+    DadosEnderecoComponent,
+    DadosContatoComponent,
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
@@ -33,12 +33,16 @@ import { FormGroup } from '@angular/forms';
 export class FormularioPessoaComponent {
   @ViewChild(DadosPessoaisComponent)
   public dadosPessoaisComponent!: DadosPessoaisComponent;
-  @ViewChild(EnderecoComponent) public enderecoComponent!: EnderecoComponent;
-  @ViewChild(ContatoComponent) public contatoComponent!: ContatoComponent;
+
+  @ViewChild(DadosEnderecoComponent)
+  public enderecoComponent!: DadosEnderecoComponent;
+
+  @ViewChild(DadosContatoComponent)
+  public contatoComponent!: DadosContatoComponent;
 
   private snackBarService = inject(SnackBarPersonalizadoService);
-  readonly dialog = inject(MatDialog);
   public formulario!: FormGroup;
+  readonly dialog = inject(MatDialog);
 
   constructor() {}
 
@@ -79,15 +83,15 @@ export class FormularioPessoaComponent {
       return;
     }
 
-    const dadosFormulario = new DadosFormularioDto();
-    dadosFormulario.dadosPessoais = dadosPessoais;
-    dadosFormulario.dadosEndereco = dadosEndereco;
-    dadosFormulario.dadosContato = dadosContato;
+    const novosDados = new DadosFormularioDto();
+    novosDados.dadosPessoais = dadosPessoais;
+    novosDados.dadosEndereco = dadosEndereco;
+    novosDados.dadosContato = dadosContato;
 
     this.dialog.open(ConfirmarDialogComponent, {
       width: '350px',
       height: '350px',
-      data: { dados: dadosFormulario },
+      data: { dados: novosDados },
     });
   }
 

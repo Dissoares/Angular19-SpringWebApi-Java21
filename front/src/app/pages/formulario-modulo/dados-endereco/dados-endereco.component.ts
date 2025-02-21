@@ -66,23 +66,28 @@ export class DadosEnderecoComponent implements OnInit {
     if (cep && cep.length) {
       this.enderecoService
         .buscarEnderecoPorCep(cep)
-        .subscribe((resultado: ViaCep) => {
-          this.listaEnderecos = [resultado];
+        .subscribe((endereco: ViaCep) => {
+          this.listaEnderecos = [endereco];
           this.formulario.patchValue({
-            cep: resultado.cep,
-            logradouro: resultado.logradouro,
-            bairro: resultado.bairro,
-            cidade: resultado.localidade,
-            estado: resultado.uf,
-            complemento: resultado.complemento,
+            cep: endereco.cep,
+            tipoLogradouro: this.getTipoLogradouro(endereco.logradouro),
+            logradouro: endereco.logradouro,
+            bairro: endereco.bairro,
+            cidade: endereco.localidade,
+            estado: endereco.uf,
+            complemento: endereco.complemento,
           });
 
-          if (ufsDoBrasil.includes(resultado.uf)) {
+          if (ufsDoBrasil.includes(endereco.uf)) {
             this.formulario.patchValue({
               pais: 'Brasil',
             });
           }
         });
     }
+  }
+
+  public getTipoLogradouro(tipoLogradouro: string): string {
+    return tipoLogradouro.trim().split(' ')[0];
   }
 }

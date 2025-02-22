@@ -1,5 +1,6 @@
+import { FormulariosValidatorBase } from '../../../core/components/formularios-validator-base/formularios-validator-base.component';
 import { ErrosCamposFormularioComponent } from '../../../core/components/erros-campos-formulario/erros-campos-formulario.component';
-import { validadorBase } from '../../../core/components/formulario-base/formulario-base.component';
+import { AtualizaCamposFormulariosDiretiva } from '../../../core/diretivas/validar-campo.directive';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +17,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [
     ErrosCamposFormularioComponent,
+    AtualizaCamposFormulariosDiretiva,
     ReactiveFormsModule,
     MatFormFieldModule,
     NgxMaskDirective,
@@ -30,7 +32,10 @@ import { CommonModule } from '@angular/common';
   templateUrl: './dados-contato.component.html',
   styleUrls: ['./dados-contato.component.scss'],
 })
-export class DadosContatoComponent extends validadorBase implements OnInit {
+export class DadosContatoComponent
+  extends FormulariosValidatorBase
+  implements OnInit
+{
   public tipoTelefoneEnum = TipoTelefoneEnum.getAllValues();
   public mascaraTelefone: string = '';
 
@@ -45,7 +50,7 @@ export class DadosContatoComponent extends validadorBase implements OnInit {
   public iniciarFormulario(): void {
     this.formulario = this.formBuilder.group({
       id: [null],
-      email: [null, [this.validarEmail(), this.ehCampoObrigatorio()]],
+      email: [null, [this.ehCampoObrigatorio(), this.validarEmail()]],
       confirmacaoEmail: [
         null,
         [this.ehCampoObrigatorio(), this.validarEmail(), this.confirmarEmail()],
@@ -58,10 +63,6 @@ export class DadosContatoComponent extends validadorBase implements OnInit {
     });
   }
 
-  public validarConfirmacaoEmail(campo: string) {
-    this.validarCampo(campo);
-  }
-
   public alterarMascaraTelefone(evento: MatSelectChange) {
     this.limparCampo('numeroTelefone');
     this.ativarCampo('numeroTelefone');
@@ -71,6 +72,7 @@ export class DadosContatoComponent extends validadorBase implements OnInit {
   }
 
   public removerSelecao(eventoClick: MouseEvent, campo: string): void {
+    this.desativarCampo('numeroTelefone');
     this.limparCampo(campo);
     eventoClick.stopPropagation();
   }

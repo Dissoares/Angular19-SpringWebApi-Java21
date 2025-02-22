@@ -2,7 +2,7 @@ export class DadosContato {
   public id!: number;
   public email!: string;
   public telefone!: string;
-  public tipoTelefone!: Date;
+  public tipoTelefone!: number;
   public ativo!: boolean;
 
   constructor(init?: Partial<DadosContato>) {

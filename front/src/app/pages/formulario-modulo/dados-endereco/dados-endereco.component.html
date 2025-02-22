@@ -24,7 +24,7 @@
         }
       </mat-autocomplete>
       <mat-error
-        ><exibir-erro [campo]="formulario.get('cep')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('cep')"></app-erro
       ></mat-error>
     </mat-form-field>
 
@@ -33,7 +33,7 @@
       <input matInput formControlName="tipoLogradouro" />
       <mat-icon matPrefix>streetview</mat-icon>
       <mat-error
-        ><exibir-erro [campo]="formulario.get('tipoLogradouro')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('tipoLogradouro')"></app-erro
       ></mat-error>
     </mat-form-field>
 
@@ -42,7 +42,7 @@
       <input matInput formControlName="logradouro" />
       <mat-icon matPrefix>streetview</mat-icon>
       <mat-error
-        ><exibir-erro [campo]="formulario.get('logradouro')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('logradouro')"></app-erro
       ></mat-error>
     </mat-form-field>
 
@@ -51,7 +51,7 @@
       <input matInput formControlName="numero" />
       <mat-icon matPrefix>home</mat-icon>
       <mat-error
-        ><exibir-erro [campo]="formulario.get('numero')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('numero')"></app-erro
       ></mat-error>
     </mat-form-field>
 
@@ -60,7 +60,7 @@
       <input matInput formControlName="complemento" />
       <mat-icon matPrefix>add_location</mat-icon>
       <mat-error
-        ><exibir-erro [campo]="formulario.get('complemento')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('complemento')"></app-erro
       ></mat-error>
     </mat-form-field>
 
@@ -69,7 +69,7 @@
       <input matInput formControlName="bairro" />
       <mat-icon matPrefix>location_city</mat-icon>
       <mat-error
-        ><exibir-erro [campo]="formulario.get('bairro')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('bairro')"></app-erro
       ></mat-error>
     </mat-form-field>
 
@@ -78,7 +78,7 @@
       <input matInput formControlName="cidade" />
       <mat-icon matPrefix>business</mat-icon>
       <mat-error
-        ><exibir-erro [campo]="formulario.get('cidade')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('cidade')"></app-erro
       ></mat-error>
     </mat-form-field>
 
@@ -87,7 +87,7 @@
       <input matInput formControlName="estado" />
       <mat-icon matPrefix>map</mat-icon>
       <mat-error
-        ><exibir-erro [campo]="formulario.get('estado')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('estado')"></app-erro
       ></mat-error>
     </mat-form-field>
 
@@ -96,7 +96,7 @@
       <input matInput formControlName="pais" />
       <mat-icon matPrefix>flag</mat-icon>
       <mat-error
-        ><exibir-erro [campo]="formulario.get('pais')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('pais')"></app-erro
       ></mat-error>
     </mat-form-field>
   </mat-card-content>

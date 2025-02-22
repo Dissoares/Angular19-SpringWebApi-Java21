@@ -18,12 +18,7 @@
 </mat-card-content>
 
 <mat-card-actions>
-  <button
-    class="salvar"
-    mat-raised-button
-    (click)="abrirDialogoSalvar()"
-    [disabled]="!ativarBotao"
-  >
+  <button class="salvar" mat-raised-button (click)="abrirDialogoSalvar()">
     <mat-icon>save</mat-icon>Salvar
   </button>
   <button class="cancelar" mat-raised-button (click)="limparFormulario()">

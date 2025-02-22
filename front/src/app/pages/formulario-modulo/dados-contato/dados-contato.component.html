@@ -10,7 +10,7 @@
       <input matInput formControlName="email" />
       <mat-icon matPrefix>email</mat-icon>
       <mat-error
-        ><exibir-erro [campo]="formulario.get('email')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('email')"></app-erro
       ></mat-error>
     </mat-form-field>
 
@@ -19,11 +19,11 @@
       <input
         matInput
         formControlName="confirmacaoEmail"
-        (blur)="validarConfirmacaoEmail('confirmacaoEmail')"
+        (blur)="validarCampos('confirmacaoEmail')"
       />
       <mat-icon matPrefix>email</mat-icon>
       <mat-error
-        ><exibir-erro [campo]="formulario.get('confirmacaoEmail')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('confirmacaoEmail')"></app-erro
       ></mat-error>
     </mat-form-field>
 
@@ -41,16 +41,17 @@
         </mat-option>
       </mat-select>
       <mat-icon matPrefix>phone</mat-icon>
+      @if(formulario.get('tipoTelefone')?.value){
       <button
         mat-icon-button
-        *ngIf="formulario.get('tipoTelefone')?.value"
         matSuffix
         (click)="removerSelecao($event, 'tipoTelefone')"
       >
         <mat-icon>clear</mat-icon>
       </button>
+      }
       <mat-error
-        ><exibir-erro [campo]="formulario.get('tipoTelefone')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('tipoTelefone')"></app-erro
       ></mat-error>
     </mat-form-field>
 
@@ -64,7 +65,7 @@
       />
       <mat-icon matPrefix>call</mat-icon>
       <mat-error
-        ><exibir-erro [campo]="formulario.get('numeroTelefone')"></exibir-erro
+        ><app-erro [dadosCampo]="formulario.get('numeroTelefone')"></app-erro
       ></mat-error>
     </mat-form-field>
   </mat-card-content>

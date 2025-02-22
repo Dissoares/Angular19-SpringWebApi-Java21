@@ -1,6 +1,8 @@
+import { FormulariosValidatorBase } from '../../../core/components/formularios-validator-base/formularios-validator-base.component';
 import { ErrosCamposFormularioComponent } from '../../../core/components/erros-campos-formulario/erros-campos-formulario.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { validarCpf } from '../../../validators/cpf.validator';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
@@ -10,12 +12,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  Validators,
-  FormGroup,
-} from '@angular/forms';
 import {
   NacionalidadeEnum,
   EstadoCivilEnum,
@@ -42,27 +38,30 @@ import {
   templateUrl: './dados-pessoais.component.html',
   styleUrls: ['./dados-pessoais.component.css'],
 })
-export class DadosPessoaisComponent implements OnInit {
-  public formulario!: FormGroup;
-
+export class DadosPessoaisComponent
+  extends FormulariosValidatorBase
+  implements OnInit
+{
   public nacionalidadeEnum = NacionalidadeEnum.getAllValues();
   public estadoCivilEnum = EstadoCivilEnum.getAllValues();
   public tipoSexoEnum = TipoSexoEnum.getAllValues();
 
-  constructor(private form: FormBuilder) {}
+  constructor() {
+    super(new FormBuilder());
+  }
 
   ngOnInit() {
     this.iniciarFormulario();
   }
 
   public iniciarFormulario(): void {
-    this.formulario = this.form.group({
+    this.formulario = this.formBuilder.group({
       id: [null],
-      nome: [null, Validators.required],
-      sobreNome: [null, Validators.required],
-      cpf: [null, [Validators.required, validarCpf()]],
-      sexo: [null, Validators.required],
-      dataNascimento: [null, Validators.required],
+      nome: [null, this.ehCampoObrigatorio()],
+      sobreNome: [null, this.ehCampoObrigatorio()],
+      cpf: [null, [this.ehCampoObrigatorio(), validarCpf()]],
+      sexo: [null, this.ehCampoObrigatorio()],
+      dataNascimento: [null, this.ehCampoObrigatorio()],
       estadoCivil: [null],
       naturalidade: [null],
     });

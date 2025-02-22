@@ -1,8 +1,10 @@
+import { FormulariosValidatorBase } from '../../../core/components/formularios-validator-base/formularios-validator-base.component';
 import { ErrosCamposFormularioComponent } from '../../../core/components/erros-campos-formulario/erros-campos-formulario.component';
 import { EnderecoService } from '../../../core/services/endereco.service';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ufsDoBrasil } from '../../../core/config/ufs-brasil-const';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -10,12 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { ViaCep } from '../../../core/models/via-cep';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  Validators,
-  FormGroup,
-} from '@angular/forms';
 @Component({
   selector: 'app-endereco',
   standalone: true,
@@ -33,30 +29,31 @@ import {
   templateUrl: './dados-endereco.component.html',
   styleUrls: ['./dados-endereco.component.scss'],
 })
-export class DadosEnderecoComponent implements OnInit {
-  public formulario!: FormGroup;
+export class DadosEnderecoComponent
+  extends FormulariosValidatorBase
+  implements OnInit
+{
   public listaEnderecos: Array<ViaCep> = [];
 
-  constructor(
-    private form: FormBuilder,
-    private enderecoService: EnderecoService
-  ) {}
+  constructor(private enderecoService: EnderecoService) {
+    super(new FormBuilder());
+  }
 
   ngOnInit() {
     this.iniciarFormulario();
   }
 
   public iniciarFormulario(): void {
-    this.formulario = this.form.group({
+    this.formulario = this.formBuilder.group({
       id: [null],
-      cep: [null, Validators.required],
-      tipoLogradouro: [null, Validators.required],
-      logradouro: [null, Validators.required],
-      numero: [null, Validators.required],
-      complemento: [null, Validators.required],
-      bairro: [null, Validators.required],
-      cidade: [null, Validators.required],
-      estado: [null, Validators.required],
+      cep: [null, this.ehCampoObrigatorio()],
+      tipoLogradouro: [null, this.ehCampoObrigatorio()],
+      logradouro: [null, this.ehCampoObrigatorio()],
+      numero: [null, this.ehCampoObrigatorio()],
+      complemento: [null, this.ehCampoObrigatorio()],
+      bairro: [null, this.ehCampoObrigatorio()],
+      cidade: [null, this.ehCampoObrigatorio()],
+      estado: [null, this.ehCampoObrigatorio()],
       pais: [{ value: 'Brasil', disabled: true }],
     });
   }

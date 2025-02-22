@@ -4,19 +4,19 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'exibir-erro',
+  selector: 'app-erro',
   standalone: true,
   imports: [CommonModule, MatFormFieldModule],
   templateUrl: './erros-campos-formulario.component.html',
   styleUrls: ['./erros-campos-formulario.component.scss'],
 })
 export class ErrosCamposFormularioComponent {
-  @Input() campo!: AbstractControl | FormControl | null;
+  @Input() dadosCampo!: AbstractControl | FormControl | null;
   public campoVazio = new FormControl();
 
   public getMensagemDeErro(erro: ValidationErrors | null | undefined): string {
     if (!erro) return '';
-    if (erro['campoObrigatorio']) return 'Campo obrigatório';
+    if (erro['campoObrigatorio']) return '*Campo obrigatório';
     if (erro['cpfInvalido']) return 'CPF inválido';
     if (erro['emailInvalido']) return 'E-mail inválido';
     if (erro['emailsNaoCoincidem']) return 'E-mails não coincidem';

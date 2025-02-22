@@ -41,6 +41,14 @@
         </mat-option>
       </mat-select>
       <mat-icon matPrefix>phone</mat-icon>
+      <button
+        mat-icon-button
+        *ngIf="formulario.get('tipoTelefone')?.value"
+        matSuffix
+        (click)="removerSelecao($event, 'tipoTelefone')"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
       <mat-error
         ><exibir-erro [campo]="formulario.get('tipoTelefone')"></exibir-erro
       ></mat-error>

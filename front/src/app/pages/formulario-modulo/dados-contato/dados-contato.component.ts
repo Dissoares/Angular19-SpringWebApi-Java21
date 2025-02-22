@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { TipoTelefoneEnum } from '../../../core/enums';
 import { MatCardModule } from '@angular/material/card';
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
     MatFormFieldModule,
     NgxMaskDirective,
     MatSelectModule,
+    MatButtonModule,
     MatInputModule,
     MatCardModule,
     MatIconModule,
@@ -66,5 +68,10 @@ export class DadosContatoComponent extends validadorBase implements OnInit {
     evento.value === TipoTelefoneEnum.CELULAR.id
       ? (this.mascaraTelefone = '(99)99999-9999')
       : (this.mascaraTelefone = '(99)9999-9999');
+  }
+
+  public removerSelecao(eventoClick: MouseEvent, campo: string): void {
+    this.limparCampo(campo);
+    eventoClick.stopPropagation();
   }
 }

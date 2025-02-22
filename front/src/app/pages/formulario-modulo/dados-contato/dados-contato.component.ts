@@ -1,15 +1,15 @@
 import { ErrosCamposFormularioComponent } from '../../../core/components/erros-campos-formulario/erros-campos-formulario.component';
 import { validadorBase } from '../../../core/components/formulario-base/formulario-base.component';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { MatInputModule } from '@angular/material/input';
 import { TipoTelefoneEnum } from '../../../core/enums';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 @Component({
   selector: 'app-contato',
   standalone: true,
@@ -50,11 +50,8 @@ export class DadosContatoComponent extends validadorBase implements OnInit {
       ],
       tipoTelefone: [null, this.ehCampoObrigatorio()],
       numeroTelefone: [
-        { value: null, disabled: true }, 
-        [
-          this.ehCampoObrigatorio(),
-          Validators.minLength(11)
-        ],
+        { value: null, disabled: true },
+        [this.ehCampoObrigatorio(), Validators.minLength(10)],
       ],
     });
   }
@@ -64,7 +61,8 @@ export class DadosContatoComponent extends validadorBase implements OnInit {
   }
 
   public alterarMascaraTelefone(evento: MatSelectChange) {
-    this.ativarCampo('numeroTelefone')
+    this.limparCampo('numeroTelefone');
+    this.ativarCampo('numeroTelefone');
     evento.value === TipoTelefoneEnum.CELULAR.id
       ? (this.mascaraTelefone = '(99)99999-9999')
       : (this.mascaraTelefone = '(99)9999-9999');

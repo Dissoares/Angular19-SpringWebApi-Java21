@@ -22,7 +22,7 @@ export class ErrosCamposFormularioComponent {
     if (erro['emailsNaoCoincidem']) return 'E-mails não coincidem';
     if (erro['minlength'])
       return `O tamanho mínimo é ${
-        erro['minlength']['requiredLength'] + 2
+        erro['minlength']['requiredLength'] + 3
       } caracteres`;
     return 'Erro desconhecido';
   }

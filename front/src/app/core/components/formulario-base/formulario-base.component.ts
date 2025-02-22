@@ -98,6 +98,8 @@ export class validadorBase {
     return (
       ControlesDeFormularios: AbstractControl
     ): ValidationErrors | null => {
+      if (!ControlesDeFormularios.dirty && !ControlesDeFormularios.touched)
+        return null;
       return ControlesDeFormularios?.value ? null : { campoObrigatorio: true };
     };
   }

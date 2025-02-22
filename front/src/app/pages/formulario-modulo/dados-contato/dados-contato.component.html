@@ -29,7 +29,10 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Tipo de Telefone</mat-label>
-      <mat-select formControlName="tipoTelefone">
+      <mat-select
+        formControlName="tipoTelefone"
+        (selectionChange)="alterarMascaraTelefone($event)"
+      >
         <mat-option
           *ngFor="let tipoTelefone of tipoTelefoneEnum"
           [value]="tipoTelefone.id"
@@ -45,7 +48,12 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Número Telefone</mat-label>
-      <input matInput formControlName="numeroTelefone" />
+      <input
+        matInput
+        formControlName="numeroTelefone"
+        mask="{{ mascaraTelefone }}"
+        unmask="true"
+      />
       <mat-icon matPrefix>call</mat-icon>
       <mat-error
         ><exibir-erro [campo]="formulario.get('numeroTelefone')"></exibir-erro

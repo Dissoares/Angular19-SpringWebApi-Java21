@@ -20,6 +20,10 @@ export class ErrosCamposFormularioComponent {
     if (erro['cpfInvalido']) return 'CPF inválido';
     if (erro['emailInvalido']) return 'E-mail inválido';
     if (erro['emailsNaoCoincidem']) return 'E-mails não coincidem';
+    if (erro['minlength'])
+      return `O tamanho mínimo é ${
+        erro['minlength']['requiredLength'] + 2
+      } caracteres`;
     return 'Erro desconhecido';
   }
 }

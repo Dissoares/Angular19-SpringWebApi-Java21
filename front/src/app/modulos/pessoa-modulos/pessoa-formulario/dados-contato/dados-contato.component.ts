@@ -1,17 +1,18 @@
-import { FormulariosValidatorBase } from '../../../core/components/formularios-validator-base/formularios-validator-base.component';
-import { ErrosCamposFormularioComponent } from '../../../core/components/erros-campos-formulario/erros-campos-formulario.component';
-import { AtualizaCamposFormulariosDiretiva } from '../../../core/diretivas/validar-campo.directive';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { TipoTelefoneEnum } from '../../../core/enums';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormulariosValidatorBase } from '../../../../core/components/formularios-validator-base/formularios-validator-base.component';
+import { ErrosCamposFormularioComponent } from '../../../../core/components/erros-campos-formulario/erros-campos-formulario.component';
+import { AtualizaCamposFormulariosDiretiva } from '../../../../core/diretivas/validar-campo.directive';
+import { TipoTelefoneEnum } from '../../../../core/enums';
+
 @Component({
   selector: 'app-contato',
   standalone: true,

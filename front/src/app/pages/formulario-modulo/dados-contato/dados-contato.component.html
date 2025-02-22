@@ -16,7 +16,11 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Confirmação E-mail</mat-label>
-      <input matInput formControlName="confirmacaoEmail"/>
+      <input
+        matInput
+        formControlName="confirmacaoEmail"
+        (blur)="validarConfirmacaoEmail('confirmacaoEmail')"
+      />
       <mat-icon matPrefix>email</mat-icon>
       <mat-error
         ><exibir-erro [campo]="formulario.get('confirmacaoEmail')"></exibir-erro

@@ -38,8 +38,7 @@ export class FormulariosValidatorBase {
   }
 
   public limparFormulario() {
-    this.formulario.reset({ onlySelf: false });
-    this.atualizarTodosOsCampos();
+    this.formulario.reset();
   }
 
   public atualizarTodosOsCampos() {
@@ -111,7 +110,6 @@ export class FormulariosValidatorBase {
       if (email.toLowerCase() === confirmacaoEmail.toLowerCase()) {
         return null;
       }
-      console.log('emal', email, confirmacaoEmail);
       return { emailsNaoCoincidem: true };
     };
   }

@@ -4,15 +4,12 @@ import { DadosEnderecoComponent } from './dados-endereco/dados-endereco.componen
 import { DadosContatoComponent } from './dados-contato/dados-contato.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SnackBarPersonalizadoService } from '../../core/services';
-import { DadosPessoais } from '../../core/models/dados-pessoais';
-import { DadosContato, DadosEndereco } from '../../core/models';
 import { Component, inject, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { DadosFormularioDto } from '../../core/dtos';
 import { CommonModule } from '@angular/common';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-pessoa',
@@ -41,7 +38,6 @@ export class FormularioPessoaComponent {
   public contatoComponent!: DadosContatoComponent;
 
   private snackBarService = inject(SnackBarPersonalizadoService);
-  public formulario!: FormGroup;
   readonly dialog = inject(MatDialog);
   public ativarBotao: boolean = false;
 
@@ -50,15 +46,14 @@ export class FormularioPessoaComponent {
   ngOnInit(): void {}
 
   public abrirDialogoSalvar(): void {
-    const dadosPessoais: DadosPessoais =
-      this.dadosPessoaisComponent.formulario.getRawValue();
-    const dadosContato: DadosContato =
-      this.contatoComponent.formulario.getRawValue();
-    const dadosEndereco: DadosEndereco =
-      this.enderecoComponent.formulario.getRawValue();
+    const dados: DadosFormularioDto = {
+      dadosPessoais: this.dadosPessoaisComponent.obterDadosFormulario(),
+      dadosEndereco: this.enderecoComponent.obterDadosFormulario(),
+      dadosContato: this.contatoComponent.obterDadosFormulario(),
+    };
 
-    if (dadosPessoais && this.dadosPessoaisComponent.formulario.invalid) {
-      this.dadosPessoaisComponent.formulario.markAllAsTouched();
+    if (!this.dadosPessoaisComponent.ehFormularioValido()) {
+      this.dadosPessoaisComponent.marcarFormularioComoTocado();
       this.snackBarService.abrirSnackBar(
         'Preencha todos os campos obrigatórios do formulário dados pessoais',
         'Erro'
@@ -66,8 +61,8 @@ export class FormularioPessoaComponent {
       return;
     }
 
-    if (dadosContato && this.contatoComponent.formulario.invalid) {
-      this.contatoComponent.formulario.markAllAsTouched();
+    if (!this.contatoComponent.ehFormularioValido()) {
+      this.contatoComponent.marcarFormularioComoTocado();
       this.snackBarService.abrirSnackBar(
         'Preencha todos os campos obrigatórios do formulário contato!',
         'Erro'
@@ -75,31 +70,26 @@ export class FormularioPessoaComponent {
       return;
     }
 
-    if (dadosEndereco && this.enderecoComponent.formulario.invalid) {
-      this.enderecoComponent.formulario.markAllAsTouched();
+    if (!this.enderecoComponent.ehFormularioValido()) {
+      this.enderecoComponent.marcarFormularioComoTocado();
       this.snackBarService.abrirSnackBar(
         'Preencha todos os campos obrigatórios do formulário endereço!',
         'Erro'
       );
       return;
     }
-    
-    this.ativarBotao = true;
-    const novosDados = new DadosFormularioDto();
-    novosDados.dadosPessoais = dadosPessoais;
-    novosDados.dadosEndereco = dadosEndereco;
-    novosDados.dadosContato = dadosContato;
 
-    this.dialog.open(ConfirmarDialogComponent, {
-      width: '350px',
-      height: '350px',
-      data: { dados: novosDados },
-    });
+    this.dialog.open<ConfirmarDialogComponent, { dados: DadosFormularioDto }>(
+      ConfirmarDialogComponent,
+      {
+        width: '350px',
+        height: '350px',
+        data: { dados: dados },
+      }
+    );
   }
 
   public limparFormulario(): void {
-    this.dadosPessoaisComponent.formulario.reset();
-    this.enderecoComponent.formulario.reset();
-    this.contatoComponent.formulario.reset();
+    this.contatoComponent.limparFormulario();
   }
 }

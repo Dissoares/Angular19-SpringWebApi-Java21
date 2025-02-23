@@ -3,11 +3,11 @@ import {
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { FormularioContatoService } from '../../shared/services/formulario-contato.service';
-import { SnackBarPersonalizadoService } from '../../shared/services';
+import { AlunosService } from '../../shared/services/alunos.service';
+import { SnackBarPersonalizadoService } from '../../shared/services/index.service';
 import { Component, inject, OnInit, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { DadosFormularioDto } from '../../core/dtos';
+import { AlunoDto } from 'app/core/dtos';
 
 @Component({
   selector: 'app-confirmar-dialog',
@@ -22,32 +22,30 @@ export class ConfirmarDialogComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public dadosDoFormulario: DadosFormularioDto,
-    private formularioContatoService: FormularioContatoService
+    public alunoDto: AlunoDto,
+    private alunosService: AlunosService
   ) {}
 
   ngOnInit() {}
 
   public salvarDados(): void {
-    this.formularioContatoService
-      .salvarDadosPessoais(this.dadosDoFormulario)
-      .subscribe(
-        (resposta: DadosFormularioDto) => {
-          console.log(resposta);
-          this.snackBarService.abrirSnackBar(
-            'Dados enviados com sucesso!',
-            'Sucesso'
-          );
-          this.dialogRef.close();
-        },
-        (erro: any) => {
-          this.snackBarService.abrirSnackBar(
-            `Erro ao enviar os dados: ${erro.message || erro}`,
-            'Erro'
-          );
-          this.dialogRef.close();
-        }
-      );
+    this.alunosService.salvarDadosPessoais(this.alunoDto).subscribe(
+      (resposta: AlunoDto) => {
+        console.log(resposta);
+        this.snackBarService.abrirSnackBar(
+          'Dados enviados com sucesso!',
+          'Sucesso'
+        );
+        this.dialogRef.close();
+      },
+      (erro: any) => {
+        this.snackBarService.abrirSnackBar(
+          `Erro ao enviar os dados: ${erro.message || erro}`,
+          'Erro'
+        );
+        this.dialogRef.close();
+      }
+    );
   }
 
   public fecharDialogo(): void {

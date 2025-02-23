@@ -1,1 +1,1 @@
-export * from './dados-formulario-dto';
+export * from './aluno-dto';

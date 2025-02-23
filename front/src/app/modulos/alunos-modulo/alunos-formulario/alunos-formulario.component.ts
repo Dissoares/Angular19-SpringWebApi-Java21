@@ -4,13 +4,13 @@ import { ConfirmarDialogComponent } from 'app/dialogs/confirmar-dialog/confirmar
 import { AlunoDadosContatoComponent } from './aluno-dados-contato/aluno-dados-contato.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
-import { SnackBarPersonalizadoService } from 'app/shared/services';
+import { SnackBarPersonalizadoService } from 'app/shared/services/index.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { DadosAlunoDto } from 'app/core/dtos';
+import { AlunoDto } from 'app/core/dtos';
 
 @Component({
   selector: 'app-alunos-formulario',
@@ -48,7 +48,7 @@ export class AlunosFormularioComponent implements OnInit {
   ngOnInit(): void {}
 
   public abrirDialogoSalvar(): void {
-    const dadosAluno: DadosAlunoDto = {
+    const dadosAluno: AlunoDto = {
       dadosPessoais: this.alunoDadosPessoais.obterDadosFormulario(),
       dadosEndereco: this.alunoDadosEndereco.obterDadosFormulario(),
       dadosContato: this.alunoDadosContato.obterDadosFormulario(),
@@ -81,7 +81,7 @@ export class AlunosFormularioComponent implements OnInit {
       return;
     }
 
-    this.dialog.open<ConfirmarDialogComponent, { dados: DadosAlunoDto }>(
+    this.dialog.open<ConfirmarDialogComponent, { dados: AlunoDto }>(
       ConfirmarDialogComponent,
       {
         width: '350px',

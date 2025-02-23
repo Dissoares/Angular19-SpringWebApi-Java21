@@ -3,8 +3,8 @@ import {
   EstadoCivilEnum,
   TipoSexoEnum,
 } from 'app/core/enums';
-import { ErrosCamposFormularioComponent } from 'app/shared/components/erros-campos-formulario/erros-campos-formulario.component';
-import { MetodosFormulariosComponent } from 'app/shared/components/metodos-formularios/metodos-formularios.component';
+
+import { ErrosCamposFormularioComponent, MetodosFormulariosComponent } from 'app/shared/components/index.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';

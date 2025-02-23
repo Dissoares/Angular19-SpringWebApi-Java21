@@ -1,6 +1,9 @@
-import { ErrosCamposFormularioComponent } from 'app/shared/components/erros-campos-formulario/erros-campos-formulario.component';
-import { MetodosFormulariosComponent } from 'app/shared/components/metodos-formularios/metodos-formularios.component';
+import {
+  ErrosCamposFormularioComponent,
+  MetodosFormulariosComponent,
+} from 'app/shared/components/index.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { EnderecoService } from 'app/shared/services/index.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ufsDoBrasil } from 'app/shared/config/ufs-brasil-const';
@@ -8,7 +11,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { EnderecoService } from 'app/shared/services';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViaCep } from 'app/core/models';

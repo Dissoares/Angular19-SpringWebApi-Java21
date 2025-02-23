@@ -1,5 +1,7 @@
-import { ErrosCamposFormularioComponent } from 'app/shared/components/erros-campos-formulario/erros-campos-formulario.component';
-import { MetodosFormulariosComponent } from 'app/shared/components/metodos-formularios/metodos-formularios.component';
+import {
+  ErrosCamposFormularioComponent,
+  MetodosFormulariosComponent,
+} from 'app/shared/components/index.component';
 import { AtualizaCamposFormulariosDiretiva } from 'app/shared/directives/validar-campo.directive';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';

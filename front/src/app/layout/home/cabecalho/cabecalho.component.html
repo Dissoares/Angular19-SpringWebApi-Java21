@@ -2,13 +2,25 @@
   <button mat-icon-button (click)="ativarSidebar.emit()" class="menu-btn">
     <mat-icon>menu</mat-icon>
   </button>
-
   <img src="/angular.svg" class="logo" alt="Logo do Sistema" />
-
   <span class="espaco"></span>
-  <button mat-icon-button>
+
+  <button mat-icon-button [matBadge]="qtdNotificacoes" [matBadgeHidden]="qtdNotificacoes === 0"
+    [matMenuTriggerFor]="notificacaoMenu">
     <mat-icon>notifications</mat-icon>
   </button>
+
+  <mat-menu #notificacaoMenu="matMenu">
+    <ng-container *ngIf="notifications.length > 0; else semNotificacoes">
+      <button mat-menu-item *ngFor="let notificacao of notifications">
+        {{ notificacao.mensagem }}
+      </button>
+    </ng-container>
+    <ng-template #semNotificacoes>
+      <button mat-menu-item disabled>Sem notificações</button>
+    </ng-template>
+  </mat-menu>
+
   <button mat-icon-button>
     <mat-icon>settings</mat-icon>
   </button>

@@ -3,12 +3,12 @@ import { FormulariosValidatorBase } from 'app/core/components/formularios-valida
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { ufsDoBrasil } from 'app/core/config/ufs-brasil-const';
+import { ufsDoBrasil } from 'app/shared/config/ufs-brasil-const';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { EnderecoService } from 'app/core/services';
+import { EnderecoService } from 'app/shared/services';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViaCep } from 'app/core/models';

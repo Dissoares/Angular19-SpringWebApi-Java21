@@ -11,7 +11,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { MatSelectModule } from '@angular/material/select';
-import { validarCpf } from 'app/validators/cpf.validator';
+import { validarCpf } from 'app/shared/validators/cpf.validator';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';

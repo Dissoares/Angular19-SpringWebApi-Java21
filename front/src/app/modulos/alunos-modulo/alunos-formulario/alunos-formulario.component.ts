@@ -4,7 +4,7 @@ import { ConfirmarDialogComponent } from 'app/dialogs/confirmar-dialog/confirmar
 import { AlunoDadosContatoComponent } from './aluno-dados-contato/aluno-dados-contato.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
-import { SnackBarPersonalizadoService } from 'app/core/services';
+import { SnackBarPersonalizadoService } from 'app/shared/services';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';

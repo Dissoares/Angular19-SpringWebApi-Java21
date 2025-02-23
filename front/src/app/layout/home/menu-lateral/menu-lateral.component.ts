@@ -1,19 +1,19 @@
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
-import { RotasEnum } from 'app/core/enums/rotas.enum';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { RotasEnum } from 'app/core/enums/rotas.enum';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-barra-lateral',
+  selector: 'app-menu-lateral',
   standalone: true,
   imports: [MatSidenavModule, MatButtonModule, MatIconModule, MatListModule],
-  templateUrl: './barra-lateral.component.html',
-  styleUrls: ['./barra-lateral.component.scss'],
+  templateUrl: './menu-lateral.component.html',
+  styleUrls: ['./menu-lateral.component.scss'],
 })
-export class BarraLateralComponent implements OnInit {
+export class MenuLateralComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {}

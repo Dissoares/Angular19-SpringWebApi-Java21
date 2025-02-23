@@ -1,18 +1,19 @@
-import { BarraLateralComponent } from './barra-lateral/barra-lateral.component';
+
+import { MenuLateralComponent } from '../menu-lateral/menu-lateral.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { CabecalhoComponent } from './cabecalho/cabecalho.component';
+import { CabecalhoComponent } from '../cabecalho/cabecalho.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { RodapeComponent } from './rodape/rodape.component';
+import { RodapeComponent } from '../rodape/rodape.component';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-pagina-inicial',
+  selector: 'app-conteudo',
   standalone: true,
   imports: [
-    BarraLateralComponent,
+    MenuLateralComponent,
     CabecalhoComponent,
     MatToolbarModule,
     MatSidenavModule,
@@ -20,10 +21,10 @@ import { CommonModule } from '@angular/common';
     RouterModule,
     CommonModule,
   ],
-  templateUrl: './pagina-inicial.component.html',
-  styleUrls: ['./pagina-inicial.component.scss'],
+  templateUrl: './conteudo.component.html',
+  styleUrls: ['./conteudo.component.scss'],
 })
-export class PaginaInicialComponent implements OnInit {
+export class ConteudoComponent implements OnInit {
   public sidebarAberta: boolean = true;
   public ehDispositivoMobile: boolean = false;
 

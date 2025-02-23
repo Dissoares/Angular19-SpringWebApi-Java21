@@ -1,6 +1,6 @@
-import { DadosPessoais } from '../models/dados-pessoais';
+import { DadosPessoais } from '../../core/models/dados-pessoais';
+import { DadosFormularioDto } from '../../core/dtos';
 import { HttpClient } from '@angular/common/http';
-import { DadosFormularioDto } from '../dtos';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 

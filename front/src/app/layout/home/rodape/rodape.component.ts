@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-rodape',

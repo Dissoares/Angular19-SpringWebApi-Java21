@@ -1,6 +1,6 @@
 import { ErrosCamposFormularioComponent } from 'app/core/components/erros-campos-formulario/erros-campos-formulario.component';
 import { FormulariosValidatorBase } from 'app/core/components/formularios-validator-base/formularios-validator-base.component';
-import { AtualizaCamposFormulariosDiretiva } from 'app/core/diretivas/validar-campo.directive';
+import { AtualizaCamposFormulariosDiretiva } from 'app/shared/directives/validar-campo.directive';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';

@@ -3,14 +3,13 @@
 <mat-sidenav-container class="container">
   @if (!ehDispositivoMobile) {
   <mat-sidenav #sidenav mode="side" [opened]="sidebarAberta">
-    <app-barra-lateral></app-barra-lateral>
+    <app-menu-lateral></app-menu-lateral>
   </mat-sidenav>
   } @else {
   <mat-sidenav #sidenav mode="over" [opened]="!sidebarAberta">
-    <app-barra-lateral></app-barra-lateral>
+    <app-menu-lateral></app-menu-lateral>
   </mat-sidenav>
   }
-
   <mat-sidenav-content>
     <router-outlet></router-outlet>
     <app-rodape></app-rodape>

@@ -1,23 +1,41 @@
-import { AlunosFormularioComponent } from './modulos/alunos-modulo/alunos-formulario/alunos-formulario.component';
-import { AlunosListagemComponent } from './modulos/alunos-modulo/alunos-listagem/alunos-listagem.component';
-import { AlunosModuloComponent } from './modulos/alunos-modulo/alunos-modulo.component';
-import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'pagina-inicial',
-    component: PaginaInicialComponent,
+    path: 'sistema',
+    loadComponent: () =>
+      import('./layout/home/conteudo/conteudo.component').then(
+        (c) => c.ConteudoComponent
+      ),
     children: [
       {
         path: 'alunos',
-        component: AlunosModuloComponent,
+        loadComponent: () =>
+          import('./modulos/alunos-modulo/alunos-modulo.component').then(
+            (c) => c.AlunosModuloComponent
+          ),
         children: [
-          { path: 'listagem', component: AlunosListagemComponent },
-          { path: 'formulario', component: AlunosFormularioComponent },
+          {
+            path: 'formulario',
+            loadComponent: () =>
+              import(
+                './modulos/alunos-modulo/alunos-formulario/alunos-formulario.component'
+              ).then((c) => c.AlunosFormularioComponent),
+          },
+          {
+            path: 'listagem',
+            loadComponent: () =>
+              import(
+                './modulos/alunos-modulo/alunos-listagem/alunos-listagem.component'
+              ).then((c) => c.AlunosListagemComponent),
+          },
         ],
       },
     ],
   },
-  { path: '**', redirectTo: 'pagina-inicial' },
+  {
+    path: '',
+    redirectTo: 'sistema',
+    pathMatch: 'full',
+  },
 ];

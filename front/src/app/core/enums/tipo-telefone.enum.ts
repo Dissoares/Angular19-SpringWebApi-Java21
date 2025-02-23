@@ -1,14 +1,17 @@
-const listaTipoTelefone: Array<TipoTelefoneEnum> = [];
+const listaTipoTelefone: TipoTelefoneEnum[] = [];
 
 export class TipoTelefoneEnum {
-  static CELULAR = new TipoTelefoneEnum(1, 'CELULAR');
-  static FIXO = new TipoTelefoneEnum(2, 'FIXO');
+  static readonly CELULAR = new TipoTelefoneEnum(1, 'CELULAR');
+  static readonly FIXO = new TipoTelefoneEnum(2, 'FIXO');
 
-  constructor(public id: number, public descricao: string) {
+  private constructor(
+    public readonly id: number,
+    public readonly descricao: string
+  ) {
     listaTipoTelefone.push(this);
   }
 
-  public static getAllValues(): Array<TipoTelefoneEnum> {
+  public static getAllValues(): TipoTelefoneEnum[] {
     return listaTipoTelefone;
   }
 

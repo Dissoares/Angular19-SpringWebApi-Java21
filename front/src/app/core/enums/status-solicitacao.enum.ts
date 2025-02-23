@@ -1,19 +1,23 @@
-const listaStatusSolicitacao: Array<StatusSolicitacaoEnum> = [];
-export class StatusSolicitacaoEnum {
-  static ATIVO = new StatusSolicitacaoEnum(1, 'ATIVO');
-  static INATIVO = new StatusSolicitacaoEnum(2, 'INATIVO');
+const listaStatusSolicitacao: StatusSolicitacaoEnum[] = [];
 
-  constructor(public id: number, public descricao: string) {
+export class StatusSolicitacaoEnum {
+  static readonly ATIVO = new StatusSolicitacaoEnum(1, 'ATIVO');
+  static readonly INATIVO = new StatusSolicitacaoEnum(2, 'INATIVO');
+
+  private constructor(
+    public readonly id: number,
+    public readonly descricao: string
+  ) {
     listaStatusSolicitacao.push(this);
   }
 
-  public static getAllValues(): Array<StatusSolicitacaoEnum> {
+  public static getAllValues(): StatusSolicitacaoEnum[] {
     return listaStatusSolicitacao;
   }
 
   public static getById(id: number): StatusSolicitacaoEnum | undefined {
     return listaStatusSolicitacao.find(
-      (tipoSolicitacao) => tipoSolicitacao.id === id
+      (statusSolicitacao) => statusSolicitacao.id === id
     );
   }
 
@@ -21,7 +25,7 @@ export class StatusSolicitacaoEnum {
     descricao: string
   ): StatusSolicitacaoEnum | undefined {
     return listaStatusSolicitacao.find(
-      (tipoSolicitacao) => tipoSolicitacao.descricao === descricao
+      (statusSolicitacao) => statusSolicitacao.descricao === descricao
     );
   }
 }

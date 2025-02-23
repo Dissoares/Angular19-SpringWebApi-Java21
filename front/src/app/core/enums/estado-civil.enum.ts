@@ -1,18 +1,21 @@
-const listaEstadoCivil: Array<EstadoCivilEnum> = [];
+const listaEstadoCivil: EstadoCivilEnum[] = [];
 
 export class EstadoCivilEnum {
-  static SOLTEIRO = new EstadoCivilEnum(1, 'SOLTEIRO');
-  static CASADO = new EstadoCivilEnum(2, 'CASADO');
-  static DIVORCIADO = new EstadoCivilEnum(3, 'DIVORCIADO');
-  static Viuvo = new EstadoCivilEnum(4, 'VIÚVO');
-  static SEPARADO = new EstadoCivilEnum(5, 'SEPARADO');
-  static UNIAO_ESTAVEL = new EstadoCivilEnum(6, 'UNIÃO ESTÁVEL');
+  static readonly SOLTEIRO = new EstadoCivilEnum(1, 'SOLTEIRO');
+  static readonly CASADO = new EstadoCivilEnum(2, 'CASADO');
+  static readonly DIVORCIADO = new EstadoCivilEnum(3, 'DIVORCIADO');
+  static readonly VIUVO = new EstadoCivilEnum(4, 'VIÚVO');
+  static readonly SEPARADO = new EstadoCivilEnum(5, 'SEPARADO');
+  static readonly UNIAO_ESTAVEL = new EstadoCivilEnum(6, 'UNIÃO ESTÁVEL');
 
-  constructor(public id: number, public descricao: string) {
+  private constructor(
+    public readonly id: number,
+    public readonly descricao: string
+  ) {
     listaEstadoCivil.push(this);
   }
 
-  public static getAllValues(): Array<EstadoCivilEnum> {
+  public static getAllValues(): EstadoCivilEnum[] {
     return listaEstadoCivil;
   }
 

@@ -1,13 +1,17 @@
-const listaTipoSexo: Array<TipoSexoEnum> = [];
-export class TipoSexoEnum {
-  static MASCULINO = new TipoSexoEnum(1, 'MASCULINO');
-  static FEMININO = new TipoSexoEnum(2, 'FEMININO');
+const listaTipoSexo: TipoSexoEnum[] = [];
 
-  constructor(public id: number, public descricao: string) {
+export class TipoSexoEnum {
+  static readonly MASCULINO = new TipoSexoEnum(1, 'MASCULINO');
+  static readonly FEMININO = new TipoSexoEnum(2, 'FEMININO');
+
+  private constructor(
+    public readonly id: number,
+    public readonly descricao: string
+  ) {
     listaTipoSexo.push(this);
   }
 
-  public static getAllValues(): Array<TipoSexoEnum> {
+  public static getAllValues(): TipoSexoEnum[] {
     return listaTipoSexo;
   }
 

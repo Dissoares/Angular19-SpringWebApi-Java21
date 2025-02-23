@@ -1,14 +1,17 @@
-const listaNacionalidade: Array<NacionalidadeEnum> = [];
+const listaNacionalidade: NacionalidadeEnum[] = [];
 
 export class NacionalidadeEnum {
-  static BRASILEIRO = new NacionalidadeEnum(1, 'BRASILEIRO');
-  static ESTRANGEIRO = new NacionalidadeEnum(2, 'ESTRANGEIRO');
+  static readonly BRASILEIRO = new NacionalidadeEnum(1, 'BRASILEIRO');
+  static readonly ESTRANGEIRO = new NacionalidadeEnum(2, 'ESTRANGEIRO');
 
-  constructor(public id: number, public descricao: string) {
+  private constructor(
+    public readonly id: number,
+    public readonly descricao: string
+  ) {
     listaNacionalidade.push(this);
   }
 
-  public static getAllValues(): Array<NacionalidadeEnum> {
+  public static getAllValues(): NacionalidadeEnum[] {
     return listaNacionalidade;
   }
 

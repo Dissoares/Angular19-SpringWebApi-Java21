@@ -1,5 +1,5 @@
-import { ErrosCamposFormularioComponent } from 'app/core/components/erros-campos-formulario/erros-campos-formulario.component';
-import { FormulariosValidatorBase } from 'app/core/components/formularios-validator-base/formularios-validator-base.component';
+import { ErrosCamposFormularioComponent } from 'app/shared/components/erros-campos-formulario/erros-campos-formulario.component';
+import { MetodosFormulariosComponent } from 'app/shared/components/metodos-formularios/metodos-formularios.component';
 import { AtualizaCamposFormulariosDiretiva } from 'app/shared/directives/validar-campo.directive';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
@@ -34,7 +34,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./aluno-dados-contato.component.scss'],
 })
 export class AlunoDadosContatoComponent
-  extends FormulariosValidatorBase
+  extends MetodosFormulariosComponent
   implements OnInit
 {
   public tipoTelefoneEnum = TipoTelefoneEnum.getAllValues();

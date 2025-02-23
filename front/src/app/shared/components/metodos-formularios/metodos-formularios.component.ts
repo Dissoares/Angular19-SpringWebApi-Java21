@@ -8,13 +8,13 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-formularios-validator-base',
+  selector: 'app-metodos-formularios',
   standalone: true,
   imports: [],
-  templateUrl: './formularios-validator-base.component.html',
-  styleUrls: ['./formularios-validator-base.component.scss'],
+  templateUrl: './metodos-formularios.component.html',
+  styleUrls: ['./metodos-formularios.component.scss'],
 })
-export class FormulariosValidatorBase {
+export class MetodosFormulariosComponent {
   public formulario!: FormGroup;
 
   constructor(public formBuilder: FormBuilder) {

@@ -1,5 +1,5 @@
-import { ErrosCamposFormularioComponent } from 'app/core/components/erros-campos-formulario/erros-campos-formulario.component';
-import { FormulariosValidatorBase } from 'app/core/components/formularios-validator-base/formularios-validator-base.component';
+import { ErrosCamposFormularioComponent } from 'app/shared/components/erros-campos-formulario/erros-campos-formulario.component';
+import { MetodosFormulariosComponent } from 'app/shared/components/metodos-formularios/metodos-formularios.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -32,7 +32,7 @@ import { ViaCep } from 'app/core/models';
 })
 
 export class AlunoDadosEnderecoComponent
-  extends FormulariosValidatorBase
+  extends MetodosFormulariosComponent
   implements OnInit
 {
   public listaEnderecos: Array<ViaCep> = [];

@@ -1,5 +1,5 @@
-import { ErrosCamposFormularioComponent } from 'app/core/components/erros-campos-formulario/erros-campos-formulario.component';
-import { FormulariosValidatorBase } from 'app/core/components/formularios-validator-base/formularios-validator-base.component';
+import { ErrosCamposFormularioComponent } from 'app/shared/components/erros-campos-formulario/erros-campos-formulario.component';
+import { MetodosFormulariosComponent } from 'app/shared/components/metodos-formularios/metodos-formularios.component';
 import {
   NacionalidadeEnum,
   EstadoCivilEnum,
@@ -39,7 +39,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./aluno-dados-pessoais.component.scss'],
 })
 export class AlunoDadosPessoaisComponent
-  extends FormulariosValidatorBase
+  extends MetodosFormulariosComponent
   implements OnInit
 {
   public nacionalidadeEnum = NacionalidadeEnum.getAllValues();

@@ -1,29 +1,29 @@
+import { BarraLateralComponent } from './barra-lateral/barra-lateral.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { FooterComponent } from '../footer/footer.component';
-import { HeaderComponent } from '../header/header.component';
+import { CabecalhoComponent } from './cabecalho/cabecalho.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { RodapeComponent } from './rodape/rodape.component';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-pagina-inicial',
   standalone: true,
   imports: [
+    BarraLateralComponent,
+    CabecalhoComponent,
     MatToolbarModule,
     MatSidenavModule,
-    SidebarComponent,
-    FooterComponent,
-    HeaderComponent,
+    RodapeComponent,
     RouterModule,
     CommonModule,
   ],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  templateUrl: './pagina-inicial.component.html',
+  styleUrls: ['./pagina-inicial.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class PaginaInicialComponent implements OnInit {
   public sidebarAberta: boolean = true;
   public ehDispositivoMobile: boolean = false;
 

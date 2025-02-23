@@ -3,13 +3,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
-  selector: 'app-footer',
+  selector: 'app-rodape',
   standalone: true,
   imports: [MatToolbarModule, MatCardModule],
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'],
+  templateUrl: './rodape.component.html',
+  styleUrls: ['./rodape.component.scss'],
 })
-export class FooterComponent implements OnInit {
+export class RodapeComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}

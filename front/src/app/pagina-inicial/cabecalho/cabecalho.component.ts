@@ -4,13 +4,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-cabecalho',
   standalone: true,
   imports: [MatToolbarModule, MatIconModule, MatButtonModule],
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  templateUrl: './cabecalho.component.html',
+  styleUrls: ['./cabecalho.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class CabecalhoComponent implements OnInit {
   @Output() ativarSidebar = new EventEmitter<void>();
   constructor() {}
 

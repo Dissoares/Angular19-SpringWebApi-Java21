@@ -1,6 +1,18 @@
-<mat-toolbar>
-  <button mat-icon-button (click)="ativarSidebar.emit()">
+<mat-toolbar color="primary" class="header">
+  <button mat-icon-button (click)="ativarSidebar.emit()" class="menu-btn">
     <mat-icon>menu</mat-icon>
   </button>
-  <img src="/angular.svg" class="logo" />
+
+  <img src="/angular.svg" class="logo" alt="Logo do Sistema" />
+
+  <span class="espaco"></span>
+  <button mat-icon-button>
+    <mat-icon>notifications</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>settings</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>account_circle</mat-icon>
+  </button>
 </mat-toolbar>

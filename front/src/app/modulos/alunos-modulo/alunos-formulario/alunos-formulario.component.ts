@@ -8,9 +8,9 @@ import { SnackBarPersonalizadoService } from 'app/shared/services';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { DadosFormularioDto } from 'app/core/dtos';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { DadosAlunoDto } from 'app/core/dtos';
 
 @Component({
   selector: 'app-alunos-formulario',
@@ -31,13 +31,13 @@ import { RouterModule } from '@angular/router';
 })
 export class AlunosFormularioComponent implements OnInit {
   @ViewChild(AlunoDadosPessoaisComponent)
-  public alunoDadosPessoaisComponent!: AlunoDadosPessoaisComponent;
+  public alunoDadosPessoais!: AlunoDadosPessoaisComponent;
 
   @ViewChild(AlunoDadosEnderecoComponent)
-  public alunoDadosEnderecoComponent!: AlunoDadosEnderecoComponent;
+  public alunoDadosEndereco!: AlunoDadosEnderecoComponent;
 
   @ViewChild(AlunoDadosContatoComponent)
-  public alunoDadosContatoComponent!: AlunoDadosContatoComponent;
+  public alunoDadosContato!: AlunoDadosContatoComponent;
 
   private snackBarService = inject(SnackBarPersonalizadoService);
   readonly dialog = inject(MatDialog);
@@ -48,14 +48,14 @@ export class AlunosFormularioComponent implements OnInit {
   ngOnInit(): void {}
 
   public abrirDialogoSalvar(): void {
-    const dados: DadosFormularioDto = {
-      dadosPessoais: this.alunoDadosPessoaisComponent.obterDadosFormulario(),
-      dadosEndereco: this.alunoDadosEnderecoComponent.obterDadosFormulario(),
-      dadosContato: this.alunoDadosContatoComponent.obterDadosFormulario(),
+    const dadosAluno: DadosAlunoDto = {
+      dadosPessoais: this.alunoDadosPessoais.obterDadosFormulario(),
+      dadosEndereco: this.alunoDadosEndereco.obterDadosFormulario(),
+      dadosContato: this.alunoDadosContato.obterDadosFormulario(),
     };
 
-    if (!this.alunoDadosPessoaisComponent.ehFormularioValido()) {
-      this.alunoDadosPessoaisComponent.marcarFormularioComoTocado();
+    if (!this.alunoDadosPessoais.ehFormularioValido()) {
+      this.alunoDadosPessoais.marcarFormularioComoTocado();
       this.snackBarService.abrirSnackBar(
         'Preencha todos os campos obrigatórios do formulário dados pessoais',
         'Erro'
@@ -63,8 +63,8 @@ export class AlunosFormularioComponent implements OnInit {
       return;
     }
 
-    if (!this.alunoDadosContatoComponent.ehFormularioValido()) {
-      this.alunoDadosContatoComponent.marcarFormularioComoTocado();
+    if (!this.alunoDadosContato.ehFormularioValido()) {
+      this.alunoDadosContato.marcarFormularioComoTocado();
       this.snackBarService.abrirSnackBar(
         'Preencha todos os campos obrigatórios do formulário contato!',
         'Erro'
@@ -72,8 +72,8 @@ export class AlunosFormularioComponent implements OnInit {
       return;
     }
 
-    if (!this.alunoDadosEnderecoComponent.ehFormularioValido()) {
-      this.alunoDadosEnderecoComponent.marcarFormularioComoTocado();
+    if (!this.alunoDadosEndereco.ehFormularioValido()) {
+      this.alunoDadosEndereco.marcarFormularioComoTocado();
       this.snackBarService.abrirSnackBar(
         'Preencha todos os campos obrigatórios do formulário endereço!',
         'Erro'
@@ -81,19 +81,19 @@ export class AlunosFormularioComponent implements OnInit {
       return;
     }
 
-    this.dialog.open<ConfirmarDialogComponent, { dados: DadosFormularioDto }>(
+    this.dialog.open<ConfirmarDialogComponent, { dados: DadosAlunoDto }>(
       ConfirmarDialogComponent,
       {
         width: '350px',
         height: '350px',
-        data: { dados: dados },
+        data: { dados: dadosAluno },
       }
     );
   }
 
   public limparFormulario(): void {
-    this.alunoDadosPessoaisComponent.limparFormulario();
-    this.alunoDadosEnderecoComponent.limparFormulario();
-    this.alunoDadosContatoComponent.limparFormulario();
+    this.alunoDadosPessoais.limparFormulario();
+    this.alunoDadosEndereco.limparFormulario();
+    this.alunoDadosContato.limparFormulario();
   }
 }

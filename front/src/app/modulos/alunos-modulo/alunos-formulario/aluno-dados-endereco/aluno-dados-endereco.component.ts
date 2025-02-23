@@ -30,7 +30,6 @@ import { ViaCep } from 'app/core/models';
   templateUrl: './aluno-dados-endereco.component.html',
   styleUrls: ['./aluno-dados-endereco.component.scss'],
 })
-
 export class AlunoDadosEnderecoComponent
   extends MetodosFormulariosComponent
   implements OnInit

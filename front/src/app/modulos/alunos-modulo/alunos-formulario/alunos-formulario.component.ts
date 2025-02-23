@@ -2,9 +2,9 @@ import { AlunoDadosPessoaisComponent } from './aluno-dados-pessoais/aluno-dados-
 import { AlunoDadosEnderecoComponent } from './aluno-dados-endereco/aluno-dados-endereco.component';
 import { ConfirmarDialogComponent } from 'app/dialogs/confirmar-dialog/confirmar-dialog.component';
 import { AlunoDadosContatoComponent } from './aluno-dados-contato/aluno-dados-contato.component';
+import { SnackBarPersonalizadoService } from 'app/core/services/index.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
-import { SnackBarPersonalizadoService } from 'app/shared/services/index.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';

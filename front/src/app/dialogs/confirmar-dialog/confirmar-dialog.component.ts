@@ -3,8 +3,8 @@ import {
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { AlunosService } from '../../shared/services/alunos.service';
-import { SnackBarPersonalizadoService } from '../../shared/services/index.service';
+import { SnackBarPersonalizadoService } from '../../core/services/index.service';
+import { AlunosService } from '../../core/services/alunos.service';
 import { Component, inject, OnInit, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { AlunoDto } from 'app/core/dtos';

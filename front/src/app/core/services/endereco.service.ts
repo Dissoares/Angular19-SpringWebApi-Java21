@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ViaCep } from '../../core/models';
+import { ViaCep } from '../models';
 import { Observable } from 'rxjs';
 
 @Injectable({

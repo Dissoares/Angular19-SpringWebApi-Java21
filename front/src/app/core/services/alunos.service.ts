@@ -1,4 +1,4 @@
-import { DadosPessoais } from '../../core/models/dados-pessoais';
+import { DadosPessoais } from '../models/dados-pessoais';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlunoDto } from 'app/core/dtos';

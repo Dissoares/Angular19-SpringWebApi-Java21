@@ -3,7 +3,7 @@ import {
   MetodosFormulariosComponent,
 } from 'app/shared/components/index.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { EnderecoService } from 'app/shared/services/index.service';
+import { EnderecoService } from 'app/core/services/index.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ufsDoBrasil } from 'app/shared/config/ufs-brasil-const';

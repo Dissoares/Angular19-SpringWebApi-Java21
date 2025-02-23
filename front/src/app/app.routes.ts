@@ -29,13 +29,23 @@ export const routes: Routes = [
                 './modulos/alunos-modulo/alunos-listagem/alunos-listagem.component'
               ).then((c) => c.AlunosListagemComponent),
           },
+          {
+            path: '',
+            redirectTo: 'formulario',
+            pathMatch: 'full',
+          },
         ],
+      },
+      {
+        path: '',
+        redirectTo: 'alunos',
+        pathMatch: 'full',
       },
     ],
   },
   {
-    path: '',
-    redirectTo: 'sistema',
+    path: '**',
+    redirectTo: 'sistema/alunos/formulario',
     pathMatch: 'full',
   },
 ];

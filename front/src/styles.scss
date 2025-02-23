@@ -1,1 +1,95 @@
-/* You can add global styles to this file, and also import other style files */
+@use "../node_modules/@angular/material/" as mat;
+
+:root {
+  @include mat.snack-bar-overrides(
+    (
+      container-color: #520303,
+      supporting-text-color: #ffffff,
+    )
+  );
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+mat-card-title {
+  margin-bottom: 10px !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+}
+
+mat-card-subtitle {
+  margin-bottom: 10px !important;
+  font-size: 14px !important;
+  padding: 5px !important;
+  color: #888888 !important;
+}
+
+mat-icon {
+  margin-right: 5px;
+  margin-bottom: -4px;
+}
+
+.icone-subtitulo {
+  color: #888888 !important;
+}
+
+mat-card-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+mat-form-field {
+  width: 30%;
+  margin: 10px;
+}
+
+@media (max-width: 600px) {
+  mat-form-field {
+    width: 100%;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 960px) {
+  mat-form-field {
+    width: 95%;
+  }
+}
+
+.salvar,
+.cancelar {
+  color: #fff !important;
+  border-radius: 9px;
+  width: 250px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.salvar {
+  background-color: #61971b !important;
+}
+
+.cancelar {
+  background-color: #520303 !important;
+}
+
+mat-card {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+  box-shadow: none !important;
+}

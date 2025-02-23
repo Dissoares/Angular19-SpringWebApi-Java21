@@ -1,0 +1,15 @@
+button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  color: #fff !important;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #61971b;
+  margin-bottom: 10px;
+}
+
+mat-nav-list {
+  padding: 10px;
+}

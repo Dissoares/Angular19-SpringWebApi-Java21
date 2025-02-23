@@ -1,3 +1,28 @@
-<p>
-  alunos-formulario works!
-</p>
+<mat-card-content>
+  <mat-card-title>
+    <mat-icon>post_add</mat-icon>
+    Formulário de cadastro
+  </mat-card-title>
+
+  <mat-card>
+    <app-aluno-dados-pessoais></app-aluno-dados-pessoais>
+  </mat-card>
+
+  <mat-card>
+    <app-aluno-dados-contato></app-aluno-dados-contato>
+  </mat-card>
+
+  <mat-card>
+    <app-aluno-dados-endereco></app-aluno-dados-endereco>
+  </mat-card>
+</mat-card-content>
+
+<mat-card-actions>
+  <button class="salvar" mat-raised-button (click)="abrirDialogoSalvar()">
+    <mat-icon>save</mat-icon>Salvar
+  </button>
+  <button class="cancelar" mat-raised-button (click)="limparFormulario()">
+    <mat-icon>close</mat-icon>Limpar
+  </button>
+</mat-card-actions>
+<router-outlet></router-outlet>

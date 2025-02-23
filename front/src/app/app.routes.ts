@@ -1,18 +1,23 @@
-import { FormularioPessoaComponent } from './pages/formulario-modulo/formulario-pessoa.component'; 
-import { ListagemPessoaComponent } from './pages/listagem-modulo/listagem-pessoa.component'; 
-import { HomeComponent } from './layout/home/home.component';
-import { RotasEnum } from './core/enums/rotas.enum';
+import { AlunosFormularioComponent } from './modulos/alunos-modulo/alunos-formulario/alunos-formulario.component';
+import { AlunosListagemComponent } from './modulos/alunos-modulo/alunos-listagem/alunos-listagem.component';
+import { AlunosModuloComponent } from './modulos/alunos-modulo/alunos-modulo.component';
+import { PaginaInicialComponent } from './pagina-inicial/pagina-inicial.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent,
+    path: 'pagina-inicial',
+    component: PaginaInicialComponent,
     children: [
-      { path: 'formulario', component: FormularioPessoaComponent },
-      { path: 'listagem', component: ListagemPessoaComponent },
-      { path: '', redirectTo: RotasEnum.FORMULARIO, pathMatch: 'full' },
+      {
+        path: 'alunos',
+        component: AlunosModuloComponent,
+        children: [
+          { path: 'listagem', component: AlunosListagemComponent },
+          { path: 'formulario', component: AlunosFormularioComponent },
+        ],
+      },
     ],
   },
-  { path: '**', redirectTo: RotasEnum.FORMULARIO },
+  { path: '**', redirectTo: 'pagina-inicial' },
 ];

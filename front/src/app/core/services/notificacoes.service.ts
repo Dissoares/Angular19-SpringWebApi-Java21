@@ -1,13 +1,14 @@
 import { Notificacao } from '../models/notificacao';
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'environment';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root',
 })
 export class NotificacoesService implements OnInit {
+  private apiUrl = environment.apiUrl;
   private notificacoesList = new BehaviorSubject<Notificacao[]>([]);
   public notificacoesList$ = this.notificacoesList.asObservable();
 
@@ -21,7 +22,7 @@ export class NotificacoesService implements OnInit {
 
   public buscarNotificacoes() {
     this.http
-      .get<Notificacao[]>('/api/notificacoes')
+      .get<Notificacao[]>(`${this.apiUrl}/notificacoes/buscar-todas`)
       .pipe(
         tap((notifs: Notificacao[]) => {
           this.atualizarNotificacoes(notifs);

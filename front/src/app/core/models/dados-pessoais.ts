@@ -4,7 +4,7 @@ import { DadosContato } from './dados-contato';
 export class DadosPessoais {
   public id!: number;
   public nome!: string;
-  public sobreNome!: string;
+  public sobrenome!: string;
   public cpf!: string;
   public dataNascimento!: Date;
   public sexo!: TipoSexoEnum;

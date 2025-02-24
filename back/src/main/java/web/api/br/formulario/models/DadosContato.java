@@ -21,11 +21,12 @@ public class DadosContato {
     private String confirmacaoEmail;
 
     @Column(name = "TELEFONE")
-    private String telefone;
+    private String numero;
 
     @Column(name = "TIPO_TELEFONE")
     private Integer tipoTelefone;
 
-    @Column(name = "ATIVO")
-    private boolean ativo;
+    @Column(name = "ATIVO", nullable = false)
+    private boolean ativo = true;
+
 }

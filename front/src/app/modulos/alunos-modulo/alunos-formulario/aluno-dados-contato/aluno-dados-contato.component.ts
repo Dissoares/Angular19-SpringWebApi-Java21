@@ -58,7 +58,7 @@ export class AlunoDadosContatoComponent
         [this.ehCampoObrigatorio(), this.validarEmail(), this.confirmarEmail()],
       ],
       tipoTelefone: [null, this.ehCampoObrigatorio()],
-      numeroTelefone: [
+      numero: [
         { value: null, disabled: true },
         [this.ehCampoObrigatorio(), Validators.minLength(10)],
       ],
@@ -66,15 +66,15 @@ export class AlunoDadosContatoComponent
   }
 
   public alterarMascaraTelefone(evento: MatSelectChange) {
-    this.limparCampo('numeroTelefone');
-    this.ativarCampo('numeroTelefone');
+    this.limparCampo('numero');
+    this.ativarCampo('numero');
     evento.value === TipoTelefoneEnum.CELULAR.id
       ? (this.mascaraTelefone = '(99)99999-9999')
       : (this.mascaraTelefone = '(99)9999-9999');
   }
 
   public removerSelecao(eventoClick: MouseEvent, campo: string): void {
-    this.desativarCampo('numeroTelefone');
+    this.desativarCampo('numero');
     this.limparCampo(campo);
     eventoClick.stopPropagation();
   }

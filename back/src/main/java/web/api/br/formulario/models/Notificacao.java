@@ -23,4 +23,8 @@ public class Notificacao {
     @ManyToOne
     @JoinColumn(name = "ALUNO_FK")
     private Aluno destinatario;
+
+    @Column(name = "ATIVO", nullable = false)
+    private boolean ativo = true;
+
 }

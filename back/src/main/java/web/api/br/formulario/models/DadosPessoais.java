@@ -44,7 +44,8 @@ public class DadosPessoais {
         @JoinColumn(name = "ENDERECO_FK")
         private DadosEndereco endereco;
 
-        @Column(name = "ATIVO")
-        private Boolean ativo;
+        @Column(name = "ATIVO", nullable = false)
+        private boolean ativo = true;
+
 
 }

@@ -59,13 +59,13 @@
       <mat-label>Número Telefone</mat-label>
       <input
         matInput
-        formControlName="numeroTelefone"
+        formControlName="numero"
         mask="{{ mascaraTelefone }}"
         unmask="true"
       />
       <mat-icon matPrefix>call</mat-icon>
       <mat-error
-        ><app-erro [dadosCampo]="formulario.get('numeroTelefone')"></app-erro
+        ><app-erro [dadosCampo]="formulario.get('numero')"></app-erro
       ></mat-error>
     </mat-form-field>
   </mat-card-content>

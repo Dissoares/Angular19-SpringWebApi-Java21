@@ -38,6 +38,7 @@ public class DadosEndereco {
     @Column(name = "PAIS")
     private String pais;
 
-    @Column(name = "ATIVO")
-    private boolean ativo;
+    @Column(name = "ATIVO", nullable = false)
+    private boolean ativo = true;
+
 }

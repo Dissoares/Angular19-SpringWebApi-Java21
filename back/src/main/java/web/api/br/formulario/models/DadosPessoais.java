@@ -3,32 +3,48 @@ package web.api.br.formulario.models;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import web.api.br.formulario.enums.EstadoCivilEnum;
-import web.api.br.formulario.enums.NaturalidadeEnum;
-import web.api.br.formulario.enums.TipoSexoEnum;
-
 import java.util.Date;
 @Setter
 @Getter
 @Entity
 @Table(schema = "SISTEMA_INSTITUICAO", name = "DADOS_PESSOAIS")
 public class DadosPessoais {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nome;
-    private String sobrenome;
-    private String cpf;
-    private Date dataNascimento;
-    private TipoSexoEnum sexo;
-    private EstadoCivilEnum estadoCivil;
-    private NaturalidadeEnum naturalidade;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private DadosContato contato;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "ID_DADOS_PESSOAIS")
+        private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+        @Column(name = "NOME")
+        private String nome;
 
-    private DadosEndereco endereco;
-    private boolean ativo;
+        @Column(name = "SOBRENOME")
+        private String sobrenome;
+
+        @Column(name = "CPF")
+        private String cpf;
+
+        @Column(name = "DATA_NASCIMENTO")
+        private Date dataNascimento;
+
+        @Column(name = "SEXO")
+        private String sexo;
+
+        @Column(name = "ESTADO_CIVIL")
+        private Integer estadoCivil;
+
+        @Column(name = "NATURALIDADE")
+        private Integer naturalidade;
+
+        @ManyToOne
+        @JoinColumn(name = "CONTATO_FK")
+        private DadosContato contato;
+
+        @ManyToOne
+        @JoinColumn(name = "ENDERECO_FK")
+        private DadosEndereco endereco;
+
+        @Column(name = "ATIVO")
+        private Boolean ativo;
+
 }

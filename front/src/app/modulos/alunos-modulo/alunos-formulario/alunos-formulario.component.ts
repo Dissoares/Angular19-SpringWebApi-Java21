@@ -48,10 +48,8 @@ export class AlunosFormularioComponent implements OnInit {
   ngOnInit(): void {}
 
   public abrirDialogoSalvar(): void {
-    const dadosAluno: Aluno = {
-      dadosPessoais: this.alunoDadosPessoais.obterDadosFormulario(),
-    };
-
+    const dadosAluno = new Aluno();
+    dadosAluno.dadosPessoais = this.alunoDadosPessoais.obterDadosFormulario();
     dadosAluno.dadosPessoais.contato =
       this.alunoDadosContato.obterDadosFormulario();
     dadosAluno.dadosPessoais.endereco =
@@ -84,12 +82,12 @@ export class AlunosFormularioComponent implements OnInit {
       return;
     }
 
-    this.dialog.open<ConfirmarDialogComponent, { dados: Aluno }>(
+    this.dialog.open<ConfirmarDialogComponent, Aluno>(
       ConfirmarDialogComponent,
       {
         width: '350px',
         height: '350px',
-        data: { dados: dadosAluno },
+        data: dadosAluno,
       }
     );
   }

@@ -20,16 +20,12 @@ public class NotificacaoService {
         return notificacaoRepository.findById(id).orElse(null);
     }
 
-    public Notificacao criarNotificacao(String mensagem, StatusSolicitacaoEnum status) {
-        Notificacao notificacao = new Notificacao();
-        notificacao.setMensagem(mensagem);
-        notificacao.setStatus(status);
+    public Notificacao criarNotificacao(Notificacao notificacao) {
         return notificacaoRepository.save(notificacao);
     }
 
-    public void atualizarStatusNotificacao(Long id, StatusSolicitacaoEnum status) {
+    public void atualizarStatusNotificacao(Long id) {
         Notificacao notificacao = notificacaoRepository.findById(id).orElseThrow(() -> new RuntimeException("Notificação não encontrada"));
-        notificacao.setStatus(status);
         notificacaoRepository.save(notificacao);
     }
 

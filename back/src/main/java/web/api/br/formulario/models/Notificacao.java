@@ -11,10 +11,16 @@ import lombok.Setter;
 public class Notificacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_NOTIFICACAO")
     private Long id;
+
+    @Column(name = "MENSAGEM")
     private String mensagem;
-    private StatusSolicitacaoEnum status;
+
+    @Column(name = "STATUS")
+    private Long status;
+
     @ManyToOne
-    @JoinColumn(name = "ALUNO_ID")
+    @JoinColumn(name = "ALUNO_FK")
     private Aluno destinatario;
 }

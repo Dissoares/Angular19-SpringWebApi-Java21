@@ -27,12 +27,12 @@ public class NotificacaoController {
 
     @PostMapping("/criar-nova")
     public Notificacao criarNotificacao(@RequestBody Notificacao notificacao) {
-        return notificacaoService.criarNotificacao(notificacao.getMensagem(), notificacao.getStatus());
+        return notificacaoService.criarNotificacao(notificacao);
     }
 
     @PutMapping("/atualizar/{id}")
-    public void atualizarStatusNotificacao(@PathVariable Long id, @RequestBody StatusSolicitacaoEnum status) {
-        notificacaoService.atualizarStatusNotificacao(id, status);
+    public void atualizarStatusNotificacao(@PathVariable Long id) {
+        notificacaoService.atualizarStatusNotificacao(id);
     }
 
     @Delete("/excluir/{id}")

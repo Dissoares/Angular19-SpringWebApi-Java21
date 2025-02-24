@@ -86,7 +86,7 @@
       <mat-label>Naturalidade</mat-label>
       <mat-select formControlName="naturalidade">
         <mat-option
-          *ngFor="let naturalidade of nacionalidadeEnum"
+          *ngFor="let naturalidade of naturalidadeEnum"
           [value]="naturalidade.id"
         >
           {{ naturalidade.descricao }}

@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { AlunoDto } from 'app/core/dtos';
+import { Aluno } from 'app/core/models';
 
 @Component({
   selector: 'app-alunos-formulario',
@@ -48,11 +48,14 @@ export class AlunosFormularioComponent implements OnInit {
   ngOnInit(): void {}
 
   public abrirDialogoSalvar(): void {
-    const dadosAluno: AlunoDto = {
+    const dadosAluno: Aluno = {
       dadosPessoais: this.alunoDadosPessoais.obterDadosFormulario(),
-      dadosEndereco: this.alunoDadosEndereco.obterDadosFormulario(),
-      dadosContato: this.alunoDadosContato.obterDadosFormulario(),
     };
+
+    dadosAluno.dadosPessoais.contato =
+      this.alunoDadosContato.obterDadosFormulario();
+    dadosAluno.dadosPessoais.endereco =
+      this.alunoDadosEndereco.obterDadosFormulario();
 
     if (!this.alunoDadosPessoais.ehFormularioValido()) {
       this.alunoDadosPessoais.marcarFormularioComoTocado();
@@ -81,7 +84,7 @@ export class AlunosFormularioComponent implements OnInit {
       return;
     }
 
-    this.dialog.open<ConfirmarDialogComponent, { dados: AlunoDto }>(
+    this.dialog.open<ConfirmarDialogComponent, { dados: Aluno }>(
       ConfirmarDialogComponent,
       {
         width: '350px',

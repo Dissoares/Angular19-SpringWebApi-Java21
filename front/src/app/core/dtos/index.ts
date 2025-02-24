@@ -1,1 +1,1 @@
-export * from './aluno-dto';
+

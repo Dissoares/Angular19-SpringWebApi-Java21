@@ -1,10 +1,12 @@
 import {
-  NacionalidadeEnum,
+  NaturalidadeEnum,
   EstadoCivilEnum,
   TipoSexoEnum,
 } from 'app/core/enums';
-
-import { ErrosCamposFormularioComponent, MetodosFormulariosComponent } from 'app/shared/components/index.component';
+import {
+  ErrosCamposFormularioComponent,
+  MetodosFormulariosComponent,
+} from 'app/shared/components/index.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -42,7 +44,7 @@ export class AlunoDadosPessoaisComponent
   extends MetodosFormulariosComponent
   implements OnInit
 {
-  public nacionalidadeEnum = NacionalidadeEnum.getAllValues();
+  public naturalidadeEnum = NaturalidadeEnum.getAllValues();
   public estadoCivilEnum = EstadoCivilEnum.getAllValues();
   public tipoSexoEnum = TipoSexoEnum.getAllValues();
 

@@ -7,7 +7,7 @@ import { SnackBarPersonalizadoService } from '../../core/services/index.service'
 import { AlunosService } from '../../core/services/alunos.service';
 import { Component, inject, OnInit, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { AlunoDto } from 'app/core/dtos';
+import { Aluno } from 'app/core/models';
 
 @Component({
   selector: 'app-confirmar-dialog',
@@ -22,15 +22,15 @@ export class ConfirmarDialogComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public alunoDto: AlunoDto,
+    public Aluno: Aluno,
     private alunosService: AlunosService
   ) {}
 
   ngOnInit() {}
 
   public salvarDados(): void {
-    this.alunosService.salvarDadosPessoais(this.alunoDto).subscribe(
-      (resposta: AlunoDto) => {
+    this.alunosService.salvarDadosPessoais(this.Aluno).subscribe(
+      (resposta: Aluno) => {
         console.log(resposta);
         this.snackBarService.abrirSnackBar(
           'Dados enviados com sucesso!',

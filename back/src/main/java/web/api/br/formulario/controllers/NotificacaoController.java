@@ -1,7 +1,7 @@
 package web.api.br.formulario.controllers;
 
+import com.oracle.svm.core.annotate.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 import web.api.br.formulario.enums.StatusSolicitacaoEnum;
 import web.api.br.formulario.models.Notificacao;
@@ -14,30 +14,29 @@ import java.util.List;
 public class NotificacaoController {
     @Autowired
     private NotificacaoService notificacaoService;
-    private final SimpMessagingTemplate messagingTemplate;
 
-    public NotificacaoController(SimpMessagingTemplate messagingTemplate) {
-        this.messagingTemplate = messagingTemplate;
-    }
-
-    @GetMapping
+    @GetMapping("/buscar-todas")
     public List<Notificacao> buscarNotificacoes() {
         return notificacaoService.buscarNotificacoes();
     }
 
-    @PostMapping
+    @GetMapping("/buscar-por-id")
+    public Notificacao buscarPorId(Long id) {
+        return notificacaoService.buscarNotificacaoPorId(id);
+    }
+
+    @PostMapping("/criar-nova")
     public Notificacao criarNotificacao(@RequestBody Notificacao notificacao) {
         return notificacaoService.criarNotificacao(notificacao.getMensagem(), notificacao.getStatus());
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/atualizar/{id}")
     public void atualizarStatusNotificacao(@PathVariable Long id, @RequestBody StatusSolicitacaoEnum status) {
         notificacaoService.atualizarStatusNotificacao(id, status);
     }
 
-
-    @PostMapping("/enviar")
-    public void enviarNotificacao(@RequestBody Notificacao notificacao) {
-        messagingTemplate.convertAndSend("/topic/notificacoes", notificacao);
+    @Delete("/excluir/{id}")
+    public void excluirNotificacao(@RequestBody Long id) {
+        notificacaoService.excluirNotificacao(id);
     }
 }

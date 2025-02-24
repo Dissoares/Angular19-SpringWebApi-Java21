@@ -5,11 +5,7 @@ import org.springframework.stereotype.Service;
 import web.api.br.formulario.enums.StatusSolicitacaoEnum;
 import web.api.br.formulario.models.Notificacao;
 import web.api.br.formulario.repository.NotificacaoRepository;
-
-
 import java.util.List;
-import java.util.Optional;
-
 
 @Service
 public class NotificacaoService {
@@ -35,5 +31,9 @@ public class NotificacaoService {
         Notificacao notificacao = notificacaoRepository.findById(id).orElseThrow(() -> new RuntimeException("Notificação não encontrada"));
         notificacao.setStatus(status);
         notificacaoRepository.save(notificacao);
+    }
+
+    public void excluirNotificacao(Long id) {
+        notificacaoRepository.deleteById(id);
     }
 }

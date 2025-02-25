@@ -6,19 +6,18 @@ import { Notificacao } from 'app/core/models/notificacao';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { WebSocketSubject } from 'rxjs/webSocket';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cabecalho',
   standalone: true,
   imports: [
-    CommonModule,
     MatToolbarModule,
-    MatIconModule,
     MatButtonModule,
     MatBadgeModule,
     MatMenuModule,
+    MatIconModule,
+    CommonModule,
   ],
   templateUrl: './cabecalho.component.html',
   styleUrls: ['./cabecalho.component.scss'],
@@ -26,43 +25,36 @@ import { CommonModule } from '@angular/common';
 export class CabecalhoComponent implements OnInit {
   @Output() public ativarSidebar = new EventEmitter<void>();
 
-  public qtdNotificacoes: number = 0;
-  public notifications: Notificacao[] = [];
-  private socket$ = new WebSocketSubject<Notificacao[]>(
-    'ws://localhost:8080/ws/notificacoes'
-  );
+  public listaNotificacoes: Notificacao[] = [];
+  public ocultarNotificacao: Boolean = false;
+  public totalNotificacoes: number = 0;
 
-  constructor(private service: NotificacoesService) {}
+  constructor(
+    private service: NotificacoesService
+  ) {}
 
   ngOnInit(): void {
     this.monitorarNotificacoes();
-    this.atualizarNotificacoesEmTempoReal();
   }
 
-  public onMenuClick() {
+  public aoClicarNoMenu() {
     this.ativarSidebar.emit();
   }
 
   public monitorarNotificacoes() {
-    this.service.notificacoesList$.subscribe((notifs: Notificacao[]) => {
-      this.notifications = notifs;
-      this.qtdNotificacoes = notifs.length;
-    });
-    this.service.buscarNotificacoes();
+    this.service.listaNotificacoes$.subscribe(
+      (arrayNotificacoes: Notificacao[]) => {
+        this.listaNotificacoes = arrayNotificacoes;
+        this.totalNotificacoes = arrayNotificacoes.length;
+      }
+    );
   }
 
-  public atualizarNotificacoesEmTempoReal() {
-    this.service.atualizarNotificacoes([
-      { id: 1, mensagem: 'Cadastro aguardando aprovação' },
-      { id: 2, mensagem: 'Novo cadastro recebido' },
-      { id: 3, mensagem: 'Novo cadastro recebido' },
-    ]);
-    this.socket$.subscribe({
-      next: (notifs: Notificacao[]) => {
-        this.service.atualizarNotificacoes(notifs);
-      },
-      error: (err) => console.error('Erro no WebSocket', err),
-      complete: () => console.warn('Conexão encerrada'),
-    });
+  public marcarComoLida(idNotificacao: number) {
+    this.listaNotificacoes = this.listaNotificacoes.filter(
+      (notificacao) => notificacao.id !== idNotificacao
+    );
+    this.totalNotificacoes = this.listaNotificacoes.length;
+    this.service.marcarNotificacaoComoLida(idNotificacao);
   }
 }

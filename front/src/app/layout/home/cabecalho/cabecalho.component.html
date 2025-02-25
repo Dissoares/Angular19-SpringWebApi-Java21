@@ -5,15 +5,21 @@
   <img src="/angular.svg" class="logo" alt="Logo do Sistema" />
   <span class="espaco"></span>
 
-  <button mat-icon-button [matBadge]="qtdNotificacoes" [matBadgeHidden]="qtdNotificacoes === 0"
-    [matMenuTriggerFor]="notificacaoMenu">
+  <mat-icon-button
+    matBadge="{{ totalNotificacoes }}"
+    [matMenuTriggerFor]="notificacaoMenu"
+  >
     <mat-icon>notifications</mat-icon>
-  </button>
+  </mat-icon-button>
 
   <mat-menu #notificacaoMenu="matMenu">
-    <ng-container *ngIf="notifications.length > 0; else semNotificacoes">
-      <button mat-menu-item *ngFor="let notificacao of notifications">
-        {{ notificacao.mensagem }}
+    <ng-container *ngIf="listaNotificacoes.length > 0; else semNotificacoes">
+      <button
+        mat-menu-item
+        *ngFor="let notificacao of listaNotificacoes"
+        (click)="marcarComoLida(notificacao.id)"
+      >
+        {{ notificacao.mensagem }} - {{ notificacao.status }}
       </button>
     </ng-container>
     <ng-template #semNotificacoes>

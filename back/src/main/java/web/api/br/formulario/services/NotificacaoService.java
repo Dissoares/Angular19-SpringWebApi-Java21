@@ -16,8 +16,8 @@ public class NotificacaoService {
         return notificacaoRepository.findAll();
     }
 
-    public Notificacao buscarNotificacaoPorId(Long id) {
-        return notificacaoRepository.findById(id).orElse(null);
+    public List<Notificacao> buscarNotificacoesPorAluno(Long idAluno) {
+        return notificacaoRepository.findByAlunoIdAndAtivoTrue(idAluno);
     }
 
     public Notificacao criarNotificacao(Notificacao notificacao) {
@@ -26,6 +26,7 @@ public class NotificacaoService {
 
     public void atualizarStatusNotificacao(Long id) {
         Notificacao notificacao = notificacaoRepository.findById(id).orElseThrow(() -> new RuntimeException("Notificação não encontrada"));
+        notificacao.setAtivo(false);
         notificacaoRepository.save(notificacao);
     }
 

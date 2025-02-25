@@ -20,9 +20,9 @@ public class NotificacaoController {
         return notificacaoService.buscarNotificacoes();
     }
 
-    @GetMapping("/buscar-por-id")
-    public Notificacao buscarPorId(Long id) {
-        return notificacaoService.buscarNotificacaoPorId(id);
+    @GetMapping("/buscar-por-id/{id}")
+    public List<Notificacao> buscarPorId(@PathVariable Long id) {
+        return notificacaoService.buscarNotificacoesPorAluno(id);
     }
 
     @PostMapping("/criar-nova")
@@ -30,7 +30,7 @@ public class NotificacaoController {
         return notificacaoService.criarNotificacao(notificacao);
     }
 
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/marcar-como-lida/{id}")
     public void atualizarStatusNotificacao(@PathVariable Long id) {
         notificacaoService.atualizarStatusNotificacao(id);
     }

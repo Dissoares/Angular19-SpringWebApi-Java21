@@ -1,33 +1,41 @@
 import { Notificacao } from '../models/notificacao';
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { GlobalService } from './global.service';
 import { environment } from 'environment';
 import { BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
 export class NotificacoesService implements OnInit {
+  private listaNotificacoes = new BehaviorSubject<Notificacao[]>([]);
+  public listaNotificacoes$ = this.listaNotificacoes.asObservable();
   private apiUrl = environment.apiUrl;
-  private notificacoesList = new BehaviorSubject<Notificacao[]>([]);
-  public notificacoesList$ = this.notificacoesList.asObservable();
+  private endPointUrl = 'notificacoes';
 
-  constructor(private http: HttpClient) {}
+  constructor(private serviceGlobal: GlobalService) {}
 
   ngOnInit(): void {}
 
   public atualizarNotificacoes(notificacoes: Notificacao[]) {
-    this.notificacoesList.next(notificacoes);
+    this.listaNotificacoes.next(notificacoes);
   }
 
-  public buscarNotificacoes() {
-    this.http
-      .get<Notificacao[]>(`${this.apiUrl}/notificacoes/buscar-todas`)
-      .pipe(
-        tap((notifs: Notificacao[]) => {
-          this.atualizarNotificacoes(notifs);
-        })
-      )
-      .subscribe();
+  public async buscarNotificacoes(idAluno: number) {
+    try {
+      const dados = await this.serviceGlobal.get<Notificacao[]>(
+        `${this.apiUrl}/${this.endPointUrl}/buscar-por-id/${idAluno}`
+      );
+      this.atualizarNotificacoes(dados);
+    } catch (error) {
+      console.error('Erro', error);
+    }
+  }
+
+  public marcarNotificacaoComoLida(idNotificacao: number) {
+    this.serviceGlobal.put<Notificacao>(
+      `${this.apiUrl}/${this.endPointUrl}/marcar-como-lida/${idNotificacao}`,
+      {}
+    );
   }
 }

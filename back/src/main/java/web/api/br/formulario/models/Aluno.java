@@ -1,15 +1,17 @@
 package web.api.br.formulario.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
 @Getter
 @Entity
-@Table(schema = "SISTEMA_INSTITUICAO", name = "ALUNOS")
+@Table(schema = "SISTEMA_INSTITUICAO", name = "ALUNO")
 public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +22,8 @@ public class Aluno {
     @JoinColumn(name = "DADOS_PESSOAIS_FK", nullable = false)
     private DadosPessoais dadosPessoais;
 
-    @OneToMany(mappedBy = "destinatario", cascade = CascadeType.ALL)
-    private List<Notificacao> notificacoes;
-
+    @JsonManagedReference
+    @OneToMany(mappedBy = "aluno", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<Notificacao> notificacoes = new ArrayList<>();
 }
+

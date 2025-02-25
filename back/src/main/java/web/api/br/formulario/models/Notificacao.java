@@ -1,4 +1,5 @@
 package web.api.br.formulario.models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import web.api.br.formulario.enums.StatusSolicitacaoEnum;
 import lombok.Getter;
@@ -14,17 +15,18 @@ public class Notificacao {
     @Column(name = "ID_NOTIFICACAO")
     private Long id;
 
-    @Column(name = "MENSAGEM")
+    @Column(name = "MENSAGEM", nullable = false)
     private String mensagem;
 
-    @Column(name = "STATUS")
+    @Column(name = "STATUS", nullable = false)
     private Long status;
-
-    @ManyToOne
-    @JoinColumn(name = "ALUNO_FK")
-    private Aluno destinatario;
 
     @Column(name = "ATIVO", nullable = false)
     private boolean ativo = true;
+
+    @ManyToOne
+    @JoinColumn(name = "ALUNO_FK", nullable = false)
+    @JsonBackReference
+    private Aluno aluno;
 
 }

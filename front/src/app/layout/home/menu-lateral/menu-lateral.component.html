@@ -1,10 +1,18 @@
 <mat-nav-list>
-  <button mat-button (click)="navegarParaFormulario()">
+  <a mat-list-item (click)="navegarParaFormulario()">
     <mat-icon>add_circle</mat-icon>
     <span>Formulário</span>
-  </button>
-  <button mat-button (click)="navegarParaListagem()">
+  </a>
+  <a mat-list-item (click)="navegarParaListagem()">
     <mat-icon>format_list_bulleted</mat-icon>
     <span>Listagem</span>
-  </button>
+  </a>
+  <a mat-list-item>
+    <mat-icon>settings</mat-icon>
+    <span>Configurações</span>
+  </a>
+  <a mat-list-item>
+    <mat-icon>help</mat-icon>
+    <span>Ajuda</span>
+  </a>
 </mat-nav-list>

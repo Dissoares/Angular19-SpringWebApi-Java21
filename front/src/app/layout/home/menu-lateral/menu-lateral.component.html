@@ -1,16 +1,19 @@
 <mat-nav-list>
-  <a mat-list-item (click)="navegarParaFormulario()">
+  <a mat-list-item (click)="ativarBotaoENavegar('formulario')" [ngClass]="{ active: botao === 'formulario' }">
     <mat-icon>add_circle</mat-icon>
     <span>Formulário</span>
   </a>
-  <a mat-list-item (click)="navegarParaListagem()">
+
+  <a mat-list-item (click)="ativarBotaoENavegar('listagem')" [ngClass]="{ active: botao === 'listagem' }">
     <mat-icon>format_list_bulleted</mat-icon>
     <span>Listagem</span>
   </a>
+
   <a mat-list-item>
     <mat-icon>settings</mat-icon>
     <span>Configurações</span>
   </a>
+
   <a mat-list-item>
     <mat-icon>help</mat-icon>
     <span>Ajuda</span>

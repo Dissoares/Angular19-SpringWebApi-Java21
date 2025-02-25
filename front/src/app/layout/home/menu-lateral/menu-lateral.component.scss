@@ -1,3 +1,13 @@
 mat-nav-list {
   padding: 10px;
 }
+
+mat-nav-list a.active {
+  background-color: #e0e1e7;
+  font-weight: bold;
+}
+
+a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

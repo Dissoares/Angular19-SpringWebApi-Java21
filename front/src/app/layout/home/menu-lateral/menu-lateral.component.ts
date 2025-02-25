@@ -19,10 +19,10 @@ export class MenuLateralComponent implements OnInit {
   ngOnInit() {}
 
   public navegarParaFormulario() {
-    //this.router.navigate([RotasEnum.PESSOA_DADOS.formulario]);
+    this.router.navigate(['sistema/alunos/formulario']);
   }
 
   public navegarParaListagem() {
-    //this.router.navigate([RotasEnum.PESSOA_DADOS.listagem]);
+    this.router.navigate(['sistema/alunos/listagem']);
   }
 }

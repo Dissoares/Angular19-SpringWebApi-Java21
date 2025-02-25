@@ -9,50 +9,28 @@
       <mat-label>Nome</mat-label>
       <input matInput formControlName="nome" />
       <mat-icon matPrefix>person</mat-icon>
-      <mat-error
-        ><app-erro [dadosCampo]="formulario.get('nome')"></app-erro
-      ></mat-error>
+      <mat-error><app-erro [dadosCampo]="formulario.get('nome')"></app-erro></mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Sobrenome</mat-label>
       <input matInput formControlName="sobreNome" />
       <mat-icon matPrefix>person</mat-icon>
-      <mat-error
-        ><app-erro [dadosCampo]="formulario.get('sobreNome')"></app-erro
-      ></mat-error>
+      <mat-error><app-erro [dadosCampo]="formulario.get('sobreNome')"></app-erro></mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>CPF</mat-label>
-      <input
-        type="text"
-        matInput
-        formControlName="cpf"
-        maxlength="14"
-        mask="000.000.000-00"
-        unmask="true"
-      />
-      <mat-error
-        ><app-erro [dadosCampo]="formulario.get('cpf')"></app-erro
-      ></mat-error>
+      <input type="text" matInput formControlName="cpf" maxlength="14" mask="000.000.000-00" unmask="true" />
+      <mat-error><app-erro [dadosCampo]="formulario.get('cpf')"></app-erro></mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Data de Nascimento</mat-label>
-      <input
-        matInput
-        [matDatepicker]="picker"
-        formControlName="dataNascimento"
-      />
+      <input matInput [matDatepicker]="picker" formControlName="dataNascimento" />
       <mat-datepicker #picker></mat-datepicker>
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="picker"
-      ></mat-datepicker-toggle>
-      <mat-error
-        ><app-erro [dadosCampo]="formulario.get('dataNascimento')"></app-erro
-      ></mat-error>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-error><app-erro [dadosCampo]="formulario.get('dataNascimento')"></app-erro></mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -62,39 +40,43 @@
           {{ sexo.descricao }}
         </mat-option>
       </mat-select>
-      <mat-error
-        ><app-erro [dadosCampo]="formulario.get('sexo')"></app-erro
-      ></mat-error>
+
+      @if(formulario.get('sexo')?.value){
+      <button mat-icon-button matSuffix (click)="removerSelecao($event, 'sexo')">
+        <mat-icon>clear</mat-icon>
+      </button>
+      }
+      <mat-error><app-erro [dadosCampo]="formulario.get('sexo')"></app-erro></mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Estado Civil</mat-label>
       <mat-select formControlName="estadoCivil">
-        <mat-option
-          *ngFor="let estadoCivil of estadoCivilEnum"
-          [value]="estadoCivil.id"
-        >
+        <mat-option *ngFor="let estadoCivil of estadoCivilEnum" [value]="estadoCivil.id">
           {{ estadoCivil.descricao }}
         </mat-option>
       </mat-select>
-      <mat-error
-        ><app-erro [dadosCampo]="formulario.get('estadoCivil')"></app-erro
-      ></mat-error>
+      @if(formulario.get('estadoCivil')?.value){
+      <button mat-icon-button matSuffix (click)="removerSelecao($event, 'estadoCivil')">
+        <mat-icon>clear</mat-icon>
+      </button>
+      }
+      <mat-error><app-erro [dadosCampo]="formulario.get('estadoCivil')"></app-erro></mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Naturalidade</mat-label>
       <mat-select formControlName="naturalidade">
-        <mat-option
-          *ngFor="let naturalidade of naturalidadeEnum"
-          [value]="naturalidade.id"
-        >
+        <mat-option *ngFor="let naturalidade of naturalidadeEnum" [value]="naturalidade.id">
           {{ naturalidade.descricao }}
         </mat-option>
       </mat-select>
-      <mat-error
-        ><app-erro [dadosCampo]="formulario.get('naturalidade')"></app-erro
-      ></mat-error>
+      @if(formulario.get('naturalidade')?.value){
+      <button mat-icon-button matSuffix (click)="removerSelecao($event, 'naturalidade')">
+        <mat-icon>clear</mat-icon>
+      </button>
+      }
+      <mat-error><app-erro [dadosCampo]="formulario.get('naturalidade')"></app-erro></mat-error>
     </mat-form-field>
   </mat-card-content>
 </form>

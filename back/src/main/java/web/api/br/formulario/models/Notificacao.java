@@ -1,7 +1,6 @@
 package web.api.br.formulario.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import web.api.br.formulario.enums.StatusSolicitacaoEnum;
 import lombok.Getter;
 import lombok.Setter;
 

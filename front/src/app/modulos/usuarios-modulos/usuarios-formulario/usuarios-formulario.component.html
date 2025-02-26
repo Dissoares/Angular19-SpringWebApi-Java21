@@ -1,9 +1,6 @@
 <form [formGroup]="formulario">
   <mat-card-content>
-
-    <mat-card-subtitle>
-      Dados de Contato
-    </mat-card-subtitle>
+    <mat-card-subtitle>Dados de Contato</mat-card-subtitle>
 
     <mat-form-field appearance="fill">
       <mat-label>Nome de Usuário</mat-label>
@@ -12,21 +9,39 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
-      <input matInput formControlName="email" />
+      <input matInput type="email" formControlName="email" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Senha</mat-label>
-      <input matInput formControlName="senha" />
+      <input matInput type="password" formControlName="senha" />
+    </mat-form-field>
+  </mat-card-content>
+</form>
+
+<form [formGroup]="formPermissoes">
+  <mat-card-content>
+    <mat-card-subtitle>Permissões</mat-card-subtitle>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Permissão</mat-label>
+      <input matInput formControlName="nome" />
     </mat-form-field>
 
+    <mat-form-field appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <input matInput formControlName="descricao" />
+    </mat-form-field>
 
+    <mat-form-field appearance="fill">
+      <mat-label>Ativo</mat-label>
+      <input matInput formControlName="ativo" />
+    </mat-form-field>
   </mat-card-content>
 </form>
 
 <mat-card-actions>
-  <button class="salvar" mat-raised-button (click)="salvar()">
+  <button class="salvar" mat-raised-button color="primary" (click)="salvar()">
     <mat-icon>save</mat-icon>Salvar
   </button>
-
 </mat-card-actions>

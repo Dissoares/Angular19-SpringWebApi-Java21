@@ -1,5 +1,6 @@
 export class Permissao {
     public id!: number;
-    public permissao!: string;
+    public nome!: string;
+    public descricao!: string;
     public ativo!: boolean;
 }

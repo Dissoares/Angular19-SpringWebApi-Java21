@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-alunos-modulo',
+  selector: 'app-alunos-modulos',
   standalone: true,
   imports: [RouterModule, CommonModule],
-  templateUrl: './alunos-modulo.component.html',
-  styleUrls: ['./alunos-modulo.component.scss'],
+  templateUrl: './alunos-modulos.component.html',
+  styleUrls: ['./alunos-modulos.component.scss'],
 })
-export class AlunosModuloComponent implements OnInit {
+export class AlunosModulosComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}

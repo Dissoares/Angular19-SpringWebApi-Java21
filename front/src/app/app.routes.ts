@@ -11,22 +11,22 @@ export const routes: Routes = [
       {
         path: 'alunos',
         loadComponent: () =>
-          import('./modulos/alunos-modulo/alunos-modulo.component').then(
-            (c) => c.AlunosModuloComponent
+          import('./modulos/alunos-modulos/alunos-modulos.component').then(
+            (c) => c.AlunosModulosComponent
           ),
         children: [
           {
             path: 'formulario',
             loadComponent: () =>
               import(
-                './modulos/alunos-modulo/alunos-formulario/alunos-formulario.component'
+                './modulos/alunos-modulos/alunos-formulario/alunos-formulario.component'
               ).then((c) => c.AlunosFormularioComponent),
           },
           {
             path: 'listagem',
             loadComponent: () =>
               import(
-                './modulos/alunos-modulo/alunos-listagem/alunos-listagem.component'
+                './modulos/alunos-modulos/alunos-listagem/alunos-listagem.component'
               ).then((c) => c.AlunosListagemComponent),
           },
           {

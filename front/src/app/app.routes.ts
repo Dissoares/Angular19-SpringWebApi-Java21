@@ -30,19 +30,62 @@ export const routes: Routes = [
               ).then((c) => c.AlunosListagemComponent),
           },
           {
-            path: '',
+            path: '**',
             redirectTo: 'formulario',
             pathMatch: 'full',
           },
         ],
       },
       {
-        path: '',
+        path: '**',
         redirectTo: 'alunos',
         pathMatch: 'full',
       },
     ],
   },
+  {
+    path: 'usuario',
+    loadComponent: () =>
+      import('./layout/home/conteudo/conteudo.component').then(
+        (c) => c.ConteudoComponent
+      ),
+    children: [
+      {
+        path: 'cadastro',
+        loadComponent: () =>
+          import('./modulos/usuarios-modulos/usuarios-modulos.component').then(
+            (c) => c.UsuariosModulosComponent
+          ),
+        children: [
+          {
+            path: 'formulario',
+            loadComponent: () =>
+              import(
+                './modulos/usuarios-modulos/usuarios-formulario/usuarios-formulario.component'
+              ).then((c) => c.UsuariosFormularioComponent),
+          },
+          {
+            path: 'listagem',
+            loadComponent: () =>
+              import(
+                './modulos/usuarios-modulos/usuarios-listagem/usuarios-listagem.component'
+              ).then((c) => c.UsuariosListagemComponent),
+          },
+          {
+            path: '**',
+            redirectTo: 'formulario',
+            pathMatch: 'full',
+          },
+        ],
+      },
+      {
+        path: '**',
+        redirectTo: 'usuarios',
+        pathMatch: 'full',
+      },
+    ],
+  },
+
   {
     path: '**',
     redirectTo: 'sistema/alunos/formulario',

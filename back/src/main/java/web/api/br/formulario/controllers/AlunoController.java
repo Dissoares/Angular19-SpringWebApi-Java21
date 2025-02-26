@@ -12,7 +12,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/api/aluno-controller")
+@RequestMapping("/api/aluno")
 @CrossOrigin(origins = "http://localhost:4200")
 public class AlunoController {
 
@@ -25,20 +25,20 @@ public class AlunoController {
         return alunoService.salvar(aluno);
     }
 
-    @GetMapping
+    @GetMapping("/buscar-todos")
     public ResponseEntity<List<Aluno>> listarTodos() {
         List<Aluno> listaAlunos = alunoService.listarTodos();
         return ResponseEntity.ok(listaAlunos);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscar-po/{id}")
     public ResponseEntity<Aluno> buscarPorId(@PathVariable Long id) {
         Optional<Aluno> listaAlunos = alunoService.buscarPorId(id);
         return listaAlunos.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+    @DeleteMapping("/excluir/{id}")
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
         alunoService.excluir(id);
         return ResponseEntity.noContent().build();
     }

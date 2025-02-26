@@ -34,6 +34,7 @@ export class CabecalhoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.service.buscarNotificacoes(2)
     this.monitorarNotificacoes();
   }
 

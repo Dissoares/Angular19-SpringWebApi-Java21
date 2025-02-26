@@ -1,8 +1,12 @@
 package web.api.br.formulario.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,8 +27,20 @@ public class Usuario {
     @Column(name = "SENHA", nullable = false, length = 255)
     private String senha;
 
-    @ManyToOne
-    @JoinColumn(name = "PERMISSAO_FK", nullable = false)
-    private Permissao permissao;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST, orphanRemoval = false)
+    private List<Permissao> permissoes = new ArrayList<>();
 
+    @Column(name = "ATIVO", nullable = false)
+    private boolean ativo = true;
+
+    public void adicionarPermissao(Permissao permissao) {
+        this.permissoes.add(permissao);
+        permissao.setUsuario(this);
+    }
+
+    public void removerPermissao(Permissao permissao) {
+        this.permissoes.remove(permissao);
+        permissao.setUsuario(null);
+    }
 }

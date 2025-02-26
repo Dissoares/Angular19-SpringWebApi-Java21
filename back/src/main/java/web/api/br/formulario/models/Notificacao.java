@@ -20,12 +20,12 @@ public class Notificacao {
     @Column(name = "STATUS", nullable = false)
     private Long status;
 
-    @Column(name = "ATIVO", nullable = false)
-    private boolean ativo = true;
-
     @ManyToOne
     @JoinColumn(name = "ALUNO_FK", nullable = false)
     @JsonBackReference
     private Aluno aluno;
+
+    @Column(name = "ATIVO", nullable = false)
+    private boolean ativo = true;
 
 }

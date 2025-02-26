@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,19 +8,19 @@ import { firstValueFrom } from 'rxjs';
 export class GlobalService {
   constructor(private http: HttpClient) {}
 
-  public get<T>(url: string): Promise<T> {
-    return firstValueFrom(this.http.get<T>(url));
+  public get<T>(url: string): Observable<T> {
+    return this.http.get<T>(url);
   }
 
-  public post<T>(url: string, data: any): Promise<T> {
-    return firstValueFrom(this.http.post<T>(url, data));
+  public post<T>(url: string, data: any): Observable<T> {
+    return this.http.post<T>(url, data);
   }
 
-  public put<T>(url: string, data: any): Promise<T> {
-    return firstValueFrom(this.http.put<T>(url, data));
+  public put<T>(url: string, data: any): Observable<T> {
+    return this.http.put<T>(url, data);
   }
 
-  public delete<T>(url: string): Promise<T> {
-    return firstValueFrom(this.http.delete<T>(url));
+  public delete<T>(url: string): Observable<T> {
+    return this.http.delete<T>(url);
   }
 }

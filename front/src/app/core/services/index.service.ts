@@ -3,4 +3,5 @@ export * from './notificacoes.service';
 export * from './endereco.service';
 export * from './alunos.service';
 export * from './global.service';
+export * from './usuarios.service';
 

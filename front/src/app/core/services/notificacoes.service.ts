@@ -13,23 +13,23 @@ export class NotificacoesService implements OnInit {
   private apiUrl = environment.apiUrl;
   private endPointUrl = 'notificacoes';
 
-  constructor(private serviceGlobal: GlobalService) {}
+  constructor(private serviceGlobal: GlobalService, private http: HttpClient) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   public atualizarNotificacoes(notificacoes: Notificacao[]) {
     this.listaNotificacoes.next(notificacoes);
   }
 
-  public async buscarNotificacoes(idAluno: number) {
-    try {
-      const dados = await this.serviceGlobal.get<Notificacao[]>(
-        `${this.apiUrl}/${this.endPointUrl}/buscar-por-id/${idAluno}`
-      );
-      this.atualizarNotificacoes(dados);
-    } catch (error) {
-      console.error('Erro', error);
-    }
+  public buscarNotificacoes(idAluno: number) {
+    this.http
+      .get<Notificacao[]>(
+        `${this.apiUrl}/${this.endPointUrl}/buscar-por/${idAluno}`
+      )
+      .subscribe((dados) => {
+        this.atualizarNotificacoes(dados);
+      });
   }
 
   public marcarNotificacaoComoLida(idNotificacao: number) {

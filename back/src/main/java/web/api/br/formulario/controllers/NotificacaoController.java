@@ -1,9 +1,7 @@
 package web.api.br.formulario.controllers;
-
 import com.oracle.svm.core.annotate.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import web.api.br.formulario.enums.StatusSolicitacaoEnum;
 import web.api.br.formulario.models.Notificacao;
 import web.api.br.formulario.services.NotificacaoService;
 
@@ -11,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/notificacoes")
+@CrossOrigin(origins = "http://localhost:4200")
 public class NotificacaoController {
     @Autowired
     private NotificacaoService notificacaoService;
@@ -20,7 +19,7 @@ public class NotificacaoController {
         return notificacaoService.buscarNotificacoes();
     }
 
-    @GetMapping("/buscar-por-id/{id}")
+    @GetMapping("/buscar-por/{id}")
     public List<Notificacao> buscarPorId(@PathVariable Long id) {
         return notificacaoService.buscarNotificacoesPorAluno(id);
     }

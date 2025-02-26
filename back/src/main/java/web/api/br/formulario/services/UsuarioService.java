@@ -27,7 +27,7 @@ public class UsuarioService {
         return usuarioRepository.findById(id).map(usuario -> {
             usuario.setUsuario(userDetails.getUsuario());
             usuario.setEmail(userDetails.getEmail());
-            usuario.setPermissao(userDetails.getPermissao());
+//            usuario.setPermissao(userDetails.getPermissao());
             return usuarioRepository.save(usuario);
         }).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
     }

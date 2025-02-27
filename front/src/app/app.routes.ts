@@ -29,29 +29,19 @@ export const routes: Routes = [
                 './modulos/alunos-modulos/alunos-listagem/alunos-listagem.component'
               ).then((c) => c.AlunosListagemComponent),
           },
-          {
-            path: '**',
-            redirectTo: 'formulario',
-            pathMatch: 'full',
-          },
         ],
-      },
-      {
-        path: '**',
-        redirectTo: 'alunos',
-        pathMatch: 'full',
       },
     ],
   },
   {
-    path: 'usuario',
+    path: 'sistema',
     loadComponent: () =>
       import('./layout/home/conteudo/conteudo.component').then(
         (c) => c.ConteudoComponent
       ),
     children: [
       {
-        path: 'cadastro',
+        path: 'usuario',
         loadComponent: () =>
           import('./modulos/usuarios-modulos/usuarios-modulos.component').then(
             (c) => c.UsuariosModulosComponent
@@ -70,11 +60,6 @@ export const routes: Routes = [
               import(
                 './modulos/usuarios-modulos/usuarios-listagem/usuarios-listagem.component'
               ).then((c) => c.UsuariosListagemComponent),
-          },
-          {
-            path: '**',
-            redirectTo: 'formulario',
-            pathMatch: 'full',
           },
         ],
       },

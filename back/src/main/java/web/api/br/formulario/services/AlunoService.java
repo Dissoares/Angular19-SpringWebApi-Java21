@@ -1,20 +1,21 @@
 package web.api.br.formulario.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import web.api.br.formulario.models.Aluno;
-import web.api.br.formulario.models.DadosContato;
-import web.api.br.formulario.models.DadosEndereco;
-import web.api.br.formulario.models.DadosPessoais;
-import web.api.br.formulario.repository.AlunoRepository;
-import web.api.br.formulario.repository.DadosContatoRepository;
 import web.api.br.formulario.repository.DadosEnderecoRepository;
 import web.api.br.formulario.repository.DadosPessoaisRepository;
+import web.api.br.formulario.repository.DadosContatoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.server.ResponseStatusException;
+import web.api.br.formulario.repository.AlunoRepository;
+import web.api.br.formulario.models.DadosEndereco;
+import web.api.br.formulario.models.DadosPessoais;
+import web.api.br.formulario.models.DadosContato;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.http.HttpStatus;
+import web.api.br.formulario.models.Aluno;
 
-import java.util.List;
 import java.util.Optional;
+import java.util.List;
 
 @Service
 public class AlunoService {
@@ -31,6 +32,13 @@ public class AlunoService {
         DadosPessoais dadosPessoais = aluno.getDadosPessoais();
         DadosContato dadosContato = dadosPessoais.getContato();
         DadosEndereco dadosEndereco = dadosPessoais.getEndereco();
+
+        if (dadosContatoRepository.existsByEmail(dadosContato.getEmail())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "EmailDuplicado");
+        }
+        if (dadosPessoaisRepository.existsByCpf(dadosPessoais.getCpf())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CpfDuplicado");
+        }
 
         dadosContatoRepository.save(dadosContato);
         dadosEnderecoRepository.save(dadosEndereco);

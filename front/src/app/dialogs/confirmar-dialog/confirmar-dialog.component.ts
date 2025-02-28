@@ -7,6 +7,7 @@ import { SnackBarPersonalizadoService } from '../../core/services/index.service'
 import { AlunosService } from '../../core/services/alunos.service';
 import { Component, inject, OnInit, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Aluno } from 'app/core/models';
 
 @Component({
@@ -29,23 +30,27 @@ export class ConfirmarDialogComponent implements OnInit {
   ngOnInit() {}
 
   public salvarDados(): void {
-    this.alunosService.salvarDadosPessoais(this.Aluno).subscribe(
-      (resposta: Aluno) => {
-        console.log(resposta);
-        this.snackBarService.abrirSnackBar(
-          'Dados enviados com sucesso!',
-          'Sucesso'
-        );
-        this.dialogRef.close();
+    this.alunosService.salvarDadosPessoais(this.Aluno).subscribe({
+      next: () => {
+        this.snackBarService.abrirSnackBar('Cadastro concuído!.', 'Sucesso');
+        this.fecharDialogo();
       },
-      (erro: any) => {
-        this.snackBarService.abrirSnackBar(
-          `Erro ao enviar os dados: ${erro.message || erro}`,
-          'Erro'
-        );
-        this.dialogRef.close();
-      }
-    );
+      error: (erro: HttpErrorResponse) => {
+        const tipoErro = erro.error?.message;
+
+        if (tipoErro.includes('EmailDuplicado')) {
+          this.snackBarService.abrirSnackBar('Email já cadastrado!', 'Erro');
+          this.fecharDialogo();
+          return;
+        }
+
+        if (tipoErro.includes('CpfDuplicado')) {
+          this.snackBarService.abrirSnackBar('Cpf já cadastrado!', 'Erro');
+          this.fecharDialogo();
+          return;
+        }
+      },
+    });
   }
 
   public fecharDialogo(): void {

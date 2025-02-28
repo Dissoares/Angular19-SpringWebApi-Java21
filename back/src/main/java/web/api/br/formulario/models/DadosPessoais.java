@@ -21,7 +21,7 @@ public class DadosPessoais {
         @Column(name = "SOBRENOME")
         private String sobrenome;
 
-        @Column(name = "CPF")
+        @Column(name = "CPF", unique = true)
         private String cpf;
 
         @Column(name = "DATA_NASCIMENTO")

@@ -2,6 +2,7 @@ import {
   ErrosCamposFormularioComponent,
   MetodosFormulariosComponent,
 } from 'app/shared/components/index.component';
+import { validarNumeros } from 'app/shared/validators/numero.validator';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { EnderecoService } from 'app/core/services/index.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -52,8 +53,8 @@ export class AlunoDadosEnderecoComponent
       cep: [null, this.ehCampoObrigatorio()],
       tipoLogradouro: [null, this.ehCampoObrigatorio()],
       logradouro: [null, this.ehCampoObrigatorio()],
-      numero: [null, this.ehCampoObrigatorio()],
-      complemento: [null, this.ehCampoObrigatorio()],
+      numero: [null, validarNumeros()],
+      complemento: [null],
       bairro: [null, this.ehCampoObrigatorio()],
       cidade: [null, this.ehCampoObrigatorio()],
       estado: [null, this.ehCampoObrigatorio()],

@@ -48,7 +48,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Número</mat-label>
-      <input matInput formControlName="numero" />
+      <input matInput formControlName="numero" maxlength="8"/>
       <mat-icon matPrefix>home</mat-icon>
       <mat-error
         ><app-erro [dadosCampo]="formulario.get('numero')"></app-erro

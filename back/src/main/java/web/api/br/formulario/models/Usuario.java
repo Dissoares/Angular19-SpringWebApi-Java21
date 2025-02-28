@@ -1,5 +1,6 @@
 package web.api.br.formulario.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -30,6 +31,11 @@ public class Usuario {
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST, orphanRemoval = false)
     private List<Permissao> permissoes = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "ALUNO_FK", nullable = true, unique = true)
+    @JsonBackReference
+    private Aluno aluno;
 
     @Column(name = "ATIVO", nullable = false)
     private boolean ativo = true;

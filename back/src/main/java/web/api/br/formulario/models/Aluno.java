@@ -8,9 +8,9 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Setter
-@Getter
 @Entity
+@Getter
+@Setter
 @Table(schema = "SISTEMA_INSTITUICAO", name = "ALUNO")
 public class Aluno {
     @Id
@@ -23,7 +23,10 @@ public class Aluno {
     private DadosPessoais dadosPessoais;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "aluno", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "aluno", cascade = CascadeType.PERSIST)
     private List<Notificacao> notificacoes = new ArrayList<>();
+
+    @OneToOne(mappedBy = "aluno")
+    private Usuario usuario;
 }
 

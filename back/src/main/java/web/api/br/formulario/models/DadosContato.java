@@ -14,10 +14,10 @@ public class DadosContato {
     @Column(name = "ID_CONTATO")
     private Long id;
 
-    @Column(name = "EMAIL")
+    @Column(name = "EMAIL", unique = true)
     private String email;
 
-    @Column(name = "CONFIRMACAO_EMAIL")
+    @Column(name = "CONFIRMACAO_EMAIL", unique = true)
     private String confirmacaoEmail;
 
     @Column(name = "TELEFONE")

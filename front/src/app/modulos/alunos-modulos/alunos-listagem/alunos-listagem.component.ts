@@ -3,6 +3,7 @@ import {
   MatPaginatorIntl,
   MatPaginator,
 } from '@angular/material/paginator';
+import { AlunosFiltroComponent } from './alunos-filtro/alunos-filtro.component';
 import { getPaginatorPortugues } from 'app/shared/config/paginator-portugues';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-alunos-listagem',
   standalone: true,
   imports: [
+    AlunosFiltroComponent,
     MatPaginatorModule,
     MatDividerModule,
     MatButtonModule,

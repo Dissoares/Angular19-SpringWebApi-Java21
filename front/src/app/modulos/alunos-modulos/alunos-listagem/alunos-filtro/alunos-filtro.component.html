@@ -1,3 +1,62 @@
-<p>
-  alunos-filtro works!
-</p>
+<mat-card-content>
+  <mat-card-title>Pesquisar Alunos</mat-card-title>
+
+  <form [formGroup]="formulario">
+    <mat-form-field appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>CPF</mat-label>
+      <input matInput formControlName="cpf" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Sexo</mat-label>
+      <input matInput formControlName="sexo" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Data Nascimento</mat-label>
+      <input matInput formControlName="dataNascimento" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Estado Civil</mat-label>
+      <input matInput formControlName="estadoCivil" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Naturalidade</mat-label>
+      <input matInput formControlName="naturalidade" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Endereco</mat-label>
+      <input matInput formControlName="endereco" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Telefone</mat-label>
+      <input matInput formControlName="telefone" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <input matInput formControlName="ativo" />
+    </mat-form-field>
+  </form>
+
+  <mat-card-actions>
+    <button mat-raised-button><mat-icon>search</mat-icon>Pesquisar</button>
+    <button mat-raised-button (click)="limparFiltros()">
+      <mat-icon>close</mat-icon>Limpar
+    </button>
+  </mat-card-actions>
+</mat-card-content>

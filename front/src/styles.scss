@@ -97,3 +97,17 @@ mat-card {
 .mdc-text-field--disabled {
   background-color: #dadada !important;
 }
+
+.mat-mdc-header-row {
+  background-color: #6a2d91 !important;
+  color: #fff !important;
+}
+
+.mat-mdc-row:hover {
+  background-color: #e0e1e7 !important;
+}
+
+mat-paginator {
+  background-color: #3c324e83 !important;
+  color: #fff !important;
+}

@@ -11,7 +11,7 @@
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef>NOME</th>
       <td mat-cell *matCellDef="let coluna">
-        {{ coluna.dadosPessoais?.nome }}
+        {{ coluna.dadosPessoais?.nome.toUpperCase() }}
       </td>
     </ng-container>
 

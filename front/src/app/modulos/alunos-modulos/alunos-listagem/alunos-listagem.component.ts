@@ -95,6 +95,6 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
     if (endereco.bairro) concatenado.push(`, ${endereco.bairro}`);
     if (endereco.cidade) concatenado.push(`, ${endereco.cidade}`);
     if (endereco.estado) concatenado.push(`/${endereco.estado}`);
-    return concatenado.join('') || '';
+    return concatenado.join('').toUpperCase() || '';
   }
 }

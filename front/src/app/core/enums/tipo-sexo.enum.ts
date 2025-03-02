@@ -1,25 +1,23 @@
-const listaTipoSexo: TipoSexoEnum[] = [];
-
 export class TipoSexoEnum {
   static readonly MASCULINO = new TipoSexoEnum(1, 'MASCULINO');
-  static readonly FEMININO = new TipoSexoEnum(2, 'FEMININO');
+  static readonly FEMININO = new TipoSexoEnum(2, 'MASCULINO');
 
-  private constructor(
-    public readonly id: number,
+  constructor(
+    public readonly codigo: number,
     public readonly descricao: string
-  ) {
-    listaTipoSexo.push(this);
+  ) {}
+
+  public static getAllValues() {
+    return Object.values(TipoSexoEnum);
   }
 
-  public static getAllValues(): TipoSexoEnum[] {
-    return listaTipoSexo;
+  public static getByCodigo(codigo: number | string): TipoSexoEnum {
+    return TipoSexoEnum.getAllValues().filter(
+      (sexo) => sexo.codigo === Number(codigo)
+    )[0];
   }
 
-  public static getById(id: number): TipoSexoEnum | undefined {
-    return listaTipoSexo.find((tipoSexo) => tipoSexo.id === id);
-  }
-
-  public static getByDescricao(descricao: string): TipoSexoEnum | undefined {
-    return listaTipoSexo.find((tipoSexo) => tipoSexo.descricao === descricao);
+  public static getByDescricao(descricao: string): TipoSexoEnum {
+    return this.getAllValues().find((sexo) => sexo.descricao === descricao);
   }
 }

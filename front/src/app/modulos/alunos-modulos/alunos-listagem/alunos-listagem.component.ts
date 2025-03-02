@@ -17,6 +17,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { TipoSexoEnum } from 'app/core/enums';
 
 @Component({
   selector: 'app-alunos-listagem',
@@ -74,5 +75,9 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
       this.listaAlunos = alunos;
       this.dadosTabela.data = [...this.listaAlunos];
     });
+  }
+
+  public getDescricaoTipoSexo(sexo: number): string {
+    return TipoSexoEnum.getByCodigo(sexo)?.descricao || '';
   }
 }

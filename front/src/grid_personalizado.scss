@@ -1,3 +1,4 @@
+//largura dos campos de formulario personalizados
 .container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -79,4 +80,90 @@
     grid-column: span 12;
     margin: 0px;
   }
+}
+
+//estilos de table personalizado para mobile e desktop
+.mat-mdc-header-row {
+  background-color: #6a2d91 !important;
+  color: #fff !important;
+}
+
+.mat-mdc-row:hover {
+  background-color: #e0e1e7 !important;
+}
+
+mat-paginator {
+  background-color: #3c324e83 !important;
+  color: #fff !important;
+}
+
+.mdc-data-table__cell,
+.mdc-data-table__header-cell {
+  padding: 6px !important;
+}
+
+@media (max-width: 768px) {
+  .mat-mdc-header-row {
+    display: none;
+  }
+
+  .mat-mdc-table {
+    display: block;
+    width: 100%;
+  }
+
+  .mat-mdc-row {
+    display: block;
+    margin-bottom: 310px;
+    background-color: #f0e6ed !important;
+  }
+
+  .mat-mdc-cell {
+    display: block;
+    width: 100%;
+    padding: 5px 0;
+  }
+}
+
+.botao-verde,
+.botao-vermelho {
+  color: #fff !important;
+  border-radius: 9px;
+  width: 250px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.botao-verde {
+  background-color: #61971b !important;
+}
+
+.botao-vermelho {
+  background-color: #520303 !important;
+}
+
+//estilos de dos cards personalizados
+mat-card-title {
+  margin-bottom: 10px !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+}
+
+mat-card-subtitle {
+  margin-bottom: 10px !important;
+  font-size: 14px !important;
+  padding: 5px !important;
+}
+
+mat-card-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+mat-icon {
+  margin-right: 5px;
+  margin-bottom: -4px;
 }

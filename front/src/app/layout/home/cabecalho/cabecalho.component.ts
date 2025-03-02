@@ -25,16 +25,14 @@ import { CommonModule } from '@angular/common';
 export class CabecalhoComponent implements OnInit {
   @Output() public ativarSidebar = new EventEmitter<void>();
 
-  public listaNotificacoes: Notificacao[] = [];
+  public listaNotificacoes: Array<Notificacao> = [];
   public ocultarNotificacao: Boolean = false;
   public totalNotificacoes: number = 0;
 
-  constructor(
-    private service: NotificacoesService
-  ) {}
+  constructor(private service: NotificacoesService) {}
 
   ngOnInit(): void {
-    this.service.buscarNotificacoes(2)
+    this.service.buscarNotificacoes(2);
     this.monitorarNotificacoes();
   }
 

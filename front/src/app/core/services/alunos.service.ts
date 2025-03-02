@@ -1,5 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DadosPessoais } from '../models/dados-pessoais';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Aluno } from '../models';
@@ -17,7 +16,7 @@ export class AlunosService {
   }
 
   public salvarDadosPessoais(dados: Aluno): Observable<Aluno> {
-    console.log('Dados antes do envio:', JSON.stringify(dados));
+    // console.log('Dados antes do envio:', JSON.stringify(dados));
     return this.http.post<Aluno>(this.apiUrl, dados);
   }
 }

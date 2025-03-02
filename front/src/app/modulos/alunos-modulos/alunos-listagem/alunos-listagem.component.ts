@@ -7,6 +7,7 @@ import { AlunosFiltroComponent } from './alunos-filtro/alunos-filtro.component';
 import { getPaginatorPortugues } from 'app/shared/config/paginator-portugues';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
+import { FormatarDataPtbrPipe } from 'app/shared/formatar-data-ptbr.pipe';
 import { AlunosService } from 'app/core/services/alunos.service';
 import { Aluno, ColunasTabelaAlunos } from 'app/core/models';
 import { MatDividerModule } from '@angular/material/divider';
@@ -16,11 +17,13 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-alunos-listagem',
   standalone: true,
   imports: [
     AlunosFiltroComponent,
+    FormatarDataPtbrPipe,
     MatPaginatorModule,
     MatDividerModule,
     MatButtonModule,

@@ -1,7 +1,5 @@
 <mat-card-content>
-  <mat-card-title>
-    <mat-icon>search</mat-icon>Pesquisar Alunos
-  </mat-card-title>
+  <mat-card-title> <mat-icon>search</mat-icon>Pesquisar Alunos </mat-card-title>
   <mat-card><app-filtro></app-filtro></mat-card>
 
   <table mat-table [dataSource]="dadosTabela">
@@ -34,7 +32,9 @@
     <ng-container matColumnDef="dataNascimento">
       <th mat-header-cell *matHeaderCellDef>DATA NASCIMENTO</th>
       <td mat-cell *matCellDef="let coluna">
-        {{ coluna.dadosPessoais.dataNascimento }}
+        {{
+          coluna.dadosPessoais.dataNascimento | formatarDataPtbr : "dd/MM/yyyy"
+        }}
       </td>
     </ng-container>
 

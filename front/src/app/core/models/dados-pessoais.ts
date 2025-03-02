@@ -6,7 +6,7 @@ export class DadosPessoais {
   public nome!: string;
   public sobrenome!: string;
   public cpf!: string;
-  public dataNascimento!: Date;
+  public dataNascimento!: string;
   public sexo!: TipoSexoEnum;
   public estadoCivil!: EstadoCivilEnum;
   public naturalidade!: NaturalidadeEnum;

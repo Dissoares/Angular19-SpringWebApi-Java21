@@ -27,4 +27,8 @@ export class AlunosService {
       `${this.apiUrl}${this.endPointUrl}/buscar-por/${id}`
     );
   }
+
+  public buscarTodos(): Observable<Array<Aluno>> {
+    return this.http.get<Array<Aluno>>(`${this.apiUrl}${this.endPointUrl}/buscar-todos`);
+  }
 }

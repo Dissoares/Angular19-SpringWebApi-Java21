@@ -112,3 +112,8 @@ mat-paginator {
   background-color: #3c324e83 !important;
   color: #fff !important;
 }
+
+.mdc-data-table__cell,
+.mdc-data-table__header-cell {
+  padding: 6px !important;
+}

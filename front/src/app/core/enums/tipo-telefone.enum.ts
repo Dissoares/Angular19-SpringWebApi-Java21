@@ -5,7 +5,7 @@ export class TipoTelefoneEnum {
   static readonly FIXO = new TipoTelefoneEnum(2, 'FIXO');
 
   private constructor(
-    public readonly id: number,
+    public readonly codigo: number,
     public readonly descricao: string
   ) {
     listaTipoTelefone.push(this);
@@ -15,8 +15,10 @@ export class TipoTelefoneEnum {
     return listaTipoTelefone;
   }
 
-  public static getById(id: number): TipoTelefoneEnum | undefined {
-    return listaTipoTelefone.find((tipoTelefone) => tipoTelefone.id === id);
+  public static getByCodigo(codigo: number): TipoTelefoneEnum | undefined {
+    return listaTipoTelefone.find(
+      (tipoTelefone) => tipoTelefone.codigo === Number(codigo)
+    );
   }
 
   public static getByDescricao(

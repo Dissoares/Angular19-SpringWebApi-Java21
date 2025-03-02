@@ -4,7 +4,9 @@ export class ColunasTabelaAlunos {
   public cpf: string = 'cpf';
   public sexo: string = 'sexo';
   public dataNascimento: string = 'dataNascimento';
-  public contato: string = 'contato';
+  public tipoTelefone: string = 'tipoTelefone';
+  public telefone: string = 'telefone';
+  public email: string = 'email';
   public endereco: string = 'endereco';
   public ativo: string = 'status';
 }

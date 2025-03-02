@@ -4,15 +4,10 @@ import {
   MatDialogRef,
   MatDialog,
 } from '@angular/material/dialog';
-import {
-  Component,
-  inject,
-  OnInit,
-  Inject,
-} from '@angular/core';
 import { SnackBarPersonalizadoService } from '../../core/services/index.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AlunosService } from '../../core/services/alunos.service';
+import { Component, inject, OnInit, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -34,14 +29,14 @@ import { timer } from 'rxjs';
 })
 export class ConfirmarDialogComponent implements OnInit {
   readonly dialogRef = inject(MatDialogRef<ConfirmarDialogComponent>);
-  readonly spinnerDialog = inject(MatDialog);
   private snackBarService = inject(SnackBarPersonalizadoService);
+  readonly spinnerDialog = inject(MatDialog);
 
   constructor(
-    @Inject(MAT_DIALOG_DATA)
-    public Aluno: Aluno,
     private alunosService: AlunosService,
-    private router: Router
+    @Inject(MAT_DIALOG_DATA)
+    private router: Router,
+    public Aluno: Aluno
   ) {}
 
   ngOnInit() {}
@@ -78,7 +73,7 @@ export class ConfirmarDialogComponent implements OnInit {
     timer(5000).subscribe(() => {
       this.router.navigate([Rotas.SISTEMA.alunos.LISTAGEM], {
         queryParams: {
-          idAluno: aluno.dadosPessoais.id,
+          idAluno: aluno.id,
         },
       });
     });

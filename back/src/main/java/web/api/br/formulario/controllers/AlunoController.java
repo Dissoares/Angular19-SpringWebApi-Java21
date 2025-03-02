@@ -4,15 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import web.api.br.formulario.models.Aluno;
-import web.api.br.formulario.models.DadosPessoais;
 import web.api.br.formulario.services.AlunoService;
-
 import java.util.List;
-import java.util.Optional;
-
 
 @RestController
-@RequestMapping("/api/aluno-controller")
+@RequestMapping("/api/aluno")
 @CrossOrigin(origins = "http://localhost:4200")
 public class AlunoController {
 
@@ -31,10 +27,10 @@ public class AlunoController {
         return ResponseEntity.ok(listaAlunos);
     }
 
-    @GetMapping("/buscar-po/{id}")
+    @GetMapping("/buscar-por/{id}")
     public ResponseEntity<Aluno> buscarPorId(@PathVariable Long id) {
-        Optional<Aluno> listaAlunos = alunoService.buscarPorId(id);
-        return listaAlunos.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        Aluno aluno = alunoService.buscarPorId(id).orElse(null);
+        return ResponseEntity.ok(aluno);
     }
 
     @DeleteMapping("/excluir/{id}")

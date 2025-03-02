@@ -1,4 +1,5 @@
 @use "../node_modules/@angular/material/" as mat;
+@use "./grid_personalizado";
 
 :root {
   @include mat.snack-bar-overrides(

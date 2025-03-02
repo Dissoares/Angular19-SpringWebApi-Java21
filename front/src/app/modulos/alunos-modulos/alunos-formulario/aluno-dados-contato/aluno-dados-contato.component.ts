@@ -68,7 +68,7 @@ export class AlunoDadosContatoComponent
   public alterarMascaraTelefone(evento: MatSelectChange) {
     this.limparCampo('numero');
     this.ativarCampo('numero');
-    evento.value === TipoTelefoneEnum.CELULAR.id
+    evento.value === TipoTelefoneEnum.CELULAR.codigo
       ? (this.mascaraTelefone = '(99)99999-9999')
       : (this.mascaraTelefone = '(99)9999-9999');
   }

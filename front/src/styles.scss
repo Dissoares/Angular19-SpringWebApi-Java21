@@ -12,7 +12,7 @@ body {
 }
 
 .mdc-text-field--disabled {
-  background-color: #391d4b4b !important;
+  background-color: #fffeff69 !important;
 }
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
@@ -29,7 +29,8 @@ body {
 
 
 app-rodape {
-  width: 100%;
+  margin-top: 30px;
+  width: auto;
   padding: 30px;
   display: flex;
   flex-direction: column;
@@ -38,6 +39,6 @@ app-rodape {
   text-align: center; 
   background-color: #510468d7;
   color: #ffffff;
-  bottom: 0 !important;
-  position: fixed;
+  bottom: 0px !important;
+  //position: fixed;
 }

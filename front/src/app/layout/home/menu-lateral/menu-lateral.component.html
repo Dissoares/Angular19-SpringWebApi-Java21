@@ -1,20 +1,40 @@
 <mat-nav-list>
-  <a mat-list-item (click)="ativarMenu(1)" [ngClass]="{ active: menu === 1 }">
+  <a
+    mat-list-item
+    (click)="ativarMenu(1)"
+    [ngClass]="{ active: menu === 1 }"
+    [disableRipple]="true"
+  >
     <mat-icon>add_circle</mat-icon>
     <span>Cadastro aluno</span>
   </a>
   <mat-divider></mat-divider>
-  <a mat-list-item (click)="ativarMenu(2)" [ngClass]="{ active: menu === 2 }">
+  <a
+    mat-list-item
+    (click)="ativarMenu(2)"
+    [ngClass]="{ active: menu === 2 }"
+    [disableRipple]="true"
+  >
     <mat-icon>format_list_bulleted</mat-icon>
     <span>Listagem aluno</span>
   </a>
   <mat-divider></mat-divider>
-  <a mat-list-item (click)="ativarMenu(3)" [ngClass]="{ active: menu === 3 }">
+  <a
+    mat-list-item
+    (click)="ativarMenu(3)"
+    [ngClass]="{ active: menu === 3 }"
+    [disableRipple]="true"
+  >
     <mat-icon>person_add</mat-icon>
     <span>Cadastrar usuário</span>
   </a>
   <mat-divider></mat-divider>
-  <a mat-list-item (click)="ativarMenu(4)" [ngClass]="{ active: menu === 4 }">
+  <a
+    mat-list-item
+    (click)="ativarMenu(4)"
+    [ngClass]="{ active: menu === 4 }"
+    [disableRipple]="true"
+  >
     <mat-icon>groups</mat-icon>
     <span>Listagem usuários</span>
   </a>

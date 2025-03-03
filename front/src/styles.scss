@@ -1,14 +1,23 @@
-@use "../node_modules/@angular/material/" as mat;
-@use "./grid_personalizado";
+@use "@angular/material" as mat;
+@use "styles/fonts" as *;
+@use "grid_personalizado";
 
 html,
 body {
   height: 100%;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Open Sans, sans-serif";
   overflow: hidden;
 }
 
 .mdc-text-field--disabled {
   background-color: #dadada !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #ffffff !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: #510468d7 !important;
 }

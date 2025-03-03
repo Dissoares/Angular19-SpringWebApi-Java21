@@ -1,3 +1,4 @@
+import { resolvendoDadosResolver } from './shared/resolvers/resolvendo-dados.resolver';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -24,6 +25,7 @@ export const routes: Routes = [
           },
           {
             path: 'listagem',
+            resolve: { alunos: resolvendoDadosResolver },
             loadComponent: () =>
               import(
                 './modulos/alunos-modulos/alunos-listagem/alunos-listagem.component'

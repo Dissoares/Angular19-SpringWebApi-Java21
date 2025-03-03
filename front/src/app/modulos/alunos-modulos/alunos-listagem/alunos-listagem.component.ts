@@ -55,12 +55,21 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
   ) {}
 
   ngOnInit() {
-    this.buscarTodos();
+    this.buscarTodosEPreencherTabela();
     this.buscarAlunoDaRota();
   }
 
   ngAfterViewInit() {
     this.dadosTabela.paginator = this.paginator;
+  }
+
+  public buscarTodosEPreencherTabela() {
+    this.route.data.subscribe((alunosDados) => {
+      const alunos: Array<Aluno> = alunosDados['alunos'];
+
+      this.listaAlunos = alunos;
+      this.dadosTabela.data = [...this.listaAlunos];
+    });
   }
 
   public filtrarALunos(filtro: FiltroDto) {
@@ -79,13 +88,6 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
         this.listaAlunos.push(aluno);
         this.dadosTabela.data = [...this.listaAlunos];
       });
-    });
-  }
-
-  public buscarTodos() {
-    this.alunosService.buscarTodos().subscribe((alunos: Array<Aluno>) => {
-      this.listaAlunos = alunos;
-      this.dadosTabela.data = [...this.listaAlunos];
     });
   }
 

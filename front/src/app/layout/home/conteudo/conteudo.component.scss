@@ -3,14 +3,10 @@ mat-sidenav-content {
 }
 
 mat-sidenav {
-  color: #000000;
   border-radius: 0px;
   border-right: 1px solid #c7c7c7;
 }
 
-mat-card {
-  border-radius: 0px;
-}
 
 app-rodape {
   display: flex;
@@ -23,6 +19,3 @@ app-rodape {
   color: #ffffff;
 }
 
-span {
-  font-size: 14px;
-}

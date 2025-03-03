@@ -1,14 +1,15 @@
-mat-nav-list {
-  padding: 10px;
+mat-nav-list a.active {
+  background-color: #42018b38 !important;
 }
 
-mat-nav-list a.active {
-  background-color: #e0e1e7;
-  font-weight: bold;
+.mdc-list {
+  padding: 0px !important;
 }
 
 a {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 3px !important;
+  border-radius: 0px !important;
+}
+
+::ng-deep .mdc-list-item__primary-text.active {
+  color: #ffffff !important;
 }

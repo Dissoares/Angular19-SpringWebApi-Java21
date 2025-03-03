@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^19.1.0",
     "@angular/platform-browser-dynamic": "^19.1.0",
     "@angular/router": "^19.1.0",
+    "@fontsource/open-sans": "^5.2.5",
     "date-fns": "^4.1.0",
     "locale": "^0.1.0",
     "ngx-mask": "^19.0.6",

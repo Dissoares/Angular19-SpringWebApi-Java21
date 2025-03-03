@@ -82,10 +82,21 @@
   }
 }
 
+/* Definir a cor dos ícones somente dentro dos campos*/
+.field-1 mat-icon,
+.field-2 mat-icon,
+.field-3 mat-icon,
+.field-4 mat-icon,
+.field-5 mat-icon,
+.field-6 mat-icon,
+.field-12 mat-icon {
+  color: #510468d7 !important;
+}
+
 //estilos de table personalizado para mobile e desktop
 table {
-  margin-top: 20px !important;
-  border: 1px solid #ccc !important;
+  border-left: 1px solid #ccc !important;
+  border-right: 1px solid #ccc !important;
 }
 
 .mat-mdc-row {
@@ -98,7 +109,7 @@ table {
 }
 
 .mat-mdc-row:hover {
-  background-color: #42018b38 !important;
+  background-color: #41018b10 !important;
   color: #000000 !important;
 }
 
@@ -146,6 +157,7 @@ mat-paginator {
 
 .botao-verde {
   background-color: #510468d7 !important;
+  color: #ffffff !important;
 }
 
 .botao-vermelho {
@@ -156,6 +168,7 @@ mat-paginator {
 //estilos de dos cards personalizados
 mat-card {
   background-color: #3e00a35e !important;
+  margin-bottom: 20px !important;
 }
 
 mat-card-title {
@@ -163,7 +176,6 @@ mat-card-title {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 5px;
   color: #a40b3c !important;
 }
 
@@ -171,6 +183,7 @@ mat-card-subtitle {
   margin-bottom: 10px !important;
   font-size: 14px !important;
   padding: 5px !important;
+  color: #510468d7 !important;
 }
 
 mat-card-actions {
@@ -178,6 +191,23 @@ mat-card-actions {
   flex-direction: row;
   justify-content: flex-end;
   padding: 0px !important;
+}
+
+mat-error {
+  color: #260146 !important;
+}
+
+div.mat-mdc-select-panel {
+  background-color: #ffffff !important;
+}
+
+.mat-mdc-option:focus.mdc-list-item,
+.mat-mdc-option.mat-mdc-option-active.mdc-list-item {
+  background-color: #3e00a321 !important;
+}
+
+.mat-datepicker-content .mat-calendar {
+  background-color: #ffffff !important;
 }
 
 mat-icon {
@@ -189,10 +219,6 @@ mat-icon {
   position: relative;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0) !important;
-}
-
-.mat-mdc-card-content:last-child {
-  padding-bottom: 0 !important;
 }
 
 .mat-mdc-card-content {
@@ -228,4 +254,9 @@ mat-icon {
 
 mat-paginator {
   margin-bottom: 20px !important;
+}
+
+.mat-mdc-paginator-container {
+  justify-content: center !important;
+  color: #ffffff !important;
 }

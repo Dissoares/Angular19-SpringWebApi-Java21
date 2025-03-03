@@ -1,11 +1,10 @@
-<form [formGroup]="formulario">
-  <mat-card-content>
-    <mat-card-subtitle>
-      <mat-icon>ring_volume</mat-icon>
-      Dados de Contato
-    </mat-card-subtitle>
-
-    <mat-form-field appearance="fill">
+<mat-card-content>
+  <mat-card-subtitle>
+    <mat-icon>ring_volume</mat-icon>
+    Dados de Contato
+  </mat-card-subtitle>
+  <form [formGroup]="formulario" class="container">
+    <mat-form-field appearance="fill" class="field-3">
       <mat-label>E-mail</mat-label>
       <input matInput formControlName="email" />
       <mat-icon matPrefix>email</mat-icon>
@@ -14,7 +13,7 @@
       ></mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="field-3">
       <mat-label>Confirmação E-mail</mat-label>
       <input
         matInput
@@ -27,7 +26,7 @@
       ></mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="field-3">
       <mat-label>Tipo de Telefone</mat-label>
       <mat-select
         formControlName="tipoTelefone"
@@ -55,7 +54,7 @@
       ></mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="field-3">
       <mat-label>Número Telefone</mat-label>
       <input
         matInput
@@ -68,5 +67,5 @@
         ><app-erro [dadosCampo]="formulario.get('numero')"></app-erro
       ></mat-error>
     </mat-form-field>
-  </mat-card-content>
-</form>
+  </form>
+</mat-card-content>

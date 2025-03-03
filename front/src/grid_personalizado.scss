@@ -83,18 +83,23 @@
 }
 
 //estilos de table personalizado para mobile e desktop
+table {
+  margin-top: 20px !important;
+  border: 1px solid #ccc !important;
+}
+
+.mat-mdc-row {
+  color: #000000 !important;
+}
+
 .mat-mdc-header-row {
-  background-color: #6a2d91 !important;
-  color: #fff !important;
+  background-color: #510468d7 !important;
+  color: #ffffff !important;
 }
 
 .mat-mdc-row:hover {
-  background-color: #e0e1e7 !important;
-}
-
-mat-paginator {
-  background-color: #3c324e83 !important;
-  color: #fff !important;
+  background-color: #42018b38 !important;
+  color: #000000 !important;
 }
 
 .mdc-data-table__cell,
@@ -115,7 +120,7 @@ mat-paginator {
   .mat-mdc-row {
     display: block;
     margin-bottom: 310px;
-    background-color: #f0e6ed !important;
+    background-color: #3e00a321 !important;
   }
 
   .mat-mdc-cell {
@@ -125,30 +130,41 @@ mat-paginator {
   }
 }
 
+mat-paginator {
+  background-color: #510468d7 !important;
+  color: #fff !important;
+}
+
 .botao-verde,
 .botao-vermelho {
   color: #fff !important;
-  border-radius: 9px;
+  border-radius: 3px !important;
   width: 250px;
   padding: 20px;
   margin: 10px;
 }
 
 .botao-verde {
-  background-color: #61971b !important;
+  background-color: #510468d7 !important;
 }
 
 .botao-vermelho {
-  background-color: #520303 !important;
+  background-color: #ffffff !important;
+  color: #510468d7 !important;
 }
 
 //estilos de dos cards personalizados
+mat-card {
+  background-color: #3e00a35e !important;
+}
+
 mat-card-title {
   margin-bottom: 10px !important;
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 5px;
+  color: #a40b3c !important;
 }
 
 mat-card-subtitle {
@@ -161,9 +177,55 @@ mat-card-actions {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  padding: 0px !important;
 }
 
 mat-icon {
   margin-right: 5px;
   margin-bottom: -4px;
+}
+
+.mat-mdc-card-content {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.mat-mdc-card-content:last-child {
+  padding-bottom: 0 !important;
+}
+
+.mat-mdc-card-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.mat-mdc-card-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/nets.png");
+  background-size: contain;
+  background-repeat: repeat;
+  background-position: left center;
+  opacity: 0.1;
+  animation: moverImagem 290s infinite alternate linear;
+  z-index: -1;
+}
+
+@keyframes moverImagem {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+mat-paginator {
+  margin-bottom: 20px !important;
 }

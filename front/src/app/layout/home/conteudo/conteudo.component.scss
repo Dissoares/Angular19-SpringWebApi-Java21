@@ -11,3 +11,18 @@ mat-sidenav {
 mat-card {
   border-radius: 0px;
 }
+
+app-rodape {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 10% !important;
+  background-color: #510468d7 !important;
+  color: #ffffff;
+}
+
+span {
+  font-size: 14px;
+}

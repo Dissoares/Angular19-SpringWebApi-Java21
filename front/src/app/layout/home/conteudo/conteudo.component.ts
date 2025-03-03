@@ -1,11 +1,10 @@
-
 import { MenuLateralComponent } from '../menu-lateral/menu-lateral.component';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CabecalhoComponent } from '../cabecalho/cabecalho.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { RodapeComponent } from '../rodape/rodape.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -25,7 +24,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./conteudo.component.scss'],
 })
 export class ConteudoComponent implements OnInit {
-  public sidebarAberta: boolean = true;
+  @ViewChild('sidenav') sidenav!: MatSidenav;
   public ehDispositivoMobile: boolean = false;
 
   constructor(private breakpointObserver: BreakpointObserver) {}
@@ -35,7 +34,7 @@ export class ConteudoComponent implements OnInit {
   }
 
   public ativarSidebar() {
-    this.sidebarAberta = !this.sidebarAberta;
+    this.sidenav.toggle();
   }
 
   public verificarDispositivoAtualEhMobile() {

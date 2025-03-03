@@ -52,7 +52,9 @@
   </form>
 
   <mat-card-actions>
-    <button class="botao-verde" mat-raised-button><mat-icon>search</mat-icon>Pesquisar</button>
+    <button class="botao-verde" mat-raised-button (click)="pesquisar()">
+      <mat-icon>search</mat-icon>Pesquisar
+    </button>
     <button class="botao-vermelho" mat-raised-button (click)="limparFiltros()">
       <mat-icon>close</mat-icon>Limpar
     </button>

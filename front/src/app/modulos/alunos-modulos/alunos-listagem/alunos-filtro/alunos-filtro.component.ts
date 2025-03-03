@@ -1,11 +1,12 @@
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { Component, OnInit } from '@angular/core';
+import { FiltroDto } from 'app/core/dtos/filtro-dto';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -30,6 +31,8 @@ import { CommonModule } from '@angular/common';
 export class AlunosFiltroComponent implements OnInit {
   public formulario!: FormGroup;
 
+  @Output() dadosFiltro = new EventEmitter<any>();
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -49,6 +52,11 @@ export class AlunosFiltroComponent implements OnInit {
       endereco: [null],
       ativo: [null],
     });
+  }
+
+  public pesquisar(): void {
+    const aluno: FiltroDto = this.formulario.value;
+    this.dadosFiltro.emit(aluno);
   }
 
   public limparFiltros(): void {

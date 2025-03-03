@@ -29,6 +29,15 @@ export class AlunosService {
   }
 
   public buscarTodos(): Observable<Array<Aluno>> {
-    return this.http.get<Array<Aluno>>(`${this.apiUrl}${this.endPointUrl}/buscar-todos`);
+    return this.http.get<Array<Aluno>>(
+      `${this.apiUrl}${this.endPointUrl}/buscar-todos`
+    );
+  }
+
+  public filtrar(filtro: any): Observable<Array<Aluno>> {
+    return this.http.get<Array<Aluno>>(
+      `${this.apiUrl}${this.endPointUrl}/filtrar`,
+      { params: filtro }
+    );
   }
 }

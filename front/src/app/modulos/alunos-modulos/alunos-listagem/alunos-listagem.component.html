@@ -1,6 +1,9 @@
 <mat-card-content>
   <mat-card-title> <mat-icon>search</mat-icon>Pesquisar Alunos </mat-card-title>
-  <mat-card><app-filtro></app-filtro></mat-card>
+
+  <mat-card
+    ><app-filtro (dadosFiltro)="filtrarALunos($event)"></app-filtro
+  ></mat-card>
 
   <table mat-table [dataSource]="dadosTabela">
     <ng-container matColumnDef="id">
@@ -57,7 +60,12 @@
     <ng-container matColumnDef="telefone">
       <th mat-header-cell *matHeaderCellDef>TELEFONE</th>
       <td mat-cell *matCellDef="let coluna">
-        {{ aplicarMascaraTelefone(coluna.dadosPessoais?.contato?.numero, coluna.dadosPessoais?.contato?.tipoTelefone)  }}
+        {{
+          aplicarMascaraTelefone(
+            coluna.dadosPessoais?.contato?.numero,
+            coluna.dadosPessoais?.contato?.tipoTelefone
+          )
+        }}
       </td>
     </ng-container>
 

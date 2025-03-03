@@ -18,6 +18,7 @@ import { NgxMaskService, provideNgxMask } from 'ngx-mask';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { FiltroDto } from 'app/core/dtos/filtro-dto';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-alunos-listagem',
@@ -60,6 +61,13 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     this.dadosTabela.paginator = this.paginator;
+  }
+
+  public filtrarALunos(filtro: FiltroDto) {
+    this.alunosService.filtrar(filtro).subscribe((alunos: Array<Aluno>) => {
+      this.listaAlunos = alunos;
+      this.dadosTabela.data = [...this.listaAlunos];
+    });
   }
 
   public buscarAlunoDaRota() {

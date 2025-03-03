@@ -50,7 +50,7 @@ export class MenuLateralComponent implements OnInit {
       Rotas.SISTEMA.usuario.LISTAGEM,
     ];
 
-    timer(500).subscribe(() => {
+    timer(100).subscribe(() => {
       this.router.navigate([rotas[posicaoRota - 1]]);
     });
   }

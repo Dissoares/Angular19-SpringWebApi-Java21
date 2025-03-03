@@ -5,6 +5,7 @@
     ><app-filtro (dadosFiltro)="filtrarALunos($event)"></app-filtro
   ></mat-card>
 
+  @if(temDadosTabela){
   <table mat-table [dataSource]="dadosTabela">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID.</th>
@@ -89,4 +90,5 @@
   <mat-divider></mat-divider>
   <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons>
   </mat-paginator>
+  }
 </mat-card-content>

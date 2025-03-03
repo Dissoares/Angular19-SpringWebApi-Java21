@@ -14,11 +14,11 @@ import { TipoSexoEnum, TipoTelefoneEnum } from 'app/core/enums';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NgxMaskService, provideNgxMask } from 'ngx-mask';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
-
 @Component({
   selector: 'app-alunos-listagem',
   standalone: true,
@@ -36,7 +36,10 @@ import { CommonModule } from '@angular/common';
   ],
   templateUrl: './alunos-listagem.component.html',
   styleUrls: ['./alunos-listagem.component.css'],
-  providers: [{ provide: MatPaginatorIntl, useFactory: getPaginatorPortugues }],
+  providers: [
+    provideNgxMask(),
+    { provide: MatPaginatorIntl, useFactory: getPaginatorPortugues },
+  ],
 })
 export class AlunosListagemComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -46,7 +49,8 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private alunosService: AlunosService
+    private alunosService: AlunosService,
+    private maskService: NgxMaskService
   ) {}
 
   ngOnInit() {
@@ -96,5 +100,17 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
     if (endereco.cidade) concatenado.push(`, ${endereco.cidade}`);
     if (endereco.estado) concatenado.push(`/${endereco.estado}`);
     return concatenado.join('').toUpperCase() || '';
+  }
+
+  public aplicarMascaraCpf(cpf: string): string {
+    if (!cpf) return '';
+    return this.maskService.applyMask(cpf, '000.000.000-00');
+  }
+
+  public aplicarMascaraTelefone(numero: string, tipo: string): string {
+    if (!numero || !tipo) return '';
+    if (Number(tipo) === TipoTelefoneEnum.CELULAR.codigo)
+      return this.maskService.applyMask(numero, '(99)99999-9999');
+    return this.maskService.applyMask(numero, '(99)9999-9999');
   }
 }

@@ -47,6 +47,7 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
   public listaAlunos: Array<Aluno> = [];
   public colunasTabela = Object.values(new ColunasTabelaAlunos());
   public dadosTabela = new MatTableDataSource<Aluno>(this.listaAlunos);
+  public temDadosTabela: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -69,6 +70,7 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
 
       this.listaAlunos = alunos;
       this.dadosTabela.data = [...this.listaAlunos];
+      this.temDadosTabela = true;
     });
   }
 

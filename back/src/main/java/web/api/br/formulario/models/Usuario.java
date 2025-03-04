@@ -30,6 +30,10 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Permissao> perfilPermissao = new ArrayList<>();
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Notificacao> notificacoes = new ArrayList<>();
+
     @Column(name = "ATIVO", nullable = false)
     private boolean ativo = true;
 }

@@ -14,16 +14,16 @@ public class Notificacao {
     @Column(name = "ID_NOTIFICACAO")
     private Long id;
 
-    @Column(name = "MENSAGEM", nullable = false)
+    @Column(name = "MENSAGEM", nullable = true)
     private String mensagem;
 
-    @Column(name = "STATUS", nullable = false)
+    @Column(name = "STATUS", nullable = true)
     private Long status;
 
     @ManyToOne
-    @JoinColumn(name = "ALUNO_FK", nullable = false)
+    @JoinColumn(name = "USUARIO_FK", nullable = true)
     @JsonBackReference
-    private Aluno aluno;
+    private Usuario usuario;
 
     @Column(name = "ATIVO", nullable = false)
     private boolean ativo = true;

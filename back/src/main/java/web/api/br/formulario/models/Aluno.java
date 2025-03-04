@@ -22,10 +22,6 @@ public class Aluno {
     @JoinColumn(name = "DADOS_PESSOAIS_FK", nullable = false)
     private DadosPessoais dadosPessoais;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Notificacao> notificacoes = new ArrayList<>();
-
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "USUARIO_FK", nullable = false)
     private Usuario usuario;

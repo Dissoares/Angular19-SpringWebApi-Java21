@@ -16,8 +16,8 @@ public class NotificacaoService {
         return notificacaoRepository.findAll();
     }
 
-    public List<Notificacao> buscarNotificacoesPorAluno(Long idAluno) {
-        return notificacaoRepository.findByAlunoIdAlunoAndAtivoTrue(idAluno);
+    public List<Notificacao> buscarNotificacoesPorUsuario(Long idUsuario) {
+        return notificacaoRepository.findByUsuario_IdUsuarioAndAtivoTrue(idUsuario);
     }
 
     public Notificacao criarNotificacao(Notificacao notificacao) {

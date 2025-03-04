@@ -21,7 +21,7 @@ public class NotificacaoController {
 
     @GetMapping("/buscar-por/{id}")
     public List<Notificacao> buscarPorId(@PathVariable Long id) {
-        return notificacaoService.buscarNotificacoesPorAluno(id);
+        return notificacaoService.buscarNotificacoesPorUsuario(id);
     }
 
     @PostMapping("/criar-nova")

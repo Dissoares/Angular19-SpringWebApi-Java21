@@ -23,10 +23,11 @@ public class Aluno {
     private DadosPessoais dadosPessoais;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "aluno", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Notificacao> notificacoes = new ArrayList<>();
 
-    @OneToOne(mappedBy = "aluno")
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "USUARIO_FK", nullable = false)
     private Usuario usuario;
 }
 

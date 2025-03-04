@@ -35,9 +35,6 @@ public class DadosEndereco {
     @Column(name = "ESTADO")
     private String estado;
 
-    @Column(name = "PAIS")
-    private String pais;
-
     @Column(name = "ATIVO", nullable = false)
     private boolean ativo = true;
 

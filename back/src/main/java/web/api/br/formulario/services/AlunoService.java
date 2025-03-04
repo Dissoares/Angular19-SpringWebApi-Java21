@@ -1,19 +1,13 @@
 package web.api.br.formulario.services;
 
-import web.api.br.formulario.repository.DadosEnderecoRepository;
-import web.api.br.formulario.repository.DadosPessoaisRepository;
-import web.api.br.formulario.repository.DadosContatoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.data.jpa.domain.Specification;
-import web.api.br.formulario.repository.AlunoRepository;
-import web.api.br.formulario.models.DadosEndereco;
-import web.api.br.formulario.models.DadosPessoais;
-import web.api.br.formulario.models.DadosContato;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.http.HttpStatus;
-import web.api.br.formulario.models.Aluno;
+import web.api.br.formulario.repository.*;
+import web.api.br.formulario.models.*;
 import java.util.Optional;
 import java.util.List;
 
@@ -27,11 +21,14 @@ public class AlunoService {
     private DadosEnderecoRepository dadosEnderecoRepository;
     @Autowired
     private DadosPessoaisRepository dadosPessoaisRepository;
+    @Autowired
+    private UsuarioRepository dadosUsuarioRepository;
 
     public ResponseEntity<Aluno> salvar(Aluno aluno) {
         DadosPessoais dadosPessoais = aluno.getDadosPessoais();
         DadosContato dadosContato = dadosPessoais.getContato();
         DadosEndereco dadosEndereco = dadosPessoais.getEndereco();
+        Usuario usuario = aluno.getUsuario();
 
         if (dadosContatoRepository.existsByEmail(dadosContato.getEmail())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "EmailDuplicado");
@@ -40,12 +37,23 @@ public class AlunoService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "CpfDuplicado");
         }
 
-        dadosContatoRepository.save(dadosContato);
-        dadosEnderecoRepository.save(dadosEndereco);
-        dadosPessoaisRepository.save(dadosPessoais);
-        Aluno alunoSalvo = alunoRepository.save(aluno);
+        dadosContato = dadosContatoRepository.save(dadosContato);
+        dadosEndereco = dadosEnderecoRepository.save(dadosEndereco);
 
-        return ResponseEntity.ok(alunoSalvo);
+        dadosPessoais.setContato(dadosContato);
+        dadosPessoais.setEndereco(dadosEndereco);
+
+        dadosPessoais = dadosPessoaisRepository.save(dadosPessoais);
+        usuario.setEmail(dadosPessoais.getContato().getEmail());
+        usuario.setNomeUsuario(dadosPessoais.getCpf());
+        usuario = dadosUsuarioRepository.save(usuario);
+
+        aluno.setDadosPessoais(dadosPessoais);
+        aluno.setUsuario(usuario);
+
+        aluno = alunoRepository.save(aluno);
+
+        return ResponseEntity.ok(aluno);
     }
 
     public List<Aluno> listarTodos() {

@@ -30,7 +30,7 @@ public class DadosPessoais {
         @Column(name = "ESTADO_CIVIL")
         private Integer estadoCivil;
 
-        @Column(name = "NATURALIDADE")
+        @Column(name = "ESTADO_NASCIMENTO")
         private Integer uf;
 
         @ManyToOne

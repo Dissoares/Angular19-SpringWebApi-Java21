@@ -17,7 +17,7 @@ public class AlunoController {
     @Autowired
     private AlunoService alunoService;
 
-    @PostMapping("/salvar")
+    @PostMapping("/salvar/")
     public ResponseEntity<Aluno> salvar(@RequestBody Aluno aluno) {
         System.out.println("Recebido: " + aluno);
         return alunoService.salvar(aluno);

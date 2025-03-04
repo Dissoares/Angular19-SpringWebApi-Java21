@@ -14,15 +14,6 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="field-3">
-      <mat-label>Sobrenome</mat-label>
-      <input matInput formControlName="sobreNome" />
-      <mat-icon matPrefix>person</mat-icon>
-      <mat-error
-        ><app-erro [dadosCampo]="formulario.get('sobreNome')"></app-erro
-      ></mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="field-3">
       <mat-label>CPF</mat-label>
       <input
         type="text"
@@ -101,26 +92,19 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="field-3">
-      <mat-label>Naturalidade</mat-label>
-      <mat-select formControlName="naturalidade">
-        <mat-option
-          *ngFor="let naturalidade of naturalidadeEnum"
-          [value]="naturalidade.id"
-        >
-          {{ naturalidade.descricao }}
+      <mat-label>Uf</mat-label>
+      <mat-select formControlName="uf">
+        <mat-option *ngFor="let uf of ufEnum" [value]="uf.id">
+          {{ uf.descricao }}
         </mat-option>
       </mat-select>
-      @if(formulario.get('naturalidade')?.value){
-      <button
-        mat-icon-button
-        matSuffix
-        (click)="removerSelecao($event, 'naturalidade')"
-      >
+      @if(formulario.get('uf')?.value){
+      <button mat-icon-button matSuffix (click)="removerSelecao($event, 'uf')">
         <mat-icon>clear</mat-icon>
       </button>
       }
       <mat-error
-        ><app-erro [dadosCampo]="formulario.get('naturalidade')"></app-erro
+        ><app-erro [dadosCampo]="formulario.get('uf')"></app-erro
       ></mat-error>
     </mat-form-field>
   </form>

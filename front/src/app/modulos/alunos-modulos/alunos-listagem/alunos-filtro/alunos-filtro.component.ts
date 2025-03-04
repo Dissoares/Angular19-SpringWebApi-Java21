@@ -46,7 +46,7 @@ export class AlunosFiltroComponent implements OnInit {
       dataNascimento: [null],
       sexo: [null],
       estadoCivil: [null],
-      naturalidade: [null],
+      uf: [null],
       email: [null],
       telefone: [null],
       endereco: [null],

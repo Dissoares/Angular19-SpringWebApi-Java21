@@ -1,7 +1,7 @@
 import {
-  NaturalidadeEnum,
   EstadoCivilEnum,
   TipoSexoEnum,
+  UfEnum,
 } from 'app/core/enums';
 import {
   ErrosCamposFormularioComponent,
@@ -46,7 +46,7 @@ export class AlunoDadosPessoaisComponent
   extends MetodosFormulariosComponent
   implements OnInit
 {
-  public naturalidadeEnum = NaturalidadeEnum.getAllValues();
+  public ufEnum = UfEnum.getAllValues();
   public estadoCivilEnum = EstadoCivilEnum.getAllValues();
   public tipoSexoEnum = TipoSexoEnum.getAllValues();
 
@@ -62,12 +62,11 @@ export class AlunoDadosPessoaisComponent
     this.formulario = this.formBuilder.group({
       id: [null],
       nome: [null, this.ehCampoObrigatorio()],
-      sobreNome: [null, this.ehCampoObrigatorio()],
       cpf: [null, [this.ehCampoObrigatorio(), validarCpf()]],
       sexo: [null, this.ehCampoObrigatorio()],
       dataNascimento: [null, this.ehCampoObrigatorio()],
       estadoCivil: [null],
-      naturalidade: [null],
+      uf: [null],
     });
   }
 

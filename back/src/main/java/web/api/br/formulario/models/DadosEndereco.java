@@ -15,7 +15,7 @@ public class DadosEndereco {
     private Long id;
 
     @Column(name = "RUA")
-    private String rua;
+    private String logradouro;
 
     @Column(name = "COMPLEMENTO")
     private String complemento;

@@ -18,9 +18,6 @@ public class DadosPessoais {
         @Column(name = "NOME")
         private String nome;
 
-        @Column(name = "SOBRENOME")
-        private String sobrenome;
-
         @Column(name = "CPF", unique = true)
         private String cpf;
 
@@ -34,7 +31,7 @@ public class DadosPessoais {
         private Integer estadoCivil;
 
         @Column(name = "NATURALIDADE")
-        private Integer naturalidade;
+        private Integer uf;
 
         @ManyToOne
         @JoinColumn(name = "CONTATO_FK")

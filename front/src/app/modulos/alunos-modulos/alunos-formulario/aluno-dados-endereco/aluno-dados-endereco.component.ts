@@ -57,8 +57,7 @@ export class AlunoDadosEnderecoComponent
       complemento: [null],
       bairro: [null, this.ehCampoObrigatorio()],
       cidade: [null, this.ehCampoObrigatorio()],
-      estado: [null, this.ehCampoObrigatorio()],
-      pais: [{ value: 'Brasil', disabled: true }],
+      estado: [null, this.ehCampoObrigatorio()]
     });
   }
 

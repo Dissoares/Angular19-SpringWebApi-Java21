@@ -92,11 +92,7 @@ public class AlunoService {
                         criteriaBuilder.equal(root.get("dadosPessoais").get("contato").get("numero"), aluno.getDadosPessoais().getContato().getNumero()));
             }
         }
-
-        if (aluno.getDadosPessoais().getEndereco() != null && aluno.getDadosPessoais().getEndereco().getRua() != null && !aluno.getDadosPessoais().getEndereco().getRua().isEmpty()) {
-            alunoSpecification = alunoSpecification.and((root, query, criteriaBuilder) ->
-                    criteriaBuilder.like(criteriaBuilder.lower(root.get("dadosPessoais").get("endereco").get("rua")), "%" + aluno.getDadosPessoais().getEndereco().getRua().toLowerCase() + "%"));
-        }
+        
 
         return alunoRepository.findAll(alunoSpecification);
     }

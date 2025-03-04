@@ -11,27 +11,32 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public List<Usuario> buscarTodos() {
-        return usuarioRepository.findAll();
-    }
-
-    public Optional<Usuario> buscarPorId(Long id) {
-        return usuarioRepository.findById(id);
-    }
-
-    public Usuario criar(Usuario usuario) {
+    public Usuario cadastrar(Usuario usuario) {
         return usuarioRepository.save(usuario);
     }
 
-    public Usuario atualizar(Long id, Usuario userDetails) {
-        return usuarioRepository.findById(id).map(usuario -> {
+    public Usuario atualizar(Long idUsuario, Usuario userDetails) {
+        return usuarioRepository.findById(idUsuario).map(usuario -> {
             usuario.setNomeUsuario(userDetails.getNomeUsuario());
             usuario.setEmail(userDetails.getEmail());
             return usuarioRepository.save(usuario);
         }).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
     }
 
-    public void excluir(Long id) {
-        usuarioRepository.deleteById(id);
+    public void excluir(Long idUsuario) {
+        usuarioRepository.deleteById(idUsuario);
     }
+
+    public Optional<Usuario> buscarPor(Long idUsuario) {
+        return usuarioRepository.findById(idUsuario);
+    }
+
+    public List<Usuario> buscarTodos() {
+        return usuarioRepository.findAll();
+    }
+
+
+
+
+
 }

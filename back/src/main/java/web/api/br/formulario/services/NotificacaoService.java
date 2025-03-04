@@ -12,12 +12,13 @@ public class NotificacaoService {
     @Autowired
     private NotificacaoRepository notificacaoRepository;
 
-    public List<Notificacao> buscarPoridUsuario(Long idUsuario) {
-        return notificacaoRepository.findByUsuario_IdUsuarioAndAtivoTrue(idUsuario);
+
+    public Notificacao criar(Notificacao notificacao) {
+        return notificacaoRepository.save(notificacao);
     }
 
-    public Notificacao nova(Notificacao notificacao) {
-        return notificacaoRepository.save(notificacao);
+    public void excluir(Long id) {
+        notificacaoRepository.deleteById(id);
     }
 
     public void marcarComoLida(Long id) {
@@ -26,7 +27,7 @@ public class NotificacaoService {
         notificacaoRepository.save(notificacao);
     }
 
-    public void excluir(Long id) {
-        notificacaoRepository.deleteById(id);
+    public List<Notificacao> buscarPor(Long idUsuario) {
+        return notificacaoRepository.findByUsuario_IdUsuarioAndAtivoTrue(idUsuario);
     }
 }

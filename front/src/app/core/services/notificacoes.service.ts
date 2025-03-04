@@ -15,8 +15,7 @@ export class NotificacoesService implements OnInit {
 
   constructor(private serviceGlobal: GlobalService, private http: HttpClient) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public atualizarNotificacoes(notificacoes: Notificacao[]) {
     this.listaNotificacoes.next(notificacoes);
@@ -25,10 +24,10 @@ export class NotificacoesService implements OnInit {
   public buscarNotificacoes(idAluno: number) {
     this.http
       .get<Notificacao[]>(
-        `${this.apiUrl}/${this.endPointUrl}/buscar-por/${idAluno}`
+        `${this.apiUrl}/${this.endPointUrl}/buscar/${idAluno}`
       )
-      .subscribe((dados) => {
-        this.atualizarNotificacoes(dados);
+      .subscribe((notificacoes) => {
+        this.atualizarNotificacoes(notificacoes);
       });
   }
 

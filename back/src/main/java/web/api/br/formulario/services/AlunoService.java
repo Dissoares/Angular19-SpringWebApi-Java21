@@ -2,7 +2,6 @@ package web.api.br.formulario.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.http.HttpStatus;
@@ -24,7 +23,7 @@ public class AlunoService {
     @Autowired
     private UsuarioRepository dadosUsuarioRepository;
 
-    public ResponseEntity<Aluno> salvar(Aluno aluno) {
+    public ResponseEntity<Aluno> cadastrar(Aluno aluno) {
         DadosPessoais dadosPessoais = aluno.getDadosPessoais();
         DadosContato dadosContato = dadosPessoais.getContato();
         DadosEndereco dadosEndereco = dadosPessoais.getEndereco();
@@ -56,53 +55,27 @@ public class AlunoService {
         return ResponseEntity.ok(aluno);
     }
 
-    public List<Aluno> listarTodos() {
+    public Aluno atualizar(Long idAluno, Aluno novosDados) {
+        return alunoRepository.findById(idAluno).map(aluno -> {
+            aluno.setUsuario(novosDados.getUsuario());
+            aluno.setDadosPessoais(novosDados.getDadosPessoais());
+            return alunoRepository.save(aluno);
+        }).orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+    }
+
+    public void excluir(Long idAluno) {
+        alunoRepository.deleteById(idAluno);
+    }
+
+    public Optional<Aluno> buscarPor(Long idAluno) {
+        return alunoRepository.findById(idAluno);
+    }
+
+    public List<Aluno> buscarTodos() {
         return alunoRepository.findAll();
     }
 
-    public Optional<Aluno> buscarPorId(Long id) {
-        return alunoRepository.findById(id);
-    }
-
-    public void excluir(Long id) {
-        alunoRepository.deleteById(id);
-    }
-
-    public List<Aluno> filtrarAlunos(Aluno aluno) {
-        Specification<Aluno> alunoSpecification = Specification.where(null);
-
-        if (aluno.getDadosPessoais().getNome() != null && !aluno.getDadosPessoais().getNome().isEmpty()) {
-            alunoSpecification = alunoSpecification.and((root, query, criteriaBuilder) ->
-                    criteriaBuilder.like(criteriaBuilder.lower(root.get("dadosPessoais").get("nome")), "%" + aluno.getDadosPessoais().getNome().toLowerCase() + "%"));
-        }
-
-        if (aluno.getDadosPessoais().getCpf() != null && !aluno.getDadosPessoais().getCpf().isEmpty()) {
-            alunoSpecification = alunoSpecification.and((root, query, criteriaBuilder) ->
-                    criteriaBuilder.equal(root.get("dadosPessoais").get("cpf"), aluno.getDadosPessoais().getCpf()));
-        }
-
-        if (aluno.getDadosPessoais().getDataNascimento() != null) {
-            alunoSpecification = alunoSpecification.and((root, query, criteriaBuilder) ->
-                    criteriaBuilder.equal(root.get("dadosPessoais").get("dataNascimento"), aluno.getDadosPessoais().getDataNascimento()));
-        }
-        if (aluno.getDadosPessoais().getSexo() != null && !aluno.getDadosPessoais().getSexo().isEmpty()) {
-            alunoSpecification = alunoSpecification.and((root, query, criteriaBuilder) ->
-                    criteriaBuilder.equal(root.get("dadosPessoais").get("sexo"), aluno.getDadosPessoais().getSexo()));
-        }
-
-        if (aluno.getDadosPessoais().getContato() != null) {
-            if (aluno.getDadosPessoais().getContato().getEmail() != null && !aluno.getDadosPessoais().getContato().getEmail().isEmpty()) {
-                alunoSpecification = alunoSpecification.and((root, query, criteriaBuilder) ->
-                        criteriaBuilder.equal(root.get("dadosPessoais").get("contato").get("email"), aluno.getDadosPessoais().getContato().getEmail()));
-            }
-            if (aluno.getDadosPessoais().getContato().getNumero() != null && !aluno.getDadosPessoais().getContato().getNumero().isEmpty()) {
-                alunoSpecification = alunoSpecification.and((root, query, criteriaBuilder) ->
-                        criteriaBuilder.equal(root.get("dadosPessoais").get("contato").get("numero"), aluno.getDadosPessoais().getContato().getNumero()));
-            }
-        }
 
 
-        return alunoRepository.findAll(alunoSpecification);
-    }
 
 }

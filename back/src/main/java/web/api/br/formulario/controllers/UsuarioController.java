@@ -14,28 +14,29 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
+    @PostMapping("/cadastrar")
+    public Usuario criar(@RequestBody Usuario usuario) {
+        return usuarioService.cadastrar(usuario);
+    }
+
+    @PutMapping("/atualizar/{idUsuario}")
+    public Usuario atualizar(@PathVariable Long idUsuario, @RequestBody Usuario userDetails) {
+        return usuarioService.atualizar(idUsuario, userDetails);
+    }
+
+    @DeleteMapping("/excluir/{idUsuario}")
+    public void excluir(@PathVariable Long idUsuario) {
+        usuarioService.excluir(idUsuario);
+    }
+
+    @GetMapping("/buscar/{idUsuario}")
+    public Optional<Usuario> buscarPorId(@PathVariable Long idUsuario) {
+        return usuarioService.buscarPor(idUsuario);
+    }
+
     @GetMapping("buscar-todos")
     public List<Usuario> buscarTodos() {
         return usuarioService.buscarTodos();
     }
 
-    @GetMapping("/buscar-por/{id}")
-    public Optional<Usuario> buscarPorId(@PathVariable Long id) {
-        return usuarioService.buscarPorId(id);
-    }
-
-    @PostMapping("/criar")
-    public Usuario criar(@RequestBody Usuario usuario) {
-        return usuarioService.criar(usuario);
-    }
-
-    @PutMapping("/atualizar/{id}")
-    public Usuario atualizar(@PathVariable Long id, @RequestBody Usuario userDetails) {
-        return usuarioService.atualizar(id, userDetails);
-    }
-
-    @DeleteMapping("/excluir/{id}")
-    public void excluir(@PathVariable Long id) {
-        usuarioService.excluir(id);
-    }
 }

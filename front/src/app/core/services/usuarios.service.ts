@@ -1,5 +1,5 @@
+import { Aluno, Notificacao, Usuario } from '../models';
 import { GlobalService } from './global.service';
-import { Notificacao, Usuario } from '../models';
 import { environment } from 'environment.prod';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -29,7 +29,10 @@ export class UsuariosService {
   }
 
   public criarNovo(dadosUsuario: Usuario): Observable<Usuario> {
-    return this.serviceGlobal.post<Usuario>(`${this.apiUrl}${this.endPointUrl}/criar`, dadosUsuario);
+    return this.serviceGlobal.post<Usuario>(
+      `${this.apiUrl}${this.endPointUrl}/criar`,
+      dadosUsuario
+    );
   }
 
   public atualizar(id: number, userData: Usuario): Observable<Usuario> {
@@ -38,5 +41,12 @@ export class UsuariosService {
 
   public excluir(id: number): Observable<Usuario> {
     return this.serviceGlobal.delete<Usuario>(`${this.apiUrl}/${id}`);
+  }
+
+  public login(usuario: Usuario): Observable<Aluno> {
+    return this.serviceGlobal.post<Aluno>(
+      `${this.apiUrl}${this.endPointUrl}/logar`,
+      usuario
+    );
   }
 }

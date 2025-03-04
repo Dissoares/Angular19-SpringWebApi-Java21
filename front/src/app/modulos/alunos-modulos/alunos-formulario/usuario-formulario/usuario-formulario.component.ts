@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Usuario } from 'app/core/models';
 
 @Component({
   selector: 'app-usuario',
@@ -41,12 +42,29 @@ export class UsuarioFormularioComponent
 
   public criarFormulario(): void {
     this.formulario = this.formBuilder.group({
-      idUsuario: [null],
-      nomeUsuario: [null, this.ehCampoObrigatorio()],
-      email: [null],
       senha: [null, this.ehCampoObrigatorio()],
-      perfilPermissao: [null, this.ehCampoObrigatorio()],
+      perfilPermissao: [[null, this.ehCampoObrigatorio()]],
+      perfilDescricao: [{ value: null, disabled: true }],
       repitaSenha: [null, this.ehCampoObrigatorio()],
     });
+  }
+
+  public aoSelecionarPerfil() {
+    const perfil: PerfilPermissaoEnum =
+      this.obterDadosDoCampo('perfilPermissao');
+    this.inserirDadosNoCampo('perfilDescricao', perfil.descricao);
+  }
+
+  public obterDadosUsuario() {
+    const formulario = this.formulario.value;
+    const usuario = new Usuario();
+    usuario.email = formulario.email;
+    usuario.senha = formulario.senha;
+
+    const perm = new Array<PerfilPermissaoEnum>();
+    perm.push(formulario.perfilPermissao);
+    usuario.perfilPermissao = [...perm];
+
+    return usuario;
   }
 }

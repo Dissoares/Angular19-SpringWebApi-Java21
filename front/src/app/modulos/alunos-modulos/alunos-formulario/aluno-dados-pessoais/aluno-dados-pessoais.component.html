@@ -67,10 +67,10 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="field-3">
-      <mat-label>Uf</mat-label>
+      <mat-label>Estado - UF</mat-label>
       <mat-select formControlName="uf">
         <mat-option *ngFor="let uf of ufEnum" [value]="uf.id">
-          {{ uf.descricao }}
+          {{ uf.descricao + ' - ' + uf.sigla }}
         </mat-option>
       </mat-select>
       @if(formulario.get('uf')?.value){

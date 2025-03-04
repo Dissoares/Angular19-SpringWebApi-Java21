@@ -81,6 +81,10 @@ export class MetodosFormulariosComponent {
     this.obterCampo(campo).setValue(dados);
   }
 
+  public obterDadosDoCampo(campo: string) {
+    return this.obterCampo(campo)?.value;
+  }
+
   public validarEmail(): ValidatorFn {
     return (formControl: AbstractControl): ValidationErrors | null => {
       if (!formControl.value) return null;

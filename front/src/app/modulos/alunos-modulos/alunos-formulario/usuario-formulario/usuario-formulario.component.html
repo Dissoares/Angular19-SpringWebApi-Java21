@@ -5,27 +5,27 @@
   </mat-card-subtitle>
 
   <form [formGroup]="formulario" class="container">
-    <mat-form-field appearance="fill" class="field-3">
+    <mat-form-field appearance="fill" class="field-2">
       <mat-label>Perfil</mat-label>
-      <mat-select formControlName="perfilPermissao">
-        <mat-option *ngFor="let perfil of perfilPermissaoEnum" [value]="perfil.codigo">
-          {{ perfil.descricao }}
+      <mat-select formControlName="perfilPermissao" (selectionChange)="aoSelecionarPerfil()">
+        <mat-option *ngFor="let item of perfilPermissaoEnum" [value]="item">
+          {{ item.perfil }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="field-3">
-      <mat-label>Nome de Usuário</mat-label>
-      <input matInput formControlName="nomeUsuario" />
+    <mat-form-field appearance="fill" class="field-6">
+      <mat-label>Descrição</mat-label>
+      <input matInput type="text" formControlName="perfilDescricao" />
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="field-3">
+    <mat-form-field appearance="fill" class="field-2">
       <mat-label>Senha</mat-label>
       <input matInput type="password" autocomplete="on" formControlName="senha" />
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="field-3">
-      <mat-label>Repita Senha</mat-label>
+    <mat-form-field appearance="fill" class="field-2">
+      <mat-label>Repetir senha</mat-label>
       <input matInput type="password" autocomplete="on" formControlName="repitaSenha" />
     </mat-form-field>
   </form>

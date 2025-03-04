@@ -1,21 +1,34 @@
 export class PerfilPermissaoEnum {
-  static readonly ALUNO = new PerfilPermissaoEnum(1, 'ALUNO', 'AREA_ALUNO');
+  static readonly ALUNO = new PerfilPermissaoEnum(
+    1,
+    'ALUNO',
+    'AREA_ALUNO',
+    'Acessa cursos nos quais está matriculado, visualiza materiais didáticos e realiza atividades.'
+  );
   static readonly PROFESSOR = new PerfilPermissaoEnum(
     2,
     'PROFESSOR',
-    'GER_ALUNOS'
+    'GER_ALUNOS',
+    'Gerencia alunos, cursos e notas, cria e edita materiais didáticos.'
   );
   static readonly INSTITUICAO = new PerfilPermissaoEnum(
     3,
     'INSTITUIÇÃO',
-    'GER_ALUN_PROF_INST'
+    'GER_ALUN_PROF_INST',
+    'Gerencia alunos, professores e informações da própria instituição, incluindo cursos e matrículas.'
   );
-  static readonly GESTOR = new PerfilPermissaoEnum(4, 'GESTOR', 'ACESSO_GERAL');
+  static readonly GESTOR = new PerfilPermissaoEnum(
+    4,
+    'GESTOR',
+    'ACESSO_GERAL',
+    'Gerencia todos os alunos, professores e instituições, usa todos os recursos do sistema.'
+  );
 
   private constructor(
     public readonly codigo: number,
-    public readonly descricao: string,
-    public readonly permissao: string
+    public readonly perfil: string,
+    public readonly permissao: string,
+    public readonly descricao: string
   ) {}
 
   public static getAllValues() {
@@ -29,6 +42,6 @@ export class PerfilPermissaoEnum {
   }
 
   public static getByDescricao(descricao: string): PerfilPermissaoEnum {
-    return this.getAllValues().find((perfil) => perfil.descricao === descricao);
+    return this.getAllValues().find((perfil) => perfil.perfil === descricao);
   }
 }

@@ -40,7 +40,7 @@ export class UfEnum {
   private constructor(
     public readonly id: number,
     public readonly descricao: string,
-    public readonly uf: string
+    public readonly sigla: string
   ) {
     listaUf.push(this);
   }
@@ -50,10 +50,10 @@ export class UfEnum {
   }
 
   public static getById(id: number): UfEnum | undefined {
-    return listaUf.find((uf) => uf.id === id);
+    return listaUf.find((estado) => estado.id === id);
   }
 
   public static getByDescricao(descricao: string): UfEnum | undefined {
-    return listaUf.find((uf) => uf.descricao === descricao);
+    return listaUf.find((estado) => estado.descricao === descricao);
   }
 }

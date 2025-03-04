@@ -64,15 +64,13 @@ export class AlunosFormularioComponent implements OnInit {
       this.alunoDadosEndereco.obterDadosFormulario();
     const dadosContato: DadosContato =
       this.alunoDadosContato.obterDadosFormulario();
-    const dadosUsuario: Usuario = 
-      this.alunoDadosUsuario.obterDadosFormulario();
+    const dadosUsuario: Usuario = this.alunoDadosUsuario.obterDadosUsuario();
 
     const dadosAluno = new Aluno();
-    dadosAluno.usuario = dadosUsuario;
-    dadosAluno.usuario.perfilPermissao = dadosUsuario.perfilPermissao;
     dadosAluno.dadosPessoais = dadosPessoais;
     dadosAluno.dadosPessoais.endereco = dadosEndereco;
     dadosAluno.dadosPessoais.contato = dadosContato;
+    dadosAluno.usuario = dadosUsuario;
 
     if (!this.alunoDadosUsuario.ehFormularioValido()) {
       this.alunoDadosUsuario.marcarFormularioComoTocado();

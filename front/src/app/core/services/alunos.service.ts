@@ -3,7 +3,6 @@ import { environment } from 'environment.prod';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Aluno } from '../models';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -19,7 +18,10 @@ export class AlunosService {
 
   public salvarDadosPessoais(dados: Aluno): Observable<Aluno> {
     // console.log('Dados antes do envio:', JSON.stringify(dados));
-    return this.http.post<Aluno>(this.apiUrl, dados);
+    return this.http.post<Aluno>(
+      `${this.apiUrl}${this.endPointUrl}/salvar/`,
+      dados
+    );
   }
 
   public buscarPorId(id: number): Observable<Aluno> {

@@ -1,6 +1,6 @@
 export class DadosEndereco {
   public id!: number;
-  public rua!: string;
+  public logradouro!: string;
   public complemento!: string;
   public numero!: string;
   public cep!: string;

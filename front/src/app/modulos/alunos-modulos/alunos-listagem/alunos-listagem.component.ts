@@ -110,8 +110,8 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
 
   public retonaEnderecoConcatenado(endereco: DadosEndereco): string {
     const concatenado: string[] = [];
-    if (endereco.rua && endereco.numero)
-      concatenado.push(`${endereco.rua} Nº${endereco.numero} - `);
+    if (endereco.logradouro && endereco.numero)
+      concatenado.push(`${endereco.logradouro} Nº${endereco.numero} - `);
     if (endereco.cep) concatenado.push(`CEP: ${endereco.cep}`);
     if (endereco.bairro) concatenado.push(`, ${endereco.bairro}`);
     if (endereco.cidade) concatenado.push(`, ${endereco.cidade}`);

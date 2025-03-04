@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import web.api.br.formulario.models.Aluno;
 import web.api.br.formulario.services.AlunoService;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -37,5 +39,11 @@ public class AlunoController {
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
         alunoService.excluir(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/filtrar")
+    public ResponseEntity<List<Aluno>> filtrar(Aluno aluno) {
+        List<Aluno> listaAlunos = alunoService.filtrarAlunos(aluno);
+        return ResponseEntity.ok(listaAlunos);
     }
 }

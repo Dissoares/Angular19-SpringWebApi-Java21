@@ -48,6 +48,7 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
   public colunasTabela = Object.values(new ColunasTabelaAlunos());
   public dadosTabela = new MatTableDataSource<Aluno>(this.listaAlunos);
   public temDadosTabela: boolean = false;
+  public temIdAluno: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -65,6 +66,7 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
   }
 
   public buscarTodosEPreencherTabela() {
+    if (this.temIdAluno) return;
     this.route.data.subscribe((alunosDados) => {
       const alunos: Array<Aluno> = alunosDados['alunos'];
 
@@ -83,10 +85,13 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
 
   public buscarAlunoDaRota() {
     this.route.queryParams.subscribe((dadosRota: Params) => {
-      let id = dadosRota['idAluno'];
-      if (!id) return;
-
-      this.alunosService.buscarPorId(id).subscribe((aluno: Aluno) => {
+      let idAluno = dadosRota['idAluno'];
+      if (!idAluno) return;
+      this.listaAlunos = [];
+      this.dadosTabela.data = [];
+      this.temIdAluno = true;
+      this.temDadosTabela = true;
+      this.alunosService.buscarPorId(idAluno).subscribe((aluno: Aluno) => {
         this.listaAlunos.push(aluno);
         this.dadosTabela.data = [...this.listaAlunos];
       });

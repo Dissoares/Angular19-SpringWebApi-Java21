@@ -69,7 +69,7 @@ export class AlunosListagemComponent implements AfterViewInit, OnInit {
     if (this.temIdAluno) return;
     this.route.data.subscribe((alunosDados) => {
       const alunos: Array<Aluno> = alunosDados['alunos'];
-
+      if (!alunos) return;
       this.listaAlunos = alunos;
       this.dadosTabela.data = [...this.listaAlunos];
       this.temDadosTabela = true;

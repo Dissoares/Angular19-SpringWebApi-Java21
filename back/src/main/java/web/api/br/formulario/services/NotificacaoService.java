@@ -12,25 +12,21 @@ public class NotificacaoService {
     @Autowired
     private NotificacaoRepository notificacaoRepository;
 
-    public List<Notificacao> buscarNotificacoes() {
-        return notificacaoRepository.findAll();
-    }
-
-    public List<Notificacao> buscarNotificacoesPorUsuario(Long idUsuario) {
+    public List<Notificacao> buscarPoridUsuario(Long idUsuario) {
         return notificacaoRepository.findByUsuario_IdUsuarioAndAtivoTrue(idUsuario);
     }
 
-    public Notificacao criarNotificacao(Notificacao notificacao) {
+    public Notificacao nova(Notificacao notificacao) {
         return notificacaoRepository.save(notificacao);
     }
 
-    public void atualizarStatusNotificacao(Long id) {
+    public void marcarComoLida(Long id) {
         Notificacao notificacao = notificacaoRepository.findById(id).orElseThrow(() -> new RuntimeException("Notificação não encontrada"));
         notificacao.setAtivo(false);
         notificacaoRepository.save(notificacao);
     }
 
-    public void excluirNotificacao(Long id) {
+    public void excluir(Long id) {
         notificacaoRepository.deleteById(id);
     }
 }

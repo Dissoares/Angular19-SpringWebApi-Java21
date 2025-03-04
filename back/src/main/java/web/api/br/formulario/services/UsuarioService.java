@@ -1,10 +1,10 @@
 package web.api.br.formulario.services;
 import org.springframework.beans.factory.annotation.Autowired;
+import web.api.br.formulario.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 import web.api.br.formulario.models.Usuario;
-import web.api.br.formulario.repository.UsuarioRepository;
-import java.util.List;
 import java.util.Optional;
+import java.util.List;
 
 @Service
 public class UsuarioService {
@@ -27,7 +27,6 @@ public class UsuarioService {
         return usuarioRepository.findById(id).map(usuario -> {
             usuario.setNomeUsuario(userDetails.getNomeUsuario());
             usuario.setEmail(userDetails.getEmail());
-//            usuario.setPermissao(userDetails.getPermissao());
             return usuarioRepository.save(usuario);
         }).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
     }

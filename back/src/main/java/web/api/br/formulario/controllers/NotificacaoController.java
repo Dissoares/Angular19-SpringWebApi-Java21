@@ -14,28 +14,23 @@ public class NotificacaoController {
     @Autowired
     private NotificacaoService notificacaoService;
 
-    @GetMapping("/buscar-todas")
-    public List<Notificacao> buscarNotificacoes() {
-        return notificacaoService.buscarNotificacoes();
+    @PostMapping("/nova")
+    public Notificacao criar(@RequestBody Notificacao notificacao) {
+        return notificacaoService.nova(notificacao);
     }
 
-    @GetMapping("/buscar-por/{id}")
-    public List<Notificacao> buscarPorId(@PathVariable Long id) {
-        return notificacaoService.buscarNotificacoesPorUsuario(id);
+    @GetMapping("/buscar/{idUsuario}")
+    public List<Notificacao> buscarPorId(@PathVariable Long idUsuario) {
+        return notificacaoService.buscarPoridUsuario(idUsuario);
     }
 
-    @PostMapping("/criar-nova")
-    public Notificacao criarNotificacao(@RequestBody Notificacao notificacao) {
-        return notificacaoService.criarNotificacao(notificacao);
-    }
-
-    @PutMapping("/marcar-como-lida/{id}")
-    public void atualizarStatusNotificacao(@PathVariable Long id) {
-        notificacaoService.atualizarStatusNotificacao(id);
+    @PutMapping("/lida/{id}")
+    public void marcarComoLida(@PathVariable Long id) {
+        notificacaoService.marcarComoLida(id);
     }
 
     @Delete("/excluir/{id}")
-    public void excluirNotificacao(@RequestBody Long id) {
-        notificacaoService.excluirNotificacao(id);
+    public void excluir(@RequestBody Long id) {
+        notificacaoService.excluir(id);
     }
 }

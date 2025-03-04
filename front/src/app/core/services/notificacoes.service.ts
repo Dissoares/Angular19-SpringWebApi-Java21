@@ -34,7 +34,7 @@ export class NotificacoesService implements OnInit {
 
   public marcarNotificacaoComoLida(idNotificacao: number) {
     this.serviceGlobal.put<Notificacao>(
-      `${this.apiUrl}/${this.endPointUrl}/marcar-como-lida/${idNotificacao}`,
+      `${this.apiUrl}/${this.endPointUrl}/lida/${idNotificacao}`,
       {}
     );
   }

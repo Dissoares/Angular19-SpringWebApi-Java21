@@ -16,11 +16,11 @@ public class Permissao {
     @Column(name = "ID_PERMISSAO")
     private Long idPermissao;
 
-    @Column(name = "NOME", nullable = true)
-    private String nome;
+    @Column(name = "PERFIL", nullable = true)
+    private String perfil;
 
-    @Column(name = "DESCRICAO", nullable = true)
-    private String descricao;
+    @Column(name = "PERMISSAO", nullable = true)
+    private String permissao;
 
     @ManyToOne
     @JoinColumn(name = "USUARIO_FK", nullable = true)

@@ -2,6 +2,7 @@ import { AlunoDadosPessoaisComponent } from './aluno-dados-pessoais/aluno-dados-
 import { AlunoDadosEnderecoComponent } from './aluno-dados-endereco/aluno-dados-endereco.component';
 import { ConfirmarDialogComponent } from 'app/dialogs/confirmar-dialog/confirmar-dialog.component';
 import { AlunoDadosContatoComponent } from './aluno-dados-contato/aluno-dados-contato.component';
+import { UsuarioFormularioComponent } from './usuario-formulario/usuario-formulario.component';
 import { SnackBarPersonalizadoService } from 'app/core/services/index.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
@@ -19,6 +20,7 @@ import { Aluno } from 'app/core/models';
     AlunoDadosPessoaisComponent,
     AlunoDadosEnderecoComponent,
     AlunoDadosContatoComponent,
+    UsuarioFormularioComponent,
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
@@ -31,6 +33,9 @@ import { Aluno } from 'app/core/models';
   styleUrls: ['./alunos-formulario.component.css'],
 })
 export class AlunosFormularioComponent implements OnInit {
+  @ViewChild(UsuarioFormularioComponent)
+  public alunoDadosUsuario!: UsuarioFormularioComponent;
+
   @ViewChild(AlunoDadosPessoaisComponent)
   public alunoDadosPessoais!: AlunoDadosPessoaisComponent;
 

@@ -1,7 +1,7 @@
 package web.api.br.formulario.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +20,7 @@ public class Usuario {
     private Long idUsuario;
 
     @Column(name = "USUARIO", unique = true, nullable = false, length = 100)
-    private String usuario;
+    private String nomeUsuario;
 
     @Column(name = "EMAIL", unique = true, nullable = false, length = 250)
     private String email;

@@ -1,29 +1,30 @@
-const listaPerfil: PerfilEnum[] = [];
-
 export class PerfilEnum {
-  static readonly ADMINISTRADOR = new PerfilEnum(1, 'ADMINISTRADOR', 'ACESSO_GERAL');
-  static readonly ALUNO = new PerfilEnum(2, 'ALUNO', 'AREA_ALUNO');
-  static readonly PROFESSOR = new PerfilEnum(3, 'PROFESSOR','GERENCIAR_ALUNOS');
-  static readonly INSTITUICAO = new PerfilEnum(4, 'INSTITUIÇÃO', 'GERENCIA_ALUNO_PROFESSOR');
+  static readonly ALUNO = new PerfilEnum(1, 'ALUNO', 'AREA_ALUNO');
+  static readonly PROFESSOR = new PerfilEnum(2, 'PROFESSOR', 'GER_ALUNOS');
+  static readonly INSTITUICAO = new PerfilEnum(
+    3,
+    'INSTITUIÇÃO',
+    'GER_ALUN_PROF_INST'
+  );
+  static readonly GESTOR = new PerfilEnum(4, 'GESTOR', 'ACESSO_GERAL');
 
   private constructor(
-    public readonly id: number,
+    public readonly codigo: number,
     public readonly descricao: string,
-    public readonly permissoes: string
-  ) {
-    listaPerfil.push(this);
+    public readonly permissao: string
+  ) {}
+
+  public static getAllValues() {
+    return Object.values(PerfilEnum);
   }
 
-  public static getAllValues(): PerfilEnum[] {
-    return listaPerfil;
+  public static getByCodigo(codigo: number | string): PerfilEnum {
+    return PerfilEnum.getAllValues().filter(
+      (perfil) => perfil.codigo === Number(codigo)
+    )[0];
   }
 
-  public static getById(id: number): PerfilEnum | undefined {
-    return listaPerfil.find((perfil) => perfil.id === id);
-  }
-
-  public static getByDescricao(descricao: string): PerfilEnum | undefined {
-    return listaPerfil.find((perfil) => perfil.descricao === descricao);
+  public static getByDescricao(descricao: string): PerfilEnum {
+    return this.getAllValues().find((perfil) => perfil.descricao === descricao);
   }
 }
-

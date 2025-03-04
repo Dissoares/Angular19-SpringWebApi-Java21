@@ -73,7 +73,7 @@ export class ConfirmarDialogComponent implements OnInit {
     timer(5000).subscribe(() => {
       this.router.navigate([Rotas.SISTEMA.alunos.LISTAGEM], {
         queryParams: {
-          idAluno: aluno.id,
+          idAluno: aluno.idAluno,
         },
       });
     });

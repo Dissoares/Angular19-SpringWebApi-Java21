@@ -25,7 +25,7 @@ public class UsuarioService {
 
     public Usuario atualizar(Long id, Usuario userDetails) {
         return usuarioRepository.findById(id).map(usuario -> {
-            usuario.setUsuario(userDetails.getUsuario());
+            usuario.setNomeUsuario(userDetails.getNomeUsuario());
             usuario.setEmail(userDetails.getEmail());
 //            usuario.setPermissao(userDetails.getPermissao());
             return usuarioRepository.save(usuario);

@@ -10,6 +10,8 @@ import { Permissao } from 'app/core/models/permissao';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Usuario } from 'app/core/models';
+import { PerfilEnum } from 'app/core/enums/tipo-perfil.enum';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-usuario',
@@ -22,6 +24,7 @@ import { Usuario } from 'app/core/models';
     MatCardModule,
     MatIconModule,
     CommonModule,
+    MatSelectModule,
   ],
   templateUrl: './usuario-formulario.component.html',
   styleUrls: ['./usuario-formulario.component.scss'],
@@ -31,6 +34,7 @@ export class UsuarioFormularioComponent
   implements OnInit
 {
   public formPermissoes!: FormGroup;
+  public perfilEnum = PerfilEnum.getAllValues();
 
   constructor(private usuariosService: UsuariosService) {
     super(new FormBuilder());
@@ -38,45 +42,15 @@ export class UsuarioFormularioComponent
 
   ngOnInit() {
     this.criarFormulario();
-    this.criarFormularioPermissoes();
   }
 
   public criarFormulario(): void {
     this.formulario = this.formBuilder.group({
       id: [null],
-      usuario: [null],
-      email: [null],
-      senha: [null],
-      permissoes: [null],
-    });
-  }
-
-  public criarFormularioPermissoes(): void {
-    this.formPermissoes = this.formBuilder.group({
-      id: [null],
-      nome: [null],
-      descricao: [null],
-      ativo: [null],
-    });
-  }
-  public salvar() {
-    const usuario: Usuario = this.obterDadosFormulario();
-    const permissao: Permissao = this.formPermissoes.value;
-
-    const dadosUsuario = new Usuario();
-    dadosUsuario.ativo = usuario.ativo;
-    dadosUsuario.email = usuario.email;
-    dadosUsuario.senha = usuario.senha;
-    dadosUsuario.idUsuario = usuario.idUsuario;
-    dadosUsuario.usuario = usuario.usuario;
-
-    dadosUsuario.permissoes = [];
-    if (permissao) {
-      dadosUsuario.permissoes.push(permissao);
-    }
-
-    this.usuariosService.criarNovo(dadosUsuario).subscribe((resultado) => {
-      console.log('resultado:', resultado);
+      nomeUsuario: [null, this.ehCampoObrigatorio()],
+      senha: [null, this.ehCampoObrigatorio()],
+      repitaSenha: [null, this.ehCampoObrigatorio()],
+      perfil: [null, this.ehCampoObrigatorio()],
     });
   }
 }

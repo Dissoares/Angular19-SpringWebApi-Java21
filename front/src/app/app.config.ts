@@ -8,6 +8,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { provideRouter } from '@angular/router';
+import { provideToastr } from 'ngx-toastr';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -15,6 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimationsAsync(),
+    provideToastr(),
     provideHttpClient(withInterceptorsFromDi()),
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
     importProvidersFrom(MatDatepickerModule, MatNativeDateModule), 

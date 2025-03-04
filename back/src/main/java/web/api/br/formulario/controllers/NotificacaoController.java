@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/notificacoes")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 public class NotificacaoController {
     @Autowired
     private NotificacaoService notificacaoService;

@@ -1,6 +1,7 @@
 import { MetodosFormulariosComponent } from 'app/shared/components/index.component';
 import { NotificacoesService } from 'app/core/services/notificacoes.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { UsuariosService } from 'app/core/services/usuarios.service';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -10,6 +11,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { Aluno, Usuario } from 'app/core/models';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -39,7 +41,10 @@ export class CabecalhoComponent
   public ocultarNotificacao: Boolean = false;
   public totalNotificacoes: number = 0;
 
-  constructor(private service: NotificacoesService) {
+  constructor(
+    private service: NotificacoesService,
+    private usuarioService: UsuariosService
+  ) {
     super(new FormBuilder());
   }
 
@@ -56,7 +61,11 @@ export class CabecalhoComponent
     });
   }
 
-  public fazerLogin() {}
+  public fazerLogin() {
+    const usuario: Usuario = this.formulario.value;
+    this.usuarioService.login(usuario).subscribe((aluno: Aluno) => {
+    });
+  }
 
   public recuperarSenha() {}
 

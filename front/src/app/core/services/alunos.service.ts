@@ -16,17 +16,16 @@ export class AlunosService {
     return this.http.get<Aluno>(this.apiUrl);
   }
 
-  public salvarDadosPessoais(dados: Aluno): Observable<Aluno> {
-    // console.log('Dados antes do envio:', JSON.stringify(dados));
+  public salvarDadosPessoais(aluno: Aluno): Observable<Aluno> {
     return this.http.post<Aluno>(
-      `${this.apiUrl}${this.endPointUrl}/salvar/`,
-      dados
+      `${this.apiUrl}${this.endPointUrl}/cadastrar`,
+      aluno
     );
   }
 
-  public buscarPorId(id: number): Observable<Aluno> {
+  public buscarPorId(idAluno: number): Observable<Aluno> {
     return this.http.get<Aluno>(
-      `${this.apiUrl}${this.endPointUrl}/buscar-por/${id}`
+      `${this.apiUrl}${this.endPointUrl}/buscar/${idAluno}`
     );
   }
 

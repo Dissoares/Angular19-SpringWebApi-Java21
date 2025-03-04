@@ -16,7 +16,10 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimationsAsync(),
-    provideToastr(),
+    provideToastr({
+      timeOut: 3000,
+      preventDuplicates: true,
+    }),
     provideHttpClient(withInterceptorsFromDi()),
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
     importProvidersFrom(MatDatepickerModule, MatNativeDateModule), 

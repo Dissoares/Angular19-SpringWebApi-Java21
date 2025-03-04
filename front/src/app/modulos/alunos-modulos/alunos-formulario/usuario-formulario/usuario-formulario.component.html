@@ -1,6 +1,6 @@
 <mat-card-content>
   <mat-card-subtitle>
-    <mat-icon> person_add </mat-icon>
+    <mat-icon> account_circle </mat-icon>
     Dados de Usuário
   </mat-card-subtitle>
 
@@ -12,21 +12,25 @@
           {{ item.perfil }}
         </mat-option>
       </mat-select>
+      <mat-icon matPrefix>group_add</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="field-6">
       <mat-label>Descrição</mat-label>
       <input matInput type="text" formControlName="perfilDescricao" />
+      <mat-icon matPrefix>help</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="field-2">
       <mat-label>Senha</mat-label>
       <input matInput type="password" autocomplete="on" formControlName="senha" />
+      <mat-icon matPrefix>key</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="field-2">
       <mat-label>Repetir senha</mat-label>
       <input matInput type="password" autocomplete="on" formControlName="repitaSenha" />
+      <mat-icon matPrefix>key</mat-icon>
     </mat-form-field>
   </form>
 </mat-card-content>

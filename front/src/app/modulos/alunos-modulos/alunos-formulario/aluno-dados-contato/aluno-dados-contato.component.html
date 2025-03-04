@@ -1,6 +1,6 @@
 <mat-card-content>
   <mat-card-subtitle>
-    <mat-icon> ring_volume </mat-icon>
+    <mat-icon> contact_support </mat-icon>
     Dados de Contato
   </mat-card-subtitle>
 
@@ -8,7 +8,7 @@
     <mat-form-field appearance="fill" class="field-3">
       <mat-label>E-mail</mat-label>
       <input matInput formControlName="email" />
-      <mat-icon matPrefix>email</mat-icon>
+      <mat-icon matPrefix>alternate_email</mat-icon>
       <mat-error>
         <app-erro [dadosCampo]="formulario.get('email')"> </app-erro>
       </mat-error>
@@ -17,7 +17,7 @@
     <mat-form-field appearance="fill" class="field-3">
       <mat-label>Confirmação E-mail</mat-label>
       <input matInput formControlName="confirmacaoEmail" AtualizarCampoDiretiva />
-      <mat-icon matPrefix>email</mat-icon>
+      <mat-icon matPrefix>alternate_email</mat-icon>
       <mat-error>
         <app-erro [dadosCampo]="formulario.get('confirmacaoEmail')"> </app-erro>
       </mat-error>
@@ -30,7 +30,7 @@
           {{ tipoTelefone.descricao }}
         </mat-option>
       </mat-select>
-      <mat-icon matPrefix>phone</mat-icon>
+      <mat-icon matPrefix>add_call</mat-icon>
       @if(formulario.get('tipoTelefone')?.value){
       <button mat-icon-button matSuffix (click)="removerSelecao($event, 'tipoTelefone')">
         <mat-icon>clear</mat-icon>
@@ -44,7 +44,7 @@
     <mat-form-field appearance="fill" class="field-3">
       <mat-label>Número Telefone</mat-label>
       <input matInput formControlName="numero" mask="{{ mascaraTelefone }}" unmask="true" />
-      <mat-icon matPrefix>call</mat-icon>
+      <mat-icon matPrefix>{{ celular ? 'smartphone': 'call'}}</mat-icon>
       <mat-error>
         <app-erro [dadosCampo]="formulario.get('numero')"> </app-erro>
       </mat-error>

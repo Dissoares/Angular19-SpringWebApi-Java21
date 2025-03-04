@@ -41,6 +41,7 @@ export class AlunoDadosContatoComponent
 {
   public tipoTelefoneEnum = TipoTelefoneEnum.getAllValues();
   public mascaraTelefone: string = '';
+  public celular: Boolean = false;
   constructor() {
     super(new FormBuilder());
   }
@@ -69,8 +70,8 @@ export class AlunoDadosContatoComponent
     this.limparCampo('numero');
     this.ativarCampo('numero');
     evento.value === TipoTelefoneEnum.CELULAR.codigo
-      ? (this.mascaraTelefone = '(99)99999-9999')
-      : (this.mascaraTelefone = '(99)9999-9999');
+      ? ((this.mascaraTelefone = '(99)99999-9999'), (this.celular = true))
+      : ((this.mascaraTelefone = '(99)9999-9999'), (this.celular = false));
   }
 
   public removerSelecao(eventoClick: MouseEvent, campo: string): void {

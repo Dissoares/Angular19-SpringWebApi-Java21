@@ -52,7 +52,10 @@ export class UsuarioFormularioComponent
   public aoSelecionarPerfil() {
     const perfil: PerfilPermissaoEnum =
       this.obterDadosDoCampo('perfilPermissao');
-    this.inserirDadosNoCampo('perfilDescricao', perfil.descricao);
+    this.inserirDadosNoCampo(
+      'perfilDescricao',
+      perfil?.descricao?.toUpperCase()
+    );
   }
 
   public obterDadosUsuario() {

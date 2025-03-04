@@ -9,7 +9,7 @@
   <table mat-table [dataSource]="dadosTabela">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID.</th>
-      <td mat-cell *matCellDef="let coluna">{{ coluna?.id }}</td>
+      <td mat-cell *matCellDef="let coluna">{{ coluna?.idAluno }}</td>
     </ng-container>
 
     <ng-container matColumnDef="nome">

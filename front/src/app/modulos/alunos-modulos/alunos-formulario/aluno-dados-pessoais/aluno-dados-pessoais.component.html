@@ -17,6 +17,7 @@
     <mat-form-field appearance="fill" class="field-3">
       <mat-label>CPF</mat-label>
       <input type="text" matInput formControlName="cpf" maxlength="14" mask="000.000.000-00" unmask="true" />
+      <mat-icon matPrefix>add_card</mat-icon>
       <mat-error>
         <app-erro [dadosCampo]="formulario.get('cpf')"> </app-erro>
       </mat-error>
@@ -44,6 +45,7 @@
         <mat-icon>clear</mat-icon>
       </button>
       }
+      <mat-icon matPrefix>wc</mat-icon>
       <mat-error>
         <app-erro [dadosCampo]="formulario.get('sexo')"></app-erro>
       </mat-error>
@@ -61,26 +63,31 @@
         <mat-icon>clear</mat-icon>
       </button>
       }
+      <mat-icon matPrefix>expand_circle_down</mat-icon>
       <mat-error>
         <app-erro [dadosCampo]="formulario.get('estadoCivil')"> </app-erro>
       </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="field-3">
-      <mat-label>Estado - UF</mat-label>
+      <mat-label>Estado de Nascimento</mat-label>
       <mat-select formControlName="uf">
+        
         <mat-option *ngFor="let uf of ufEnum" [value]="uf.id">
           {{ uf.descricao + ' - ' + uf.sigla }}
         </mat-option>
       </mat-select>
+
       @if(formulario.get('uf')?.value){
       <button mat-icon-button matSuffix (click)="removerSelecao($event, 'uf')">
         <mat-icon>clear</mat-icon>
       </button>
       }
+      <mat-icon matPrefix>person_pin_circle</mat-icon>
       <mat-error>
         <app-erro [dadosCampo]="formulario.get('uf')"> </app-erro>
       </mat-error>
     </mat-form-field>
+
   </form>
 </mat-card-content>

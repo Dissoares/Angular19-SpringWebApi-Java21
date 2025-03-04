@@ -9,7 +9,7 @@
       <mat-label>CEP</mat-label>
       <input type="text" matInput formControlName="cep" [matAutocomplete]="auto"
         (input)="buscarEnderecoPorCep(formulario.get('cep')?.value)" maxlength="9" />
-      <mat-icon matPrefix>pin_drop</mat-icon>
+      <mat-icon matPrefix>navigation</mat-icon>
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
         @for (endereco of listaEnderecos; track endereco.cep) {
         <mat-option [value]="endereco.cep">
@@ -25,7 +25,7 @@
     <mat-form-field appearance="fill" class="field-2">
       <mat-label>Tipo Logradouro</mat-label>
       <input matInput formControlName="tipoLogradouro" />
-      <mat-icon matPrefix>streetview</mat-icon>
+      <mat-icon matPrefix>add_road</mat-icon>
       <mat-error>
         <app-erro [dadosCampo]="formulario.get('tipoLogradouro')"> </app-erro>
       </mat-error>
@@ -34,7 +34,7 @@
     <mat-form-field appearance="fill" class="field-6">
       <mat-label>Logradouro</mat-label>
       <input matInput formControlName="logradouro" />
-      <mat-icon matPrefix>streetview</mat-icon>
+      <mat-icon matPrefix>signpost</mat-icon>
       <mat-error>
         <app-erro [dadosCampo]="formulario.get('logradouro')"> </app-erro>
       </mat-error>
@@ -43,7 +43,7 @@
     <mat-form-field appearance="fill" class="field-2">
       <mat-label>Número</mat-label>
       <input matInput formControlName="numero" maxlength="8" />
-      <mat-icon matPrefix>home</mat-icon>
+      <mat-icon matPrefix>pin</mat-icon>
       <mat-error>
         <app-erro [dadosCampo]="formulario.get('numero')"> </app-erro>
       </mat-error>
@@ -52,7 +52,7 @@
     <mat-form-field appearance="fill" class="field-3">
       <mat-label>Complemento</mat-label>
       <input matInput formControlName="complemento" />
-      <mat-icon matPrefix>add_location</mat-icon>
+      <mat-icon matPrefix>assistant_direction</mat-icon>
       <mat-error>
         <app-erro [dadosCampo]="formulario.get('complemento')"> </app-erro>
       </mat-error>
@@ -79,7 +79,7 @@
     <mat-form-field appearance="fill" class="field-3">
       <mat-label>Estado</mat-label>
       <input matInput formControlName="estado" />
-      <mat-icon matPrefix>map</mat-icon>
+      <mat-icon matPrefix>flag_2</mat-icon>
       <mat-error>
         <app-erro [dadosCampo]="formulario.get('estado')"> </app-erro>
       </mat-error>

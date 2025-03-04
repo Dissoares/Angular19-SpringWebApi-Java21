@@ -16,7 +16,7 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_ALUNO")
-    private Long id;
+    private Long idAluno;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "DADOS_PESSOAIS_FK", nullable = false)

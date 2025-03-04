@@ -92,7 +92,7 @@ public class AlunoService {
                         criteriaBuilder.equal(root.get("dadosPessoais").get("contato").get("numero"), aluno.getDadosPessoais().getContato().getNumero()));
             }
         }
-        
+
 
         return alunoRepository.findAll(alunoSpecification);
     }

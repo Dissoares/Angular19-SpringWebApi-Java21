@@ -23,10 +23,10 @@ import { Usuario } from 'app/core/models';
     MatIconModule,
     CommonModule,
   ],
-  templateUrl: './usuarios-formulario.component.html',
-  styleUrls: ['./usuarios-formulario.component.scss'],
+  templateUrl: './usuario-formulario.component.html',
+  styleUrls: ['./usuario-formulario.component.scss'],
 })
-export class UsuariosFormularioComponent
+export class UsuarioFormularioComponent
   extends MetodosFormulariosComponent
   implements OnInit
 {

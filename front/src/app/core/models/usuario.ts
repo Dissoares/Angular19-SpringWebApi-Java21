@@ -1,7 +1,7 @@
 import { Permissao } from './permissao';
 
 export class Usuario {
-  public id!: number;
+  public idUsuario!: number;
   public usuario!: string;
   public email!: string;
   public senha!: string;

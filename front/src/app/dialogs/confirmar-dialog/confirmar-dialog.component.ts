@@ -5,7 +5,6 @@ import {
   MatDialog,
 } from '@angular/material/dialog';
 import { SnackBarPersonalizadoService } from '../../core/services/index.service';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AlunosService } from '../../core/services/alunos.service';
 import { Component, inject, OnInit, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,31 +17,21 @@ import { timer } from 'rxjs';
 @Component({
   selector: 'app-confirmar-dialog',
   standalone: true,
-  imports: [
-    MatDialogModule,
-    MatButtonModule,
-    CommonModule,
-    MatProgressSpinnerModule,
-  ],
+  imports: [MatDialogModule, MatButtonModule, CommonModule],
   templateUrl: './confirmar-dialog.component.html',
   styleUrls: ['./confirmar-dialog.component.scss'],
 })
 export class ConfirmarDialogComponent implements OnInit {
   readonly dialogRef = inject(MatDialogRef<ConfirmarDialogComponent>);
+  readonly dadosAluno = inject<Aluno>(MAT_DIALOG_DATA);
   private snackBarService = inject(SnackBarPersonalizadoService);
-  readonly spinnerDialog = inject(MatDialog);
 
-  constructor(
-    private alunosService: AlunosService,
-    @Inject(MAT_DIALOG_DATA)
-    private router: Router,
-    public Aluno: Aluno
-  ) {}
+  constructor(private alunosService: AlunosService, private router: Router) {}
 
   ngOnInit() {}
 
   public salvarDados(): void {
-    this.alunosService.salvarDadosPessoais(this.Aluno).subscribe({
+    this.alunosService.salvarDadosPessoais(this.dadosAluno).subscribe({
       next: (aluno: Aluno) => {
         this.snackBarService.abrirSnackBar('Cadastro concuído!.', 'Sucesso');
         timer(1000).subscribe(() => {

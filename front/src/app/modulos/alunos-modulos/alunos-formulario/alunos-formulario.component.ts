@@ -3,7 +3,13 @@ import { AlunoDadosEnderecoComponent } from './aluno-dados-endereco/aluno-dados-
 import { ConfirmarDialogComponent } from 'app/dialogs/confirmar-dialog/confirmar-dialog.component';
 import { AlunoDadosContatoComponent } from './aluno-dados-contato/aluno-dados-contato.component';
 import { UsuarioFormularioComponent } from './usuario-formulario/usuario-formulario.component';
-import { SnackBarPersonalizadoService } from 'app/core/services/index.service';
+import {
+  DadosEndereco,
+  DadosPessoais,
+  DadosContato,
+  Usuario,
+  Aluno,
+} from 'app/core/models';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,7 +18,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Aluno } from 'app/core/models';
 @Component({
   selector: 'app-alunos-formulario',
   standalone: true,
@@ -45,7 +50,6 @@ export class AlunosFormularioComponent implements OnInit {
   @ViewChild(AlunoDadosContatoComponent)
   public alunoDadosContato!: AlunoDadosContatoComponent;
 
-  private snackBarService = inject(SnackBarPersonalizadoService);
   readonly dialog = inject(MatDialog);
   public ativarBotao: boolean = false;
 
@@ -54,51 +58,55 @@ export class AlunosFormularioComponent implements OnInit {
   ngOnInit(): void {}
 
   public abrirDialogoSalvar(): void {
-    const dadosAluno = new Aluno();
-    dadosAluno.dadosPessoais = this.alunoDadosPessoais.obterDadosFormulario();
-    dadosAluno.dadosPessoais.contato =
-      this.alunoDadosContato.obterDadosFormulario();
-    dadosAluno.dadosPessoais.endereco =
+    const dadosPessoais: DadosPessoais =
+      this.alunoDadosPessoais.obterDadosFormulario();
+    const dadosEndereco: DadosEndereco =
       this.alunoDadosEndereco.obterDadosFormulario();
+    const dadosContato: DadosContato =
+      this.alunoDadosContato.obterDadosFormulario();
+    const dadosUsuario: Usuario = 
+      this.alunoDadosUsuario.obterDadosFormulario();
+
+    const dadosAluno = new Aluno();
+    dadosAluno.usuario = dadosUsuario;
+    dadosAluno.usuario.perfilPermissao = dadosUsuario.perfilPermissao;
+    dadosAluno.dadosPessoais = dadosPessoais;
+    dadosAluno.dadosPessoais.endereco = dadosEndereco;
+    dadosAluno.dadosPessoais.contato = dadosContato;
+
+    if (!this.alunoDadosUsuario.ehFormularioValido()) {
+      this.alunoDadosUsuario.marcarFormularioComoTocado();
+      this.toastr.error('Preencha todos os dados de usuário.', 'Erro!');
+      return;
+    }
 
     if (!this.alunoDadosPessoais.ehFormularioValido()) {
       this.alunoDadosPessoais.marcarFormularioComoTocado();
-      this.toastr.error(
-        'Preencha todos os campos obrigatórios do formulário dados pessoais.',
-        'Erro!'
-      );
+      this.toastr.error('Preencha todos os dados pessoais.', 'Erro!');
       return;
     }
 
     if (!this.alunoDadosContato.ehFormularioValido()) {
       this.alunoDadosContato.marcarFormularioComoTocado();
-      this.toastr.error(
-        'Preencha todos os campos obrigatórios do formulário contato.',
-        'Erro!'
-      );
+      this.toastr.error('Preencha todos os dados de contato.', 'Erro!');
       return;
     }
 
     if (!this.alunoDadosEndereco.ehFormularioValido()) {
       this.alunoDadosEndereco.marcarFormularioComoTocado();
-      this.toastr.error(
-        'Preencha todos os campos obrigatórios do formulário endereço.',
-        'Erro!'
-      );
+      this.toastr.error('Preencha todos os dados de endereço.', 'Erro!');
       return;
     }
 
-    this.dialog.open<ConfirmarDialogComponent, Aluno>(
-      ConfirmarDialogComponent,
-      {
-        width: '350px',
-        height: '350px',
-        data: dadosAluno,
-      }
-    );
+    this.dialog.open<ConfirmarDialogComponent>(ConfirmarDialogComponent, {
+      width: '350px',
+      height: '350px',
+      data: dadosAluno,
+    });
   }
 
   public limparFormulario(): void {
+    this.alunoDadosUsuario.limparFormulario();
     this.alunoDadosPessoais.limparFormulario();
     this.alunoDadosEndereco.limparFormulario();
     this.alunoDadosContato.limparFormulario();

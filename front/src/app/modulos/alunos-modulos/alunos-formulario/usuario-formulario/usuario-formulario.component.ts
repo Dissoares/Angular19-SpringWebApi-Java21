@@ -1,17 +1,13 @@
 import { MetodosFormulariosComponent } from 'app/shared/components/index.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { UsuariosService } from 'app/core/services/usuarios.service';
+import { PerfilPermissaoEnum } from 'app/core/enums/perfil-permissao.enum';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { Permissao } from 'app/core/models/permissao';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Usuario } from 'app/core/models';
-import { PerfilEnum } from 'app/core/enums/tipo-perfil.enum';
-import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-usuario',
@@ -19,12 +15,11 @@ import { MatSelectModule } from '@angular/material/select';
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatButtonModule,
+    MatSelectModule,
     MatInputModule,
     MatCardModule,
     MatIconModule,
     CommonModule,
-    MatSelectModule,
   ],
   templateUrl: './usuario-formulario.component.html',
   styleUrls: ['./usuario-formulario.component.scss'],
@@ -34,9 +29,9 @@ export class UsuarioFormularioComponent
   implements OnInit
 {
   public formPermissoes!: FormGroup;
-  public perfilEnum = PerfilEnum.getAllValues();
+  public perfilPermissaoEnum = PerfilPermissaoEnum.getAllValues();
 
-  constructor(private usuariosService: UsuariosService) {
+  constructor() {
     super(new FormBuilder());
   }
 
@@ -46,11 +41,12 @@ export class UsuarioFormularioComponent
 
   public criarFormulario(): void {
     this.formulario = this.formBuilder.group({
-      id: [null],
+      idUsuario: [null],
       nomeUsuario: [null, this.ehCampoObrigatorio()],
+      email: [null],
       senha: [null, this.ehCampoObrigatorio()],
+      perfilPermissao: [null, this.ehCampoObrigatorio()],
       repitaSenha: [null, this.ehCampoObrigatorio()],
-      perfil: [null, this.ehCampoObrigatorio()],
     });
   }
 }

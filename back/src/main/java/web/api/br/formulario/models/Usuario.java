@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class Usuario {
     @Column(name = "ID_USUARIO")
     private Long idUsuario;
 
-    @Column(name = "USUARIO", unique = true, nullable = false, length = 100)
+    @Column(name = "NOME_USUARIO", unique = true, nullable = false, length = 100)
     private String nomeUsuario;
 
     @Column(name = "EMAIL", unique = true, nullable = false, length = 250)
@@ -30,7 +29,7 @@ public class Usuario {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.PERSIST, orphanRemoval = false)
-    private List<Permissao> permissoes = new ArrayList<>();
+    private List<Permissao> perfilPermissao = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "ALUNO_FK", nullable = true, unique = true)
@@ -41,12 +40,12 @@ public class Usuario {
     private boolean ativo = true;
 
     public void adicionarPermissao(Permissao permissao) {
-        this.permissoes.add(permissao);
+        this.perfilPermissao.add(permissao);
         permissao.setUsuario(this);
     }
 
     public void removerPermissao(Permissao permissao) {
-        this.permissoes.remove(permissao);
+        this.perfilPermissao.remove(permissao);
         permissao.setUsuario(null);
     }
 }

@@ -1,9 +1,13 @@
+import { MetodosFormulariosComponent } from 'app/shared/components/index.component';
 import { NotificacoesService } from 'app/core/services/notificacoes.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { Notificacao } from 'app/core/models/notificacao';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
@@ -12,9 +16,12 @@ import { CommonModule } from '@angular/common';
   selector: 'app-cabecalho',
   standalone: true,
   imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
     MatToolbarModule,
     MatButtonModule,
     MatBadgeModule,
+    MatInputModule,
     MatMenuModule,
     MatIconModule,
     CommonModule,
@@ -22,19 +29,36 @@ import { CommonModule } from '@angular/common';
   templateUrl: './cabecalho.component.html',
   styleUrls: ['./cabecalho.component.scss'],
 })
-export class CabecalhoComponent implements OnInit {
+export class CabecalhoComponent
+  extends MetodosFormulariosComponent
+  implements OnInit
+{
   @Output() public ativarSidebar = new EventEmitter<void>();
 
   public listaNotificacoes: Array<Notificacao> = [];
   public ocultarNotificacao: Boolean = false;
   public totalNotificacoes: number = 0;
 
-  constructor(private service: NotificacoesService) {}
+  constructor(private service: NotificacoesService) {
+    super(new FormBuilder());
+  }
 
   ngOnInit(): void {
+    this.criarFormulario();
     this.service.buscarNotificacoes(2);
     this.monitorarNotificacoes();
   }
+
+  public criarFormulario() {
+    this.formulario = this.formBuilder.group({
+      emailOuCpf: [null],
+      senha: [null],
+    });
+  }
+
+  public fazerLogin() {}
+
+  public recuperarSenha() {}
 
   public aoClicarNoMenu() {
     this.ativarSidebar.emit();

@@ -5,20 +5,13 @@
   <img src="/angular.svg" class="logo" alt="Logo do Sistema" />
   <span class="espaco"></span>
 
-  <mat-icon-button
-    matBadge="{{ totalNotificacoes }}"
-    [matMenuTriggerFor]="notificacaoMenu"
-  >
+  <mat-icon-button matBadge="{{ totalNotificacoes }}" [matMenuTriggerFor]="notificacaoMenu">
     <mat-icon>notifications</mat-icon>
   </mat-icon-button>
 
   <mat-menu #notificacaoMenu="matMenu">
     <ng-container *ngIf="listaNotificacoes.length > 0; else semNotificacoes">
-      <button
-        mat-menu-item
-        *ngFor="let notificacao of listaNotificacoes"
-        (click)="marcarComoLida(notificacao.id)"
-      >
+      <button mat-menu-item *ngFor="let notificacao of listaNotificacoes" (click)="marcarComoLida(notificacao.id)">
         {{ notificacao.mensagem }} - {{ notificacao.status }}
       </button>
     </ng-container>
@@ -33,4 +26,28 @@
   <button mat-icon-button>
     <mat-icon>account_circle</mat-icon>
   </button>
+
+  <button mat-button [matMenuTriggerFor]="loginMenu">Entrar</button>
+
+  <mat-menu #loginMenu="matMenu">
+    <ng-template matMenuContent class="menu">
+      <form [formGroup]="formulario" (click)="$event.stopPropagation()">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="emailOuCpf" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" formControlName="senha" />
+        </mat-form-field>
+        <button class="login" mat-raised-button color="primary" (click)="fazerLogin(); $event.stopPropagation()">
+          Acessar
+        </button>
+        <a class="acesso" mat-button (click)="recuperarSenha(); $event.stopPropagation()">
+          Esqueceu a senha?
+        </a>
+      </form>
+    </ng-template>
+  </mat-menu>
 </mat-toolbar>

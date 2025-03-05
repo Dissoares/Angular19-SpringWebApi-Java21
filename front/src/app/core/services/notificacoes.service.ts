@@ -17,6 +17,8 @@ export class NotificacoesService implements OnInit {
 
   ngOnInit(): void {}
 
+
+
   public atualizarNotificacoes(notificacoes: Notificacao[]) {
     this.listaNotificacoes.next(notificacoes);
   }
@@ -33,8 +35,8 @@ export class NotificacoesService implements OnInit {
 
   public marcarNotificacaoComoLida(idNotificacao: number) {
     this.serviceGlobal.put<Notificacao>(
-      `${this.apiUrl}/${this.endPointUrl}/lida/${idNotificacao}`,
-      {}
-    );
+        `${this.apiUrl}/${this.endPointUrl}/lida/${idNotificacao}`,
+        {}
+    ).subscribe({});
   }
 }

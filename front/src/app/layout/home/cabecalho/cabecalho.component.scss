@@ -18,3 +18,47 @@ mat-form-field {
 form {
   padding: 10px;
 }
+
+.notificacao {
+  justify-content: space-between;
+  background-color: #ffffff;
+  align-items: center;
+  margin-bottom: 5px;
+  color: #550755;
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  border: none;
+  height: 35px;
+  padding: 3px;
+  width: 100%;
+}
+
+.notificacao mat-icon:hover {
+  background-color: #ff0000;
+  border-radius: 90px;
+  margin-bottom: 2px;
+  color: #ffffff;
+}
+
+.notificacao mat-icon {
+  margin-bottom: 2px;
+}
+
+.notificacao:hover {
+  background-color: #26013518;
+}
+
+::ng-deep .mat-mdc-menu-content {
+  background-color: rgb(255, 255, 255) !important;
+  min-width: 350px !important;
+}
+
+::ng-deep .cdk-overlay-connected-position-bounding-box {
+  width: 100% !important;
+}
+
+::ng-deep .mat-mdc-menu-panel {
+  min-width: 100% !important;
+  max-width: 350px !important;
+}

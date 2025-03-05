@@ -7,17 +7,17 @@ import { Injectable } from '@angular/core';
 export class SnackBarPersonalizadoService {
   constructor(private snackBar: MatSnackBar) {}
 
-  public abrirSnackBar(mensagem: string, tipo: 'Sucesso' | 'Erro' | 'Aviso') {
+  public abrirSnackBar(mensagem: string, tipo: 'Sucesso!' | 'Erro!' | 'Aviso!') {
     let panelClass = '';
 
     switch (tipo) {
-      case 'Sucesso':
+      case 'Sucesso!':
         panelClass = 'success-snackbar';
         break;
-      case 'Erro':
+      case 'Erro!':
         panelClass = 'error-snackbar';
         break;
-      case 'Aviso':
+      case 'Aviso!':
         panelClass = 'warning-snackbar';
         break;
     }

@@ -1,6 +1,7 @@
+import { SnackBarPersonalizadoService } from 'app/core/services/snack-bar.service.ts.service';
 import { MetodosFormulariosComponent } from 'app/shared/components/index.component';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { NotificacoesService } from 'app/core/services/notificacoes.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UsuariosService } from 'app/core/services/usuarios.service';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -36,7 +37,7 @@ export class CabecalhoComponent
   implements OnInit
 {
   @Output() public ativarSidebar = new EventEmitter<void>();
-
+  private snackBarService = inject(SnackBarPersonalizadoService);
   public listaNotificacoes: Array<Notificacao> = [];
   public ocultarNotificacao: Boolean = false;
   public totalNotificacoes: number = 0;
@@ -63,8 +64,7 @@ export class CabecalhoComponent
 
   public fazerLogin() {
     const usuario: Usuario = this.formulario.value;
-    this.usuarioService.login(usuario).subscribe((aluno: Aluno) => {
-    });
+    this.usuarioService.login(usuario).subscribe((aluno: Aluno) => {});
   }
 
   public recuperarSenha() {}
@@ -88,5 +88,6 @@ export class CabecalhoComponent
     );
     this.totalNotificacoes = this.listaNotificacoes.length;
     this.service.marcarNotificacaoComoLida(idNotificacao);
+    this.snackBarService.abrirSnackBar('Notificação removida!', 'Sucesso!');
   }
 }

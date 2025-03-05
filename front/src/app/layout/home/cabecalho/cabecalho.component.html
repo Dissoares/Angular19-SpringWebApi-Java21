@@ -11,21 +11,17 @@
 
   <mat-menu #notificacaoMenu="matMenu">
     <ng-container *ngIf="listaNotificacoes.length > 0; else semNotificacoes">
-      <button mat-menu-item *ngFor="let notificacao of listaNotificacoes" (click)="marcarComoLida(notificacao.id)">
-        {{ notificacao.mensagem }} - {{ notificacao.status }}
-      </button>
+      <div *ngFor="let notificacao of listaNotificacoes" (click)="marcarComoLida(notificacao.id)">
+        <button class="notificacao">
+          {{ notificacao.mensagem }} - {{ notificacao.status }}
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
     </ng-container>
     <ng-template #semNotificacoes>
       <button mat-menu-item disabled>Sem notificações</button>
     </ng-template>
   </mat-menu>
-
-  <button mat-icon-button>
-    <mat-icon>settings</mat-icon>
-  </button>
-  <button mat-icon-button>
-    <mat-icon>account_circle</mat-icon>
-  </button>
 
   <button mat-button [matMenuTriggerFor]="loginMenu">Entrar</button>
 

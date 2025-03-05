@@ -11,6 +11,13 @@ body {
   overflow: hidden;
 }
 
+:root {
+  @include mat.snack-bar-overrides((
+    container-color: rgb(7, 116, 25),
+    supporting-text-color: rgb(255, 255, 255),
+  ));
+}
+
 .mdc-text-field--disabled {
   background-color: #fffeff69 !important;
 }
@@ -22,11 +29,6 @@ body {
 .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-floating-label {
   color: #510468d7 !important;
 }
-
-// .mat-mdc-select {
-//   color: #ffffff !important;
-// }
-
 
 app-rodape {
   margin-top: 30px;

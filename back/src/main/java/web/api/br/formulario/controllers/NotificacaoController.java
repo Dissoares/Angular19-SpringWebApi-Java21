@@ -1,5 +1,4 @@
 package web.api.br.formulario.controllers;
-import com.oracle.svm.core.annotate.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import web.api.br.formulario.models.Notificacao;
@@ -19,7 +18,7 @@ public class NotificacaoController {
         return notificacaoService.criar(notificacao);
     }
 
-    @Delete("/excluir/{id}")
+    @DeleteMapping("/excluir/{id}")
     public void excluir(@RequestBody Long id) {
         notificacaoService.excluir(id);
     }

@@ -1,8 +1,8 @@
 const listaTipoTelefone: TipoTelefoneEnum[] = [];
 
 export class TipoTelefoneEnum {
-  static readonly CELULAR = new TipoTelefoneEnum(1, 'CELULAR');
-  static readonly FIXO = new TipoTelefoneEnum(2, 'FIXO');
+  static readonly CELULAR = new TipoTelefoneEnum(1, 'Celular');
+  static readonly FIXO = new TipoTelefoneEnum(2, 'Fixo');
 
   private constructor(
     public readonly codigo: number,

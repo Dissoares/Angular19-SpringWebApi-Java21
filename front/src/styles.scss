@@ -3,19 +3,32 @@
 @use "grid_personalizado";
 @use "@fontsource/open-sans";
 
-html,
-body {
-  height: 100vh !important;
-  margin: 0;
-  font-family: "Open Sans", sans-serif !important;
-  overflow: hidden;
+body,
+html {
+  background-color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
+// @font-face {
+//   font-family: 'MinhaFonte';
+//   src: url('./app/assets/fontes/') format('woff2');
+// }
+
+// html {
+//   @include mat.theme((
+//     typography: 'MinhaFonte',
+//     density: 0
+//   ));
+// }
+
 :root {
-  @include mat.snack-bar-overrides((
-    container-color: rgb(7, 116, 25),
-    supporting-text-color: rgb(255, 255, 255),
-  ));
+  @include mat.snack-bar-overrides(
+    (
+      container-color: rgb(7, 116, 25),
+      supporting-text-color: rgb(255, 255, 255),
+    )
+  );
 }
 
 .mdc-text-field--disabled {
@@ -38,7 +51,7 @@ app-rodape {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center; 
+  text-align: center;
   background-color: #510468d7;
   color: #ffffff;
   bottom: 0px !important;

@@ -1,6 +1,6 @@
 export class TipoSexoEnum {
-  static readonly MASCULINO = new TipoSexoEnum(1, 'MASCULINO');
-  static readonly FEMININO = new TipoSexoEnum(2, 'FEMININO');
+  static readonly MASCULINO = new TipoSexoEnum(1, 'Masculino');
+  static readonly FEMININO = new TipoSexoEnum(2, 'Femenino');
 
   constructor(
     public readonly codigo: number,

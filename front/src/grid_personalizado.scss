@@ -146,23 +146,16 @@ mat-paginator {
   color: #fff !important;
 }
 
-.botao-verde,
-.botao-vermelho {
+.mat-mdc-button,
+.mat-mdc-flat-button,
+.mat-mdc-raised-button,
+.mat-mdc-unelevated-button:not(:disabled) {
   color: #fff !important;
   border-radius: 3px !important;
-  width: 250px;
+  background-color: #510468d7 !important;
+  width: 150px;
   padding: 20px;
   margin: 10px;
-}
-
-.botao-verde {
-  background-color: #510468d7 !important;
-  color: #ffffff !important;
-}
-
-.botao-vermelho {
-  background-color: #ffffff !important;
-  color: #510468d7 !important;
 }
 
 //estilos de dos cards personalizados

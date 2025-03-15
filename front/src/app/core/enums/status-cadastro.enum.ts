@@ -1,8 +1,8 @@
 const listaStatusSolicitacao: StatusCadastroEnum[] = [];
 
 export class StatusCadastroEnum {
-  static readonly ATIVO = new StatusCadastroEnum(true, 'ATIVO');
-  static readonly INATIVO = new StatusCadastroEnum(false, 'INATIVO');
+  static readonly ATIVO = new StatusCadastroEnum(true, 'Ativo');
+  static readonly INATIVO = new StatusCadastroEnum(false, 'Inativo');
 
   private constructor(
     public readonly id: boolean,
